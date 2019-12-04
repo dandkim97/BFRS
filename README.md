@@ -1,7 +1,7 @@
 # BFRS
 BAGDAD Flight Reservation Service
 
-<<<<<<< HEAD
+
 dan was here
 im here
 =======
@@ -21,4 +21,5 @@ I am bader
 
 I am bader /////////////
 
->>>>>>> master
+I am andrew
+
