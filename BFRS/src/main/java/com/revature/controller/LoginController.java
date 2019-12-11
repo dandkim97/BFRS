@@ -1,4 +1,4 @@
-package com.revature.controllers;
+package com.revature.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.revature.beans.Login;
-import com.revature.service.LoginService;
+import com.revature.services.LoginService;
 
 @Controller
 @RequestMapping(value="/login")
