@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
-import { Login } from "../login";
+import { Login } from '../login';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-add-login',
@@ -7,10 +8,17 @@ import { Login } from "../login";
   styleUrls: ['./add-login.component.css']
 })
 export class AddLoginComponent implements OnInit {
+  @Output() created = new EventEmitter<boolean>();
+  @Input() login: Login;
+  constructor(private loginService: LoginService) { }
 
-  constructor() { }
+  ngOnInit() { }
 
-  ngOnInit() {
+  addLogin() {
+    this.loginService.addLogin(this.login).subscribe(
+      resp => {
+        this.created.emit(true);
+      });
   }
 
 }

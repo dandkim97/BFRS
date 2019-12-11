@@ -1,1 +1,7 @@
-<p>add-login works!</p>
+<div>
+    Username: <input type="text" [(ngModel)]="login.username">
+    Password: <input type="text" [(ngModel)]="login.pswrd">
+    First Name: <input type="text" [(ngModel)]="login.first">
+    Last Name: <input type="text" [(ngModel)]="login.last">
+    <button type="button" (click)="addLogin()">Create Account</button>
+</div>
