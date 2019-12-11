@@ -18,6 +18,6 @@
 		<!-- Tell Hibernate where our mappings are -->
 		
 		<!-- Annotation Mappings -->
-		
+		<mapping class="com.revature.beans.Form"/>
 	</session-factory>
 </hibernate-configuration>
