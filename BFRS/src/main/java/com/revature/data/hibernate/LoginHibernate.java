@@ -18,7 +18,7 @@ public class LoginHibernate implements LoginDAO{
 	public Login getLogin(String username, String password) {
 		Session s = hu.getSession();
 		String query = "from Login l where l.username=:username and "
-				+ "l.password=:password";
+				+ "l.pswrd=:password";
 		Query<Login> q = s.createQuery(query, Login.class);
 		q.setParameter("username", username);
 		q.setParameter("password", password);
