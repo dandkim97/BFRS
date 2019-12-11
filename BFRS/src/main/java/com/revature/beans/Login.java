@@ -5,22 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-@NamedQueries({
-	@NamedQuery(name="getAllLogin", query="FROM LOGIN"),
-	@NamedQuery(name="", query="")
-})
 
 @Entity
 @Table(name="LOGIN")
 public class Login {
 	@Id
 	@Column(name="id")
-	@SequenceGenerator(name="gen", sequenceName="id_seq", allocationSize=1)
+	@SequenceGenerator(name="gen", sequenceName="login_seq", allocationSize=1)
 	@GeneratedValue(generator="gen", strategy=GenerationType.SEQUENCE)
 	private Integer id;
 	@Column

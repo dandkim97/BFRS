@@ -55,3 +55,5 @@ create table review (
     constraint fk_review_plane foreign key (plane_id)
         references plane(id)
 );
+
+create sequence login_seq;

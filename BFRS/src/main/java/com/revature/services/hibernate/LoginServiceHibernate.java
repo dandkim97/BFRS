@@ -2,11 +2,13 @@ package com.revature.services.hibernate;
 
 import java.util.Set;
 
+import org.springframework.stereotype.Service;
+
 import com.revature.beans.Login;
 import com.revature.data.LoginDao;
 import com.revature.data.hibernate.LoginHibernate;
 import com.revature.services.LoginService;
-
+@Service
 public class LoginServiceHibernate implements LoginService{
 	
 	private LoginDao ld = new LoginHibernate();

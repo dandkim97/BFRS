@@ -17,6 +17,7 @@ export class LoginService {
     console.log(body);
     return this.http.post('http://localhost:8080/BFRS/login',
       body, {headers: this.headers, withCredentials: true}).pipe(
-        map(resp => resp as Login));
+      map(resp => resp as Login)
+    );
   }
 }
