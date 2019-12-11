@@ -9,10 +9,12 @@ import { LoginService } from '../login.service';
 })
 export class AddLoginComponent implements OnInit {
   @Output() created = new EventEmitter<boolean>();
-  @Input() login: Login;
+  login: Login;
   constructor(private loginService: LoginService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.login = new Login();
+  }
 
   addLogin() {
     this.loginService.addLogin(this.login).subscribe(

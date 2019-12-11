@@ -14,6 +14,7 @@ export class LoginService {
 
   public addLogin(login: Login) {
     const body = JSON.stringify(login);
+    console.log(body);
     return this.http.post('http://localhost:8080/BFRS/login',
       body, {headers: this.headers, withCredentials: true}).pipe(
         map(resp => resp as Login));
