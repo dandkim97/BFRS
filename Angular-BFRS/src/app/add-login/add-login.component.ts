@@ -17,9 +17,6 @@ export class AddLoginComponent implements OnInit {
   }
 
   addLogin() {
-    this.login.isAdmin = null;
-    this.login.loyaltyStatus = null;
-    this.login.id = null;
     this.loginService.addLogin(this.login).subscribe(
       resp => {
         this.created.emit(true);

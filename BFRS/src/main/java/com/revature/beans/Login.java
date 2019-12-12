@@ -32,16 +32,16 @@ public class Login {
 		super();
 	}
 
-	public Login(Integer id, String username, String pswrd, String first_name, String last_name, Integer is_admin,
-			Integer loyalty_status) {
+	public Login(Integer id, String username, String pswrd, String first, String last, Integer isAdmin,
+			Integer loyaltyStatus) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.pswrd = pswrd;
-		this.first = first_name;
-		this.last = last_name;
-		this.isAdmin = is_admin;
-		this.loyaltyStatus = loyalty_status;
+		this.first = first;
+		this.last = last;
+		this.isAdmin = isAdmin;
+		this.loyaltyStatus = loyaltyStatus;
 	}
 
 	public Integer getId() {
@@ -68,36 +68,36 @@ public class Login {
 		this.pswrd = pswrd;
 	}
 
-	public String getFirst_name() {
+	public String getFirst() {
 		return first;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first = first_name;
+	public void setFirst(String first) {
+		this.first = first;
 	}
 
-	public String getLast_name() {
+	public String getLast() {
 		return last;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last = last_name;
+	public void setLast(String last) {
+		this.last = last;
 	}
 
-	public Integer getIs_admin() {
+	public Integer getIsAdmin() {
 		return isAdmin;
 	}
 
-	public void setIs_admin(Integer is_admin) {
-		this.isAdmin = is_admin;
+	public void setIsAdmin(Integer isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 
-	public Integer getLoyalty_status() {
+	public Integer getLoyaltyStatus() {
 		return loyaltyStatus;
 	}
 
-	public void setLoyalty_status(Integer loyalty_status) {
-		this.loyaltyStatus = loyalty_status;
+	public void setLoyaltyStatus(Integer loyaltyStatus) {
+		this.loyaltyStatus = loyaltyStatus;
 	}
 
 	@Override

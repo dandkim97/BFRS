@@ -45,8 +45,8 @@ public class LoginServiceHibernate implements LoginService{
 
 	@Override
 	public void addLogin(Login l) {
-		l.setIs_admin(0);
-		l.setLoyalty_status(0);
+		l.setIsAdmin(0);
+		l.setLoyaltyStatus(0);
 		ld.addLogin(l);
 		
 	}
