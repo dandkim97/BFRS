@@ -9,17 +9,21 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-
+// 'application/x-www-form-urlencoded'
 export class LoginService {
   private appUrl = this.url.getUrl() + '/login';
-  private headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
+  private headers = new HttpHeaders({'Content-Type': 'application/json'});
   private loginUser: Login;
+  private currLogin: Login;
   constructor(private url: UrlService, private http: HttpClient) { }
 
   login(username: string, password: string): Observable<Login> {
     if (username && password) {
       // we are attempting to log in
-      const body = `user=${username}&pass=${password}`;
+      this.currLogin = new Login();
+      this.currLogin.username = username;
+      this.currLogin.pswrd = password;
+      const body = JSON.stringify(this.currLogin);
       console.log(body);
       return this.http.post(this.appUrl, body, {
         headers: this.headers,
@@ -31,6 +35,7 @@ export class LoginService {
           console.log(user);
           if (user) {
             this.loginUser = user;
+            console.log(this.loginUser);
           }
           return user;
         })
@@ -53,6 +58,7 @@ export class LoginService {
     return this.http.delete(this.appUrl, {withCredentials: true}).pipe(
       map(success => {
         this.loginUser = null;
+        console.log(this.loginUser);
         return success;
       })
     );
