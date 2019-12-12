@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { Form } from '../form';
 import { FormService } from '../form.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-add-form',
@@ -10,6 +11,7 @@ import { FormService } from '../form.service';
 export class AddFormComponent implements OnInit {
   @Output() created = new EventEmitter<Boolean>();
   @Input() form: Form;
+  // document.getElementById('submitbtn').add
 
   selectedClass;
   class: Array<Object> = [
@@ -42,6 +44,11 @@ export class AddFormComponent implements OnInit {
   }
 
   addForm() {
+
+    // if (this.form.numBags === null && this.form.numSeats === null &&
+    //   this.form.planeClass === null) {
+    //   (<HTMLInputElement>document.getElementById('submitbtn')).disabled = true;
+    // }
     this.formService.addForm(this.form).subscribe(
       resp => {
         this.created.emit(true);

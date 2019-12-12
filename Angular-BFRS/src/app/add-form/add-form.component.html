@@ -1,17 +1,20 @@
 <div *ngIf="form">
-    Number of seats: <input type="text" [(ngModel)]="form.numSeats">
+  <form (ngSubmit)="onSubmit()" #tripForm="ngForm">
+    Flight Number: <input type="number" min="1">
     <br>
-    Number of bags: <input type="text" [(ngModel)]="form.numBags">
+    Number of seats: <input type="number" min="1" required [(ngModel)]="form.numSeats" name="numSeats">
+    <br>
+    Number of bags: <input type="number" min="0" required [(ngModel)]="form.numBags" name="numBags">
     <br>
     <label>Plane Class:</label>
-    <select [(ngModel)]="selectedClass" (change)="selectedItem()">
-        <option *ngFor="let item of class" [ngValue]="item">{{item.name}}</option>
-      </select>
+    <select required [(ngModel)]="selectedClass" name="selectedClass" (change)="selectedItem()">
+      <option *ngFor="let item of class" [ngValue]="item">{{item.name}}</option>
+    </select>
     <br>
-    <!-- Round Trip: <input type="text" [(ngModel)]="form.isRound">
-    <br> -->
-    <input type="checkbox" [(ngModel)]="isChecked" (change)="assignValue($event)"/>
+    <input type="checkbox" [(ngModel)]="isChecked" name="isChecked" (change)="assignValue($event)" />
     <label>Round Trip</label>
     <br>
-    <button type="button" (click)="addForm()" class="btn btn-success">Submit</button>
+    <button type="button" [disabled]="!tripForm.form.valid" id="submitbtn" (click)="addForm()"
+      class="btn btn-success">Submit</button>
+  </form>
 </div>
