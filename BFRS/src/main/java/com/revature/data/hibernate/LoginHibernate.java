@@ -12,7 +12,7 @@ import com.revature.utils.LogUtil;
 public class LoginHibernate implements LoginDao{
 	
 	private HibernateUtil hu = HibernateUtil.getInstance();
-
+	
 	@Override
 	public Integer addLogin(Login l) {
 		Session s = hu.getSession();
