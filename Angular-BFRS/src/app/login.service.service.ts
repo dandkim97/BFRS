@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-// 'application/x-www-form-urlencoded'
+
 export class LoginService {
   private appUrl = this.url.getUrl() + '/login';
   private headers = new HttpHeaders({'Content-Type': 'application/json'});

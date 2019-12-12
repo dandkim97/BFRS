@@ -1,8 +1,11 @@
 package com.revature.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,11 +22,20 @@ public class LoginController {
 	private LoginService ls;
 	
 	@PostMapping
-	public ResponseEntity<Login> login(@RequestBody Login l){
-		System.out.println(l.getUsername()+" "+ l.getPswrd());
+	public ResponseEntity<Login> login(@RequestBody Login l, HttpSession session){
 		Login login = ls.login(l.getUsername(), l.getPswrd());
-		System.out.println(login);
+		if(login == null) {
+			return ResponseEntity.status(401).build();
+		}
+		session.setAttribute("loggedUser", login);
 		return ResponseEntity.ok(login);
+	}
+
+	@DeleteMapping
+	public ResponseEntity<Void> logout(HttpSession session){
+		System.out.println("Logging out "+ session.getAttribute("loggedUser"));
+		session.invalidate();
+		return ResponseEntity.noContent().build();
 	}
 	
 
