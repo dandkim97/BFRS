@@ -23,7 +23,7 @@ export class AddFormComponent implements OnInit {
   constructor(private formService: FormService) { }
 
   ngOnInit() {
-
+    this.form.isRound = 0;
   }
 
   selectedItem() {
@@ -32,7 +32,7 @@ export class AddFormComponent implements OnInit {
   }
 
   assignValue(state) {
-    if (state.target.checked === true) {
+    if (state.target.checked) {
       this.form.isRound = 1;
     } else {
       this.form.isRound = 0;

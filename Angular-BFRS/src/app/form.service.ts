@@ -28,8 +28,7 @@ export class FormService {
 
   public addForm(form: Form) {
     const body = JSON.stringify(form);
-    const url = this.appUrl;
-    return this.http.post(url, body, { headers: this.headers, withCredentials: true }).pipe(
+    return this.http.post(this.appUrl, body, { headers: this.headers, withCredentials: true }).pipe(
       map(resp => resp as Form)
     );
   }
