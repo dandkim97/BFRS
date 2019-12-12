@@ -22,6 +22,7 @@ public class LoginController {
 	@PostMapping
 	public ResponseEntity<Login> addLogin(@RequestBody Login l){
 		ls.addLogin(l);
+		// commment
 		return ResponseEntity.status(201).body(l);
 	}
 	
