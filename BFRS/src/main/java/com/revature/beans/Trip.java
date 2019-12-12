@@ -1,6 +1,8 @@
 package com.revature.beans;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
+
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,9 +19,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table
+@Table(name="trip")
 public class Trip {
 	@Id	
+	@Column
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="trip")
 	@SequenceGenerator(name="trip", sequenceName="trip_seq", allocationSize=1)
 	private Integer id;

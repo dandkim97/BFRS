@@ -10,11 +10,11 @@ import com.revature.data.TripDao;
 
 @Service
 public class TripService {
-@Autowired
-private TripDao td;
-public Set<Trip> getTrips(){
-	return td.getTrips();
-}
+	@Autowired
+	private TripDao td;
+
+	public Set<Trip> getTrips() {
+		return td.getTrips();
+	}
 
 }
-

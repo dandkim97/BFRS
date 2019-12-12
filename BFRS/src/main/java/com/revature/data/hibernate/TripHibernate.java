@@ -13,9 +13,6 @@ import com.revature.beans.Trip;
 import com.revature.data.TripDao;
 import com.revature.utils.HibernateUtil;
 
-
-
-
 @Component
 public class TripHibernate implements TripDao{
 	
@@ -23,7 +20,7 @@ public class TripHibernate implements TripDao{
 	private HibernateUtil hu;
 	
 	
-	 	@Override
+	@Override
 	public Set<Trip> getTrips() {
 		Session s = hu.getSession();
 		String query = "from Trip";

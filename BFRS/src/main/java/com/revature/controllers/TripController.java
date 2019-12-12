@@ -21,11 +21,9 @@ import com.revature.beans.Trip;
 import com.revature.services.TripService;
 
 
- @RestController
-@CrossOrigin(origins="http://localhost:4200")
+@RestController
+//@CrossOrigin(origins="http://localhost:4200")
 @RequestMapping(value="/trips")
- 
-//
 public class TripController {
 
 	@Autowired
@@ -33,8 +31,10 @@ public class TripController {
 	
 	@GetMapping 
 	public ResponseEntity<Set<Trip>> getTrips() {
-			return ResponseEntity.ok(ts.getTrips());
-		}
+		
+		return ResponseEntity.ok(ts.getTrips());
+		
+	}
 	
 
 	

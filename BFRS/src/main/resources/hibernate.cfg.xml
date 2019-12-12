@@ -16,8 +16,11 @@
 		<property name="use_sql_comments">true</property>
 		
 		<!-- Tell Hibernate where our mappings are -->
+		<property name="hibernate.id.new_generator_mappings">false</property>
 		
 		<!-- Annotation Mappings -->
+		<mapping class="com.revature.beans.Trip"/>
+		<mapping class="com.revature.beans.Plane"/>
 		
 	</session-factory>
 </hibernate-configuration>
