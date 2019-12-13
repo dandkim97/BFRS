@@ -22,7 +22,7 @@ import com.revature.services.TripService;
 
 
 @RestController
-//@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="http://localhost:4200")
 @RequestMapping(value="/trips")
 public class TripController {
 
