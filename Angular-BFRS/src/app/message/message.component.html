@@ -1,1 +1,12 @@
-<p>message works!</p>
+<div id="makingMessage">
+    <h3>What would you like to ask, {{user.first + " " + user.last}}?</h3> <br>
+    <!-- Type of Question: <input type="text" [(ngModel)]="login.pswrd"> <br> -->
+    <label >Type of Event:</label>
+    <select [(ngModel)]="message.type">
+      <option selected>Choose...</option>
+      <option value="loyalty request">Loyalty Status Request</option>
+      <option value="question">Customer Support Question</option>
+    </select>
+    Question/Request Info: <input type="text" [(ngModel)]="message.quest"> <br>
+    <button type="button" (click)="addMessage()">Create Message</button>
+</div>

@@ -5,7 +5,6 @@ drop table TRIP cascade constraints;
 drop table LOGIN_TRIP cascade constraints;
 drop table REVIEW cascade constraints;
 drop table MESSAGE cascade constraints;
-
 drop sequence login_seq;
 drop sequence msg_seq;
 
@@ -63,16 +62,15 @@ create table review (
 create table message (
     id number primary key,
     asker_id number,
-    asked_id number,
+    asked_id number references login(id),
     status varchar2(25),
     type varchar2(25),
     quest varchar2(256),
     answer varchar2(256),
     constraint fk_message_login1 foreign key (asker_id)
-        references login(id),
-    constraint fk_message_login2 foreign key (asked_id)
         references login(id)
 );
 
 create sequence login_seq;
 create sequence msg_seq;
+commit;
