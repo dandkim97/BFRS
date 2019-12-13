@@ -7,7 +7,9 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.springframework.stereotype.Service;
 
+@Service
 public class HibernateUtil {
 	private static HibernateUtil hu;
 	private SessionFactory sessionFactory;

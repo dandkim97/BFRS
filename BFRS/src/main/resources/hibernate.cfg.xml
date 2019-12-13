@@ -19,6 +19,7 @@
 		<!-- Tell Hibernate where our mappings are -->
 		
 		<!-- Annotation Mappings -->
-		<mapping class="com.revature.beans.Plane"/>  
+		<mapping class="com.revature.beans.Plane"/> 
+		<mapping class="com.revature.beans.Trip"/>   
 	</session-factory>
 </hibernate-configuration>
