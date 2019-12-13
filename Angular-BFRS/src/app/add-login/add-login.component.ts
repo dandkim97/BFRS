@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { Login } from '../login';
 import { LoginService } from '../login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-login',
@@ -10,7 +11,7 @@ import { LoginService } from '../login.service';
 export class AddLoginComponent implements OnInit {
   @Output() created = new EventEmitter<boolean>();
   login: Login;
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
     this.login = new Login();
@@ -20,6 +21,7 @@ export class AddLoginComponent implements OnInit {
     this.loginService.addLogin(this.login).subscribe(
       resp => {
         this.created.emit(true);
+        this.router.navigate(['home']);
       });
   }
 
