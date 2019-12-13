@@ -1,7 +1,10 @@
 package com.revature.services.hibernate;
 
+import java.util.Set;
+
 import org.springframework.stereotype.Service;
 
+import com.revature.beans.Message;
 import com.revature.data.MessageDao;
 import com.revature.data.hibernate.MessageHibernate;
 import com.revature.services.MessageService;
@@ -10,4 +13,9 @@ import com.revature.services.MessageService;
 public class MessageServiceHibernate implements MessageService{
 	
 	private MessageDao md = new MessageHibernate();
+
+	@Override
+	public Set<Message> getMsgByAskedId(Integer id) {
+		return md.getMsgByAskedId(id);
+	}
 }

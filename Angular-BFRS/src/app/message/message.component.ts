@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Message } from '../message';
+import { LoginService } from '../login.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-message',
@@ -6,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./message.component.css']
 })
 export class MessageComponent implements OnInit {
-
-  constructor() { }
+  @Input() message: Message;
+  constructor(
+    private loginService: LoginService,
+    private messageService: MessageService
+  ) { }
 
   ngOnInit() {
+    if (!this.message) {
+      this.message = new Message();
+    }
   }
 
 }

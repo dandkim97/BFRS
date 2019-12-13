@@ -13,6 +13,8 @@ import { UrlService } from './url.service';
 import { LoginService } from './login.service';
 import { HomeComponent } from './home/home.component';
 import { MessageComponent } from './message/message.component';
+import { AdminMsgComponent } from './admin-msg/admin-msg.component';
+import { MessageService } from './message.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { MessageComponent } from './message/message.component';
     LoginComponent,
     NavBarComponent,
     HomeComponent,
-    MessageComponent
+    MessageComponent,
+    AdminMsgComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { MessageComponent } from './message/message.component';
   ],
   providers: [
     UrlService,
-    LoginService
+    LoginService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
