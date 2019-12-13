@@ -22,6 +22,7 @@
 		
 		<!-- Annotation Mappings -->
 		<mapping class="com.revature.beans.Login"/>
+		<mapping class="com.revature.beans.Message"/>
 		
 	</session-factory>
 </hibernate-configuration>

@@ -7,7 +7,7 @@ drop table REVIEW cascade constraints;
 drop table MESSAGE cascade constraints;
 
 drop sequence login_seq;
-
+drop sequence msg_seq;
 
 create table login (
     id number primary key,
@@ -60,12 +60,12 @@ create table review (
     constraint fk_review_plane foreign key (plane_id)
         references plane(id)
 );
-
 create table message (
     id number primary key,
     asker_id number,
     asked_id number,
     status varchar2(25),
+    type varchar2(25),
     quest varchar2(256),
     answer varchar2(256),
     constraint fk_message_login1 foreign key (asker_id)
@@ -75,4 +75,4 @@ create table message (
 );
 
 create sequence login_seq;
-
+create sequence msg_seq;
