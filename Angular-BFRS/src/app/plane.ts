@@ -1,5 +1,5 @@
 export class Plane {
-    id: number;
+	id: number;
 	model: string;
 	seats: number;
 	avgRating: number;

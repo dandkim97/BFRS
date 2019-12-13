@@ -8,14 +8,14 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TripService {
-  private headers = new HttpHeaders({'Content-Type': 'application/json'});
-  constructor( private http: HttpClient) { }
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  constructor(private http: HttpClient) { }
 
   public getTrips(): Observable<Trip[]> {
-    return this.http.get('http://localhost:8080/BFRS/trips', {withCredentials: true}).pipe(
-      map( resp => resp as Trip[] )
+    return this.http.get('http://localhost:8080/BFRS/trips', { withCredentials: true }).pipe(
+      map(resp => resp as Trip[])
     );
   }
-  
+
 
 }

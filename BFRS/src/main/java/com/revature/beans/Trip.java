@@ -1,6 +1,5 @@
 package com.revature.beans;
 
-import java.sql.Timestamp;
 
 
 
@@ -37,16 +36,16 @@ public class Trip {
 	
 	@Column(name="trip_to")
 	private String tripTo;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Timestamp departure;
-	private Timestamp arrival;
+	@Column
+	private String departure;
+	private String arrival;
 	private Double price;
 	public Trip() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Trip(Integer id, Plane plane, Integer seatsTaken, String tripFrom, String tripTo, Timestamp departure,
-			Timestamp arrival, Double price) {
+	public Trip(Integer id, Plane plane, Integer seatsTaken, String tripFrom, String tripTo, String departure,
+			String arrival, Double price) {
 		super();
 		this.id = id;
 		this.plane = plane;
@@ -87,16 +86,16 @@ public class Trip {
 	public void setTripTo(String tripTo) {
 		this.tripTo = tripTo;
 	}
-	public Timestamp getDeparture() {
+	public String getDeparture() {
 		return departure;
 	}
-	public void setDeparture(Timestamp departure) {
+	public void setDeparture(String departure) {
 		this.departure = departure;
 	}
-	public Timestamp getArrival() {
+	public String getArrival() {
 		return arrival;
 	}
-	public void setArrival(Timestamp arrival) {
+	public void setArrival(String arrival) {
 		this.arrival = arrival;
 	}
 	public Double getPrice() {

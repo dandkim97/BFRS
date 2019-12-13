@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TripComponent } from './trip/trip.component';
 import { PlaneComponent } from './plane/plane.component';
 import { TripListComponent } from './trip-list/trip-list.component';
+import { TripService } from './trip.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { TripListComponent } from './trip-list/trip-list.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    TripService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
