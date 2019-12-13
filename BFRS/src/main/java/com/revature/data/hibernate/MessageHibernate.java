@@ -1,6 +1,6 @@
 package com.revature.data.hibernate;
 
-import java.util.List;
+import java.util.Set;
 
 import com.revature.beans.Message;
 import com.revature.data.MessageDao;
@@ -8,13 +8,13 @@ import com.revature.data.MessageDao;
 public class MessageHibernate implements MessageDao{
 
 	@Override
-	public List<Message> getMsgByAskerId(Integer id) {
+	public Set<Message> getMsgByAskerId(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Message> getMsgByAskedId(Integer id) {
+	public Set<Message> getMsgByAskedId(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

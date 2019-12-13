@@ -14,4 +14,6 @@ public class MessageController {
 	
 	@Autowired
 	private MessageService ms;
+	
+	
 }
