@@ -1,5 +1,6 @@
-<h1>List Of Trip</h1>
-<table>
+<h1>Trips list</h1>
+<table class="table">
+        
     <tr>
         <th>No.</th>
         <th>Model</th>
@@ -9,6 +10,7 @@
         <th>Arrival Time</th>
         <th>Price</th>
       </tr>
+    
     </table>
 
 <app-trip *ngFor="let trip of trips" [trip]="trip"></app-trip>
