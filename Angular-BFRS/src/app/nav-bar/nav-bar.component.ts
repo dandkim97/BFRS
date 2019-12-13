@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from '../login.service.service';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,4 +13,7 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit() { }
 
+  isLogin(): boolean  {
+    return this.loginService.isLogin();
+  }
 }

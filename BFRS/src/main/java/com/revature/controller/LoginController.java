@@ -15,16 +15,18 @@ import com.revature.beans.Login;
 import com.revature.services.LoginService;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200")
-@RequestMapping(value="/login")
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping(value = "/login")
 public class LoginController {
 
 	@Autowired
 	private LoginService ls;
 	
-  public ResponseEntity<Login> login(@RequestBody Login l, HttpSession session){
-		Login login = ls.login(l.getUsername(), l.getPswrd());
-		if(login == null) {
+	@PostMapping
+	public ResponseEntity<Login> login(@RequestBody Login l, HttpSession session) {
+		Login login = ls.getLogin(l.getUsername(), l.getPswrd());
+		System.out.println(login);
+		if (login == null) {
 			return ResponseEntity.status(401).build();
 		}
 		session.setAttribute("loggedUser", login);
@@ -32,17 +34,16 @@ public class LoginController {
 	}
 
 	@DeleteMapping
-	public ResponseEntity<Void> logout(HttpSession session){
-		System.out.println("Logging out "+ session.getAttribute("loggedUser"));
+	public ResponseEntity<Void> logout(HttpSession session) {
+		System.out.println("Logging out " + session.getAttribute("loggedUser"));
 		session.invalidate();
 		return ResponseEntity.noContent().build();
 	}
-  
-	@PostMapping
-	public ResponseEntity<Login> addLogin(@RequestBody Login l){
+
+	@PostMapping(value="/add")
+	public ResponseEntity<Login> addLogin(@RequestBody Login l) {
 		ls.addLogin(l);
 		return ResponseEntity.status(201).body(l);
 	}
-  
+
 }
-	

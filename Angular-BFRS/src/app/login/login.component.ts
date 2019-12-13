@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../login.service.service';
+import { LoginService } from '../login.service';
 import { Login } from '../login';
 
 @Component({
@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log("login() in login.comp is called");
-    console.log(this.username+" "+this.password);
+    console.log('login() in login.comp is called');
+    console.log(this.username + ' ' + this.password);
     this.loginService.login(this.username, this.password).subscribe(
       resp => {
         this.loggedUser = resp;

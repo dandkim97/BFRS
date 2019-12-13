@@ -3,14 +3,19 @@ package com.revature.data.hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.Login;
 import com.revature.data.LoginDao;
 import com.revature.utils.HibernateUtil;
 import com.revature.utils.LogUtil;
 
+@Component
 public class LoginHibernate implements LoginDao{
 	
+	@Autowired
 	private HibernateUtil hu = HibernateUtil.getInstance();
 	
 	@Override
@@ -32,13 +37,13 @@ public class LoginHibernate implements LoginDao{
 	}
 
 	@Override
-	public Login getLogin(String username, String password) {
+	public Login getLogin(String username, String pswrd) {
 		Session s = hu.getSession();
 		String query = "from Login l where l.username=:username and "
 				+ "l.pswrd=:password";
 		Query<Login> q = s.createQuery(query, Login.class);
 		q.setParameter("username", username);
-		q.setParameter("password", password);
+		q.setParameter("password", pswrd);
 		Login l = q.uniqueResult();
 		s.close();
 		return l;
@@ -65,5 +70,5 @@ public class LoginHibernate implements LoginDao{
 	@Override
 	public void updateLogin(Login l) {
 		// TODO Auto-generated method stub
-		
+	}
 }

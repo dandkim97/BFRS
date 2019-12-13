@@ -15,8 +15,7 @@ public class LoginServiceHibernate implements LoginService{
 
 	@Override
 	public Login getLogin(String username, String pswrd) {
-		// TODO Auto-generated method stub
-		return null;
+		return ld.getLogin(username, pswrd);
 	}
 
 	@Override

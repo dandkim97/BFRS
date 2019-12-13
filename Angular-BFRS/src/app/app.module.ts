@@ -10,13 +10,13 @@ import { AddLoginComponent } from './add-login/add-login.component';
 import { LoginComponent } from './login/login.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { UrlService } from './url.service';
-import { LoginService } from './login.service.service';
+import { LoginService } from './login.service';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddLoginComponent
+    AddLoginComponent,
     LoginComponent,
     NavBarComponent,
     HomeComponent
