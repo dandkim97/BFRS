@@ -1,2 +1,16 @@
+<h1>List Of Trip</h1>
+<table>
+    <tr>
+        <th>No.</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Departure Time</th>
+        <th>Arrival Time</th>
+        <th>Price</th>
+      </tr>
+    </table>
+
 <app-trip *ngFor="let trip of trips" [trip]="trip"></app-trip>
+
+
 <!-- <app-trip [trip]="trip" (created)="submitted()"></app-trip> -->
