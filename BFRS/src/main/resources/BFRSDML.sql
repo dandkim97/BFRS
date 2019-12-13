@@ -76,3 +76,4 @@ create table message (
 
 create sequence login_seq;
 
+
