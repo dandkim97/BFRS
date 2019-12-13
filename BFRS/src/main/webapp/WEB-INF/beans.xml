@@ -12,4 +12,7 @@
 	
 	<!-- Enable annotation-based configuration of Spring WebMVC -->
 	<mvc:annotation-driven></mvc:annotation-driven>
+	
+	<!-- Set up a static resources folder -->
+	<mvc:resources location="/static" mapping="/**"></mvc:resources>
 </beans>

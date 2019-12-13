@@ -32,10 +32,17 @@ public class LoginHibernate implements LoginDao{
 	}
 
 	@Override
-	public Login getLogin(String username, String pswrd) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public Login getLogin(String username, String password) {
+		Session s = hu.getSession();
+		String query = "from Login l where l.username=:username and "
+				+ "l.pswrd=:password";
+		Query<Login> q = s.createQuery(query, Login.class);
+		q.setParameter("username", username);
+		q.setParameter("password", password);
+		Login l = q.uniqueResult();
+		s.close();
+		return l;
+  }
 
 	@Override
 	public Login getLogin(Login l) {
@@ -59,6 +66,4 @@ public class LoginHibernate implements LoginDao{
 	public void updateLogin(Login l) {
 		// TODO Auto-generated method stub
 		
-	}
-
 }

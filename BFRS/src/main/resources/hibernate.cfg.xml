@@ -16,6 +16,8 @@
 		<property name="use_sql_comments">true</property>
 		
 		<!-- Tell Hibernate where our mappings are -->
+
+		<!-- Backwards compatibility for id generation -->
 		<property name="hibernate.id.new_generator_mappings">false</property>
 		
 		<!-- Annotation Mappings -->

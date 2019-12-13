@@ -4,7 +4,9 @@ drop table FORMS cascade constraints;
 drop table TRIP cascade constraints;
 drop table LOGIN_TRIP cascade constraints;
 drop table REVIEW cascade constraints;
+
 drop sequence login_seq;
+
 
 create table login (
     id number primary key,
@@ -58,3 +60,4 @@ create table review (
 );
 
 create sequence login_seq;
+

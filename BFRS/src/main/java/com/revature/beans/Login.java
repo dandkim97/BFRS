@@ -27,7 +27,7 @@ public class Login {
 	private Integer isAdmin;
 	@Column(name="loyalty_status")
 	private Integer loyaltyStatus;
-	
+
 	public Login() {
 		super();
 	}
@@ -100,12 +100,48 @@ public class Login {
 		this.loyaltyStatus = loyaltyStatus;
 	}
 
-	@Override
-	public String toString() {
-		return "Login [id=" + id + ", username=" + username + ", pswrd=" + pswrd + ", first=" + first + ", last=" + last
-				+ ", isAdmin=" + isAdmin + ", loyaltyStatus=" + loyaltyStatus + "]";
+	public Integer getId() {
+		return id;
 	}
-
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPswrd() {
+		return pswrd;
+	}
+	public void setPswrd(String pswrd) {
+		this.pswrd = pswrd;
+	}
+	public String getFirst() {
+		return first;
+	}
+	public void setFirst(String first) {
+		this.first = first;
+	}
+	public String getLast() {
+		return last;
+	}
+	public void setLast(String last) {
+		this.last = last;
+	}
+	public Integer getIsAdmin() {
+		return isAdmin;
+	}
+	public void setIsAdmin(Integer isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+	public Integer getLoyaltyStatus() {
+		return loyaltyStatus;
+	}
+	public void setLoyaltyStatus(Integer loyaltyStatus) {
+		this.loyaltyStatus = loyaltyStatus;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -118,8 +154,7 @@ public class Login {
 		result = prime * result + ((pswrd == null) ? 0 : pswrd.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
-	}
-
+  }
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -165,6 +200,11 @@ public class Login {
 		} else if (!username.equals(other.username))
 			return false;
 		return true;
+	}
+	@Override
+	public String toString() {
+		return "Login [id=" + id + ", username=" + username + ", pswrd=" + pswrd + ", first=" + first + ", last=" + last
+				+ ", isAdmin=" + isAdmin + ", loyaltyStatus=" + loyaltyStatus + "]";
 	}
 	
 }

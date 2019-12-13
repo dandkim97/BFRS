@@ -11,4 +11,5 @@ public interface LoginService {
 	public void deleteLogin(Login l);
 	public void updateLogin(Login l);
 	public void addLogin(Login l);
+  
 }
