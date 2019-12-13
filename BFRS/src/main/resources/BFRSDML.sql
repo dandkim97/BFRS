@@ -5,7 +5,6 @@ drop table TRIP cascade constraints;
 drop table LOGIN_TRIP cascade constraints;
 drop table REVIEW cascade constraints;
 drop table MESSAGE cascade constraints;
-
 drop sequence login_seq;
 
 
@@ -60,7 +59,6 @@ create table review (
     constraint fk_review_plane foreign key (plane_id)
         references plane(id)
 );
-
 create table message (
     id number primary key,
     asker_id number,
@@ -75,5 +73,3 @@ create table message (
 );
 
 create sequence login_seq;
-
-
