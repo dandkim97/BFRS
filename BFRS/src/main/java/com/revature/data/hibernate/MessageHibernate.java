@@ -53,7 +53,6 @@ public class MessageHibernate implements MessageDao{
 		} finally {
 			s.close();
 		}
-		
 	}
 
 	@Override

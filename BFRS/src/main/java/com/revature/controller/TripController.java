@@ -1,5 +1,6 @@
 package com.revature.controller;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Trip;
 import com.revature.data.TripDao;
+import com.revature.data.hibernate.PlaneHibernate;
+import com.revature.services.PlaneService;
+import com.revature.services.TripService;
+import com.revature.services.hibernate.PlaneServiceHibernate;
+
 import com.revature.services.TripService;
 
 @RestController
@@ -26,10 +32,12 @@ public class TripController {
 
 	@Autowired
 	private TripDao td;
-
+	
 	@GetMapping
-	public ResponseEntity<Set<Trip>> getTrips() {
-		return ResponseEntity.ok(td.getTrips());
+	public ResponseEntity<List<Trip>> findAllAvailTrips() {
+		PlaneService ps = new PlaneServiceHibernate();
+		System.out.println(ps.findAllAvailTrips());
+		return ResponseEntity.ok(ps.findAllAvailTrips());
 	}
 	
 	@GetMapping(value = "{id}")

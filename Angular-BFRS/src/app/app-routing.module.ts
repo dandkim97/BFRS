@@ -2,6 +2,8 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AddLoginComponent } from './add-login/add-login.component';
+import { TripListComponent } from './trip-list/trip-list.component';
+
 import { MessageComponent } from './message/message.component';
 import { ViewCustomerMessagesComponent } from './message/view-customer-messages/view-customer-messages.component';
 import { FormListComponent } from './form-list/form-list.component';

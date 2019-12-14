@@ -36,7 +36,7 @@ import { ViewCustomerMessagesComponent } from './message/view-customer-messages/
     LoginComponent,
     NavBarComponent,
     HomeComponent,
-    MessageComponent,
+    MessageComponent
     ViewCustomerMessagesComponent
   ],
   imports: [

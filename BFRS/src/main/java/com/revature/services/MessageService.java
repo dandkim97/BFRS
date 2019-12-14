@@ -1,5 +1,7 @@
 package com.revature.services;
 
+public interface MessageService {
+	
 import java.util.List;
 
 import com.revature.beans.Message;
