@@ -1,18 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddFormComponent } from './add-form/add-form.component';
+import { HomeComponent } from './home/home.component';
+import { AddLoginComponent } from './add-login/add-login.component';
 
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: '/addform',
-  //   pathMatch: 'full'
-  // },
-  // {
-  //   path: 'addform',
-  //   component: AddFormComponent
-  // }
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'add',
+    component: AddLoginComponent
+  }
 ];
 
 @NgModule({

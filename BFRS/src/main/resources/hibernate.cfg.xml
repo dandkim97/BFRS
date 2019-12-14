@@ -16,10 +16,16 @@
 		<property name="use_sql_comments">true</property>
 		
 		<!-- Tell Hibernate where our mappings are -->
+
+		<!-- Backwards compatibility for id generation -->
+		<property name="hibernate.id.new_generator_mappings">false</property>
 		
 		<!-- Annotation Mappings -->
 		<mapping class="com.revature.beans.Form"/>
 		<mapping class="com.revature.beans.Trip"/>
 		<mapping class="com.revature.beans.Plane"/>
+		<mapping class="com.revature.beans.Login"/>
+		<mapping class="com.revature.beans.Message"/>
+		
 	</session-factory>
 </hibernate-configuration>

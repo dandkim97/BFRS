@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,14 @@ import { TripComponent } from './trip/trip.component';
 import { TripListComponent } from './trip-list/trip-list.component';
 import { PlaneComponent } from './plane/plane.component';
 
+import { AddLoginComponent } from './add-login/add-login.component';
+import { LoginComponent } from './login/login.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { UrlService } from './url.service';
+import { LoginService } from './login.service';
+import { HomeComponent } from './home/home.component';
+import { MessageComponent } from './message/message.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +30,12 @@ import { PlaneComponent } from './plane/plane.component';
     FormListComponent,
     TripComponent,
     TripListComponent,
-    PlaneComponent
+    PlaneComponent,
+    AddLoginComponent,
+    LoginComponent,
+    NavBarComponent,
+    HomeComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +45,9 @@ import { PlaneComponent } from './plane/plane.component';
   ],
   providers: [
     FormService,
-    TripService
+    TripService,
+    UrlService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
