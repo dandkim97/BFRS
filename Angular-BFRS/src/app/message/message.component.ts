@@ -1,7 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Message } from '../message';
+import { Login } from '../login';
 import { LoginService } from '../login.service';
 import { MessageService } from '../message.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-message',
@@ -10,6 +12,8 @@ import { MessageService } from '../message.service';
 })
 export class MessageComponent implements OnInit {
   @Input() message: Message;
+  @Output() created = new EventEmitter<boolean>();
+  user: Login;
   constructor(
     private loginService: LoginService,
     private messageService: MessageService
@@ -19,6 +23,14 @@ export class MessageComponent implements OnInit {
     if (!this.message) {
       this.message = new Message();
     }
+  }
+
+  updateMessage(){
+    this.messageService.updateMessage(this.message).subscribe(
+      resp => {
+        this.created.emit(true);
+      }
+    )
   }
 
 }

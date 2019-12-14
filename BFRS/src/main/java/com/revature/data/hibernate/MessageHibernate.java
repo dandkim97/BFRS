@@ -27,7 +27,7 @@ public class MessageHibernate implements MessageDao{
 	@Override
 	public Set<Message> getMsgByAskedId(Integer id) {
 		Session s = hu.getSession();
-		String query = "from Message m where m.askedId = :askedId";
+		String query = "from Message m where m.askedId = :askedId and m.status = 'pending'";
 		Query<Message> q = s.createQuery(query, Message.class);
 		q.setParameter("askedId", id);
 		List<Message> messages = q.list();
