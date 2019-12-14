@@ -74,4 +74,12 @@ export class LoginService {
   isLogin(): boolean {
     return (this.loginUser !== undefined && this.loginUser !== null);
   }
+
+  getUser(): Login {
+    return this.loginUser;
+  }
+
+  isAdmin(): boolean {
+    return (this.loginUser.isAdmin === 1);
+  }
 }
