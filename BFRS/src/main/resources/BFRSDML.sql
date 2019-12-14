@@ -48,6 +48,7 @@ create table login_trip (
     id number primary key,
     trip_id number,
     login_id number,
+    trip_cost number,
     constraint fk_login_login_trip foreign key (login_id)
         references login(id),
     constraint fk_trip_login_trip foreign key (trip_id)
@@ -76,3 +77,5 @@ create table message (
 
 create sequence login_seq;
 create sequence msg_seq;
+
+
