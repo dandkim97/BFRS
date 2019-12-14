@@ -16,3 +16,4 @@
 	<!-- Set up a static resources folder -->
 	<mvc:resources location="/static" mapping="/**"></mvc:resources>
 </beans>
+
