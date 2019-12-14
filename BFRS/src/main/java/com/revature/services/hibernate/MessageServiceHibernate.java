@@ -1,6 +1,6 @@
 package com.revature.services.hibernate;
 
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ public class MessageServiceHibernate implements MessageService{
 	private MessageDao md = new MessageHibernate();
 
 	@Override
-	public Set<Message> getMessagesByAskerId(Integer id) {
+	public List<Message> getMessagesByAskerId(Integer id) {
 		return md.getMsgByAskerId(id);
 	}
 

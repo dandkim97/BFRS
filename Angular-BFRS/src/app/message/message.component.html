@@ -4,8 +4,8 @@
     <label >Type of Event:</label>
     <select [(ngModel)]="message.type">
       <option selected>Choose...</option>
-      <option value="loyalty request">Loyalty Status Request</option>
-      <option value="question">Customer Support Question</option>
+      <option value="Loyalty Request">Loyalty Status Request</option>
+      <option value="Question">Customer Support Question</option>
     </select>
     Question/Request Info: <input type="text" [(ngModel)]="message.quest"> <br>
     <button type="button" (click)="addMessage()">Create Message</button>

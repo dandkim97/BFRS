@@ -78,4 +78,8 @@ export class LoginService {
   getUser(): Login {
     return this.loginUser;
   }
+
+  isAdmin(): boolean {
+    return (this.loginUser.isAdmin === 1);
+  }
 }

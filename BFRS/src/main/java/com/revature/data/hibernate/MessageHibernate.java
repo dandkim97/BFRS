@@ -1,10 +1,12 @@
 package com.revature.data.hibernate;
 
+import java.util.List;
 import java.util.Set;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.revature.beans.Message;
@@ -18,9 +20,16 @@ public class MessageHibernate implements MessageDao{
 	private HibernateUtil hu = HibernateUtil.getInstance();
 
 	@Override
-	public Set<Message> getMsgByAskerId(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Message> getMsgByAskerId(Integer id) {
+		Session s = hu.getSession();
+		String query = "from Message m where m.askerId=:askerId";
+		System.out.println("here");
+		Query<Message> q = s.createQuery(query, Message.class);
+		System.out.println("there");
+		q.setParameter("askerId", id);
+		List<Message> messages = q.list();
+		s.close();
+		return messages;
 	}
 
 	@Override

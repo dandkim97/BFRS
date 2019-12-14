@@ -3,6 +3,8 @@ import { UrlService } from './url.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Message } from './message';
 import { map } from 'rxjs/operators';
+import { Login } from './login';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +20,16 @@ export class MessageService {
     return this.http.post(this.appUrl, body,
       {headers: this.headers, withCredentials: true}).pipe(
         map(resp => resp as Message)
+      );
+  }
+
+  getMessagesCustomer(user: Login): Observable<Message[]> {
+    console.log('Is Customer');
+    console.log(user.id);
+    const url = this.appUrl + '/' + user.id;
+    console.log(url);
+    return this.http.get(url, {withCredentials: true}).pipe(
+      map( resp => resp as Message[] )
       );
   }
 }
