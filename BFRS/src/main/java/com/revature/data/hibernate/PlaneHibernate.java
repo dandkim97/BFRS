@@ -53,6 +53,7 @@ public class PlaneHibernate implements PlaneDao {
 		Session s = hu.getSession();
 		System.out.println("in PlaneHibernate preparing query list for available flights");
 		String nativeSQL = "select t.* from trip t, plane p where plane_id = p.id and seats_taken < p.seats";
+		//String nativeSQL = "select * from trip";
 		NativeQuery<Trip> q = s.createNativeQuery(nativeSQL, Trip.class);
 		List<Trip> tripList = q.getResultList();		
 		log.trace(tripList);

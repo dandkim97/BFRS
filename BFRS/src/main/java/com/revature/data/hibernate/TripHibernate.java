@@ -32,6 +32,7 @@ public class TripHibernate implements TripDao {
 	public Set<Trip> getTrips() {
 		Session s = hu.getSession();
 		String query = "from Trip";
+		//String query = "select t.* from trip t, plane p where plane_id = p.id and seats_taken < p.seats";
 		Query<Trip> q = s.createQuery(query, Trip.class);
 		List<Trip> trips = q.list();
 		s.close();
