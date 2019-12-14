@@ -5,13 +5,13 @@ import java.util.Set;
 import org.springframework.stereotype.Service;
 
 import com.revature.beans.Form;
-import com.revature.data.FormDAO;
+import com.revature.data.FormDao;
 import com.revature.data.hibernate.FormHibernate;
 import com.revature.services.FormService;
 
 @Service
 public class FormServiceHibernate implements FormService {
-	private static FormDAO fd = new FormHibernate();
+	private static FormDao fd = new FormHibernate();
 
 	@Override
 	public void addForm(Form f) {

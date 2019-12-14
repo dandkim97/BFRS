@@ -1,6 +1,6 @@
 <div *ngIf="form">
   <form (ngSubmit)="onSubmit()" #tripForm="ngForm">
-    Flight Number: <input type="number" min="1">
+    Plane Number: <input type="number" min="1" required [(ngModel)]="tripId" name="planeNum">
     <br>
     Number of seats: <input type="number" min="1" required [(ngModel)]="form.numSeats" name="numSeats">
     <br>

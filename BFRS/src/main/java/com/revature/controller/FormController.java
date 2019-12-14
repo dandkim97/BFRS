@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Form;
-import com.revature.data.FormDAO;
+import com.revature.data.FormDao;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/form")
 public class FormController {
 	@Autowired
-	private FormDAO fd;
+	private FormDao fd;
 
 	@GetMapping
 	public ResponseEntity<Set<Form>> getForms() {

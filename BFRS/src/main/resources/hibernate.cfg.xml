@@ -19,5 +19,7 @@
 		
 		<!-- Annotation Mappings -->
 		<mapping class="com.revature.beans.Form"/>
+		<mapping class="com.revature.beans.Trip"/>
+		<mapping class="com.revature.beans.Plane"/>
 	</session-factory>
 </hibernate-configuration>

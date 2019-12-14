@@ -11,12 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.Form;
-import com.revature.data.FormDAO;
+import com.revature.data.FormDao;
 import com.revature.utils.HibernateUtil;
 import com.revature.utils.LogUtil;
 
 @Component
-public class FormHibernate implements FormDAO {
+public class FormHibernate implements FormDao {
 	@Autowired
 	private HibernateUtil hu;
 

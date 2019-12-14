@@ -4,7 +4,7 @@ import java.util.Set;
 
 import com.revature.beans.Form;
 
-public interface FormDAO {
+public interface FormDao {
 	public int addForm(Form f);
 	public Form getForm(int i);
 	public Set<Form> getForms();

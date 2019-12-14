@@ -7,16 +7,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
 import { AddFormComponent } from './add-form/add-form.component';
-import { UrlService } from './url.service';
 import { FormService } from './form.service';
 import { FormListComponent } from './form-list/form-list.component';
+import { TripService } from './trip.service';
+import { TripComponent } from './trip/trip.component';
+import { TripListComponent } from './trip-list/trip-list.component';
+import { PlaneComponent } from './plane/plane.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
     AddFormComponent,
-    FormListComponent
+    FormListComponent,
+    TripComponent,
+    TripListComponent,
+    PlaneComponent
   ],
   imports: [
     BrowserModule,
@@ -25,8 +31,8 @@ import { FormListComponent } from './form-list/form-list.component';
     FormsModule
   ],
   providers: [
-    UrlService,
-    FormService
+    FormService,
+    TripService
   ],
   bootstrap: [AppComponent]
 })

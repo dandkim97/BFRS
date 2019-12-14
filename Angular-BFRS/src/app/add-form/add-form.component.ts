@@ -1,7 +1,9 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { Form } from '../form';
 import { FormService } from '../form.service';
-import { FormsModule } from '@angular/forms';
+import { Trip } from '../trip';
+import { TripService } from '../trip.service';
+import { Plane } from '../plane';
 
 @Component({
   selector: 'app-add-form',
@@ -11,7 +13,6 @@ import { FormsModule } from '@angular/forms';
 export class AddFormComponent implements OnInit {
   @Output() created = new EventEmitter<Boolean>();
   @Input() form: Form;
-  // document.getElementById('submitbtn').add
 
   selectedClass;
   class: Array<Object> = [
@@ -19,10 +20,10 @@ export class AddFormComponent implements OnInit {
     { name: 'Business' },
     { name: 'First Class' }
   ];
-
+  tripId: number;
   isChecked = false;
 
-  constructor(private formService: FormService) { }
+  constructor(private formService: FormService, private tripService: TripService) { }
 
   ngOnInit() {
     this.form.isRound = 0;
@@ -44,11 +45,13 @@ export class AddFormComponent implements OnInit {
   }
 
   addForm() {
+    this.form.tripId = this.tripId;
+    console.log(this.tripId);
 
-    // if (this.form.numBags === null && this.form.numSeats === null &&
-    //   this.form.planeClass === null) {
-    //   (<HTMLInputElement>document.getElementById('submitbtn')).disabled = true;
-    // }
+    // this.tripService.getTrip(this.tripId).subscribe(
+    //   trip2 => this.form.trip = trip2);
+    // console.log(this.form.trip);
+
     this.formService.addForm(this.form).subscribe(
       resp => {
         this.created.emit(true);

@@ -13,37 +13,36 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="forms")
+@Table(name = "forms")
 public class Form {
 	@Id
 	@Column
-	@SequenceGenerator(name="form", sequenceName="form_seq", allocationSize=1)
-	@GeneratedValue(generator="form", strategy=GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "form", sequenceName = "form_seq", allocationSize = 1)
+	@GeneratedValue(generator = "form", strategy = GenerationType.SEQUENCE)
 	private Integer id;
-	@Column(name="num_seats")
+	@Column(name = "num_seats")
 	private Integer numSeats;
-	@Column(name="num_bags")
+	@Column(name = "num_bags")
 	private Integer numBags;
-	@Column(name="plane_class")
+	@Column(name = "plane_class")
 	private String planeClass;
-	@Column(name="is_round")
+	@Column(name = "is_round")
 	private Integer isRound;
-//	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-//	@JoinColumn(name="trip")
-//	private Trip trip;
+	@Column(name="trip_id")
+	private Integer tripId;
 
 	public Form() {
 		super();
 	}
 
-	public Form(Integer id, Integer numSeats, Integer numBags, String planeClass, Integer isRound/*, Trip trip*/) {
+	public Form(Integer id, Integer numSeats, Integer numBags, String planeClass, Integer isRound, Integer tripId) {
 		super();
 		this.id = id;
 		this.numSeats = numSeats;
 		this.numBags = numBags;
 		this.planeClass = planeClass;
 		this.isRound = isRound;
-//		this.trip = trip;
+		this.tripId = tripId;
 	}
 
 	public Integer getId() {
@@ -86,13 +85,13 @@ public class Form {
 		this.isRound = isRound;
 	}
 
-//	public Trip getTrip() {
-//		return trip;
-//	}
-//
-//	public void setTrip(Trip trip) {
-//		this.trip = trip;
-//	}
+	public Integer getTripId() {
+		return tripId;
+	}
+
+	public void setTrip(Integer tripId) {
+		this.tripId = tripId;
+	}
 
 	@Override
 	public int hashCode() {
@@ -148,7 +147,5 @@ public class Form {
 		return "Form [id=" + id + ", numSeats=" + numSeats + ", numBags=" + numBags + ", planeClass=" + planeClass
 				+ ", isRound=" + isRound + "]";
 	}
-
-	
 
 }
