@@ -5,6 +5,14 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormComponent } from './form/form.component';
+import { AddFormComponent } from './add-form/add-form.component';
+import { FormService } from './form.service';
+import { FormListComponent } from './form-list/form-list.component';
+import { TripService } from './trip.service';
+import { TripComponent } from './trip/trip.component';
+import { TripListComponent } from './trip-list/trip-list.component';
+import { PlaneComponent } from './plane/plane.component';
 
 import { AddLoginComponent } from './add-login/add-login.component';
 import { LoginComponent } from './login/login.component';
@@ -18,6 +26,12 @@ import { ViewCustomerMessagesComponent } from './message/view-customer-messages/
 @NgModule({
   declarations: [
     AppComponent,
+    FormComponent,
+    AddFormComponent,
+    FormListComponent,
+    TripComponent,
+    TripListComponent,
+    PlaneComponent,
     AddLoginComponent,
     LoginComponent,
     NavBarComponent,
@@ -32,6 +46,8 @@ import { ViewCustomerMessagesComponent } from './message/view-customer-messages/
     FormsModule
   ],
   providers: [
+    FormService,
+    TripService,
     UrlService,
     LoginService
   ],
