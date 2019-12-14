@@ -4,7 +4,7 @@ drop table FORMS cascade constraints;
 drop table TRIP cascade constraints;
 drop table LOGIN_TRIP cascade constraints;
 drop table REVIEW cascade constraints;
-​
+
 create table login (
     id number primary key,
     username varchar2(25),
@@ -59,7 +59,6 @@ create table review (
     constraint fk_review_plane foreign key (plane_id)
         references plane(id)
 );
-​
 drop sequence plane_seq;
 drop sequence trip_seq;
 drop sequence form_seq;

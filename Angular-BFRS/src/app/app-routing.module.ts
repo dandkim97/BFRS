@@ -24,10 +24,9 @@ const routes: Routes = [
   {
     path: 'form',
     component: FormListComponent
-  }
-  ,
+  },
   {
-    path: 'trip',
+    path: 'trips',
     component: TripListComponent
   }
 ];
