@@ -2,6 +2,11 @@ package com.revature.services.hibernate;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.revature.beans.Message;
 import com.revature.data.MessageDao;
 import com.revature.data.hibernate.MessageHibernate;
 import com.revature.services.MessageService;
@@ -10,4 +15,21 @@ import com.revature.services.MessageService;
 public class MessageServiceHibernate implements MessageService{
 	
 	private MessageDao md = new MessageHibernate();
+
+	@Override
+	public List<Message> getMessagesByAskerId(Integer id) {
+		return md.getMsgByAskerId(id);
+	}
+
+	@Override
+	public void updateMessage(Message m) {
+		md.updateMessage(m);
+	}
+
+	@Override
+	public void addMessage(Message m) {
+		md.addMessage(m);
+		
+	}
+
 }

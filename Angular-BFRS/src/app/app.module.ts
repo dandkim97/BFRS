@@ -21,6 +21,7 @@ import { UrlService } from './url.service';
 import { LoginService } from './login.service';
 import { HomeComponent } from './home/home.component';
 import { MessageComponent } from './message/message.component';
+import { ViewCustomerMessagesComponent } from './message/view-customer-messages/view-customer-messages.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MessageComponent } from './message/message.component';
     NavBarComponent,
     HomeComponent,
     MessageComponent
+    ViewCustomerMessagesComponent
   ],
   imports: [
     BrowserModule,
