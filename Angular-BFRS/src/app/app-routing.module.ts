@@ -5,6 +5,7 @@ import { AddLoginComponent } from './add-login/add-login.component';
 import { FormListComponent } from './form-list/form-list.component';
 import { AddFormComponent } from './add-form/add-form.component';
 import { TripListComponent } from './trip-list/trip-list.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'trips',
     component: TripListComponent
+  },
+  {
+    path: 'payment',
+    component: PaymentComponent
   }
 ];
 
