@@ -1,5 +1,7 @@
 package com.revature.services.hibernate;
 
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -22,7 +24,6 @@ public class MessageServiceHibernate implements MessageService{
 	@Override
 	public void updateMessage(Message m) {
 		md.updateMessage(m);
-		
 	}
 
 	@Override
@@ -30,5 +31,5 @@ public class MessageServiceHibernate implements MessageService{
 		md.addMessage(m);
 		
 	}
-	
+
 }

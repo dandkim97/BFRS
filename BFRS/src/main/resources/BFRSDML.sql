@@ -30,6 +30,7 @@ create table trip (
     departure timestamp,
     arrival timestamp,
     price number(7,2),
+    status varchar2(25),
     constraint fk_trip_plane foreign key (plane_id)
         references plane(id)
 );
@@ -62,13 +63,15 @@ create table review (
 );
 create table message (
     id number primary key,
-    asker_id number,
+    asked_id number,
     asked_id number references login(id),
     status varchar2(25),
     type varchar2(25),
     quest varchar2(256),
     answer varchar2(256),
     constraint fk_message_login1 foreign key (asker_id)
+        references login(id),
+    constraint fk_message_login2 foreign key (asked_id)
         references login(id)
 );
 
