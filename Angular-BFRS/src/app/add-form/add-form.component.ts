@@ -1,9 +1,7 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { Form } from '../form';
 import { FormService } from '../form.service';
-import { Trip } from '../trip';
-import { TripService } from '../trip.service';
-import { Plane } from '../plane';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-form',
@@ -23,7 +21,7 @@ export class AddFormComponent implements OnInit {
   tripId: number;
   isChecked = false;
 
-  constructor(private formService: FormService, private tripService: TripService) { }
+  constructor(private formService: FormService, private router: Router) { }
 
   ngOnInit() {
     this.form.isRound = 0;
@@ -46,16 +44,18 @@ export class AddFormComponent implements OnInit {
 
   addForm() {
     this.form.tripId = this.tripId;
-    console.log(this.tripId);
-
-    // this.tripService.getTrip(this.tripId).subscribe(
-    //   trip2 => this.form.trip = trip2);
-    // console.log(this.form.trip);
-
     this.formService.addForm(this.form).subscribe(
       resp => {
         this.created.emit(true);
       });
+    this.passFormId();
   }
 
+  passFormId() {
+    this.formService.getForms().subscribe(
+      resp => {
+        console.log(resp.length);
+        this.router.navigate(['payment', resp.length + 1]);
+      });
+  }
 }

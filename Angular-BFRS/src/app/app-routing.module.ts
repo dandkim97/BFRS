@@ -31,7 +31,7 @@ const routes: Routes = [
     component: TripListComponent
   },
   {
-    path: 'payment',
+    path: 'payment/:id',
     component: PaymentComponent
   }
 ];

@@ -16,5 +16,6 @@
     <br>
     <button type="button" [disabled]="!tripForm.form.valid" id="submitbtn" (click)="addForm()"
       class="btn btn-success">Submit</button>
+    <a [routerLink]="['/payment', form.id]"></a>
   </form>
 </div>
