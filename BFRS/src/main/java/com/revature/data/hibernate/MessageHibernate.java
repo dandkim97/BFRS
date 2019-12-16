@@ -1,24 +1,29 @@
 package com.revature.data.hibernate;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.hibernate.HibernateException;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.Message;
 import com.revature.data.MessageDao;
 import com.revature.utils.HibernateUtil;
+
 import com.revature.utils.LogUtil;
 
+@Component
 public class MessageHibernate implements MessageDao{
 	
 	@Autowired
 	private HibernateUtil hu = HibernateUtil.getInstance();
-
+  
 	@Override
 	public List<Message> getMsgByAskerId(Integer id) {
 		Session s = hu.getSession();
@@ -34,8 +39,13 @@ public class MessageHibernate implements MessageDao{
 
 	@Override
 	public Set<Message> getMsgByAskedId(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = hu.getSession();
+		String query = "from Message m where m.askedId = :askedId and m.status = 'pending'";
+		Query<Message> q = s.createQuery(query, Message.class);
+		q.setParameter("askedId", id);
+		List<Message> messages = q.list();
+		s.close();
+		return new HashSet<Message>(messages);
 	}
 
 	@Override
@@ -54,11 +64,34 @@ public class MessageHibernate implements MessageDao{
 			s.close();
 		}
 	}
+	
+	@Override
+	public Message getMessageById(Integer id) {
+		Session s = hu.getSession();
+		String query = "from Message m where m.id = :id";
+		Query<Message> q = s.createQuery(query, Message.class);
+		q.setParameter("id", id);
+		Message m = q.uniqueResult();
+		s.close();
+		return m;
+	}
 
 	@Override
-	public void updateMessage(Message m) {
-		// TODO Auto-generated method stub
-		
+	public Message updateMessage(Message m) {
+		Session s = hu.getSession();
+		Transaction tx = null;
+		try {
+			tx = s.beginTransaction();
+			s.update(m);
+			tx.commit();
+		} catch(Exception e) {
+			if(tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			s.close();
+		}
+		return m;
 	}
 	
 }

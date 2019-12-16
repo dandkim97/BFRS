@@ -2,6 +2,8 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AddLoginComponent } from './add-login/add-login.component';
+import { AdminMsgComponent } from './admin-msg/admin-msg.component';
+import { UpdateMsgComponent } from './update-msg/update-msg.component';
 import { MessageComponent } from './message/message.component';
 import { ViewCustomerMessagesComponent } from './message/view-customer-messages/view-customer-messages.component';
 import { FormListComponent } from './form-list/form-list.component';
@@ -21,6 +23,18 @@ const routes: Routes = [
   {
     path: 'add',
     component: AddLoginComponent
+  },
+  {
+    path: 'viewAdminMsg',
+    component: AdminMsgComponent
+  },
+  {
+    path: 'viewAdminMsg/update',
+    component: UpdateMsgComponent
+  },
+  {
+    path: 'viewAdminMsg/update/:id',
+    component: UpdateMsgComponent
   },
   {
     path: 'message',

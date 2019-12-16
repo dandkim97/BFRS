@@ -70,16 +70,13 @@ export class LoginService {
       map(resp => resp as Login)
     );
   }
-
-  isLogin(): boolean {
-    return (this.loginUser !== undefined && this.loginUser !== null);
-  }
   getUser(): Login {
     return this.loginUser;
   }
-
+  isLogin(): boolean {
+    return (this.loginUser !== undefined && this.loginUser !== null);
+  }
   isAdmin(): boolean {
     return (this.loginUser.isAdmin === 1);
   }
-
 }

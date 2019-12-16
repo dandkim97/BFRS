@@ -21,6 +21,9 @@ import { UrlService } from './url.service';
 import { LoginService } from './login.service';
 import { HomeComponent } from './home/home.component';
 import { MessageComponent } from './message/message.component';
+import { AdminMsgComponent } from './admin-msg/admin-msg.component';
+import { MessageService } from './message.service';
+import { UpdateMsgComponent } from './update-msg/update-msg.component';
 import { ViewCustomerMessagesComponent } from './message/view-customer-messages/view-customer-messages.component';
 
 @NgModule({
@@ -37,6 +40,8 @@ import { ViewCustomerMessagesComponent } from './message/view-customer-messages/
     NavBarComponent,
     HomeComponent,
     MessageComponent,
+    AdminMsgComponent,
+    UpdateMsgComponent,
     ViewCustomerMessagesComponent
   ],
   imports: [
@@ -49,7 +54,8 @@ import { ViewCustomerMessagesComponent } from './message/view-customer-messages/
     FormService,
     TripService,
     UrlService,
-    LoginService
+    LoginService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

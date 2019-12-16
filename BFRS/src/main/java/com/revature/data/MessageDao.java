@@ -9,5 +9,6 @@ public interface MessageDao {
 	public List<Message> getMsgByAskerId(Integer id);
 	public Set<Message> getMsgByAskedId(Integer id);
 	public void addMessage(Message m);
-	public void updateMessage(Message m);
+	public Message getMessageById(Integer id);
+	public Message updateMessage(Message m);
 }

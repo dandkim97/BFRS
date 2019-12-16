@@ -16,7 +16,6 @@ export class NavBarComponent implements OnInit {
   isLogin(): boolean  {
     return this.loginService.isLogin();
   }
-
   isAdmin(): boolean {
     return this.loginService.isAdmin();
   }

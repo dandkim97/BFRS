@@ -10,6 +10,8 @@
             <li *ngIf="!isLogin()" class="nav-item">
                 <a class="nav-link" routerLink="/add">Sign Up</a>
             </li>
+            <li *ngIf="isLogin() && isAdmin()" class="nav-item">
+                <a class="nav-link" routerLink="/viewAdminMsg">View Admin Messages</a>
             <li *ngIf="isLogin()" class="nav-item">
                 <a class="nav-link" routerLink="/message">Make Message</a>
             </li>
