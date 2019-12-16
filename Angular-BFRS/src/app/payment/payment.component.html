@@ -1,5 +1,3 @@
-<!-- <app-form-list></app-form-list> -->
-
 <b>From:</b> {{trip?.tripFrom}}
 <br>
 <b>To:</b> {{trip?.tripTo}}
@@ -18,5 +16,8 @@
 <br><br>
 <b>Total Price:</b> {{totalPrice | currency}}
 <br><br>
-<button type="button" id="paybtn" (click)="payFlight()"
+<button type="button" id="paybtn" (click)="payFlight()" 
       class="btn btn-success">Pay for Flight</button>
+&nbsp;
+<button type="button" id="cancelbtn" (click)="cancelPayment()" 
+      class="btn btn-warning">Cancel Payment</button>

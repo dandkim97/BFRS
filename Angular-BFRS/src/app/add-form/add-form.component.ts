@@ -2,6 +2,7 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { Form } from '../form';
 import { FormService } from '../form.service';
 import { Router } from '@angular/router';
+import { TripService } from '../trip.service';
 
 @Component({
   selector: 'app-add-form',
@@ -20,11 +21,19 @@ export class AddFormComponent implements OnInit {
   ];
   tripId: number;
   isChecked = false;
+  numFlights: number;
 
-  constructor(private formService: FormService, private router: Router) { }
+  constructor(private formService: FormService, private router: Router,
+    private tripService: TripService) { }
 
   ngOnInit() {
     this.form.isRound = 0;
+
+    this.tripService.getTrips().subscribe(
+      resp => {
+        this.numFlights = resp.length;
+        console.log(this.numFlights);
+      });
   }
 
   selectedItem() {
@@ -57,5 +66,29 @@ export class AddFormComponent implements OnInit {
         console.log(resp.length);
         this.router.navigate(['payment', resp.length + 1]);
       });
+  }
+
+  checkPlaneNum(e) {
+    const x = Number((document.getElementById('idPlaneNum') as HTMLInputElement).value);
+
+    if (x < 1 || x > this.numFlights) {
+      e.target.value = 1;
+    }
+  }
+
+  checkNumSeats(e) {
+    const x = Number((document.getElementById('idNumSeats') as HTMLInputElement).value);
+
+    if (x < 1) {
+      e.target.value = 1;
+    }
+  }
+
+  checkNumBags(e) {
+    const x = Number((document.getElementById('idNumBags') as HTMLInputElement).value);
+
+    if (x < 0) {
+      e.target.value = 1;
+    }
   }
 }

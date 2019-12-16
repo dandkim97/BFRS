@@ -76,4 +76,8 @@ export class PaymentComponent implements OnInit {
 
   }
 
+  cancelPayment() {
+
+  }
+
 }
