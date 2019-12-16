@@ -1,0 +1,23 @@
+<b>From:</b> {{trip?.tripFrom}}
+<br>
+<b>To:</b> {{trip?.tripTo}}
+<br>
+<b>Departure Time:</b> {{trip?.departure}}
+<br>
+<b>Arrival Time:</b> {{trip?.arrival}}
+<br>
+<b>Number of Seats:</b> {{form?.numSeats}}
+<br>
+<b>Number of bags:</b> {{form?.numBags}}
+<br>
+<b>Plane Class:</b> {{form?.planeClass}}
+<br>
+<b>Round Trip:</b> {{isRound}}
+<br><br>
+<b>Total Price:</b> {{totalPrice | currency}}
+<br><br>
+<button type="button" id="paybtn" (click)="payFlight()" 
+      class="btn btn-success">Pay for Flight</button>
+&nbsp;
+<button type="button" id="cancelbtn" (click)="cancelPayment()" 
+      class="btn btn-warning">Cancel Payment</button>
