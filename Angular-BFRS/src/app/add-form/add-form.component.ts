@@ -63,7 +63,6 @@ export class AddFormComponent implements OnInit {
   passFormId() {
     this.formService.getForms().subscribe(
       resp => {
-        console.log(resp.length);
         this.router.navigate(['payment', resp.length + 1]);
       });
   }
