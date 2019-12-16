@@ -1,6 +1,7 @@
 package com.revature.services.hibernate;
 
 import java.util.Set;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -18,16 +19,30 @@ public class MessageServiceHibernate implements MessageService{
 	public Set<Message> getMsgByAskedId(Integer id) {
 		return md.getMsgByAskedId(id);
 	}
-	
+  
 	@Override
 	public Message getMessageById(Integer id) {
 		return md.getMessageById(id);
 	}
-	
+  
 	@Override
 	public Message updateMessage(Message m) {
 		return md.updateMessage(m);
 	}
+  
+  @Override
+	public List<Message> getMessagesByAskerId(Integer id) {
+		return md.getMsgByAskerId(id);
+	}
+  
+	@Override
+	public void updateMessage(Message m) {
+		md.updateMessage(m);
+	}
+  
+	@Override
+	public void addMessage(Message m) {
+		md.addMessage(m);
+	}
 
-	
 }

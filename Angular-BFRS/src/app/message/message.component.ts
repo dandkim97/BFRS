@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class MessageComponent implements OnInit {
   @Input() message: Message;
   @Output() created = new EventEmitter<boolean>();
+// message: Message;
   user: Login;
   constructor(
     private loginService: LoginService,
@@ -24,6 +25,7 @@ export class MessageComponent implements OnInit {
     if (!this.message) {
       this.message = new Message();
     }
+    this.user = this.loginService.getUser();
   }
 
   redirectToUpdate() {
@@ -31,6 +33,16 @@ export class MessageComponent implements OnInit {
       console.log(this.message);
       this.router.navigate(['viewAdminMsg/update', this.message.id]);
     }
-  }
 
+  addMessage() {
+    this.message.askerId = this.user.id;
+    this.message.askedId = 1;
+    this.message.status = 'pending';
+    this.messageService.addMessage(this.message).subscribe(
+      resp => {
+        this.created.emit(true);
+        this.router.navigate(['home']);
+      }
+    );
+  }
 }

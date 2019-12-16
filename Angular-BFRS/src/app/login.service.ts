@@ -70,7 +70,6 @@ export class LoginService {
       map(resp => resp as Login)
     );
   }
-
   getUser(): Login {
     return this.loginUser;
   }
