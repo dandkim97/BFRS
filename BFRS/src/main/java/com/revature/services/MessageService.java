@@ -10,6 +10,5 @@ public interface MessageService {
 	public Message getMessageById(Integer id);
 	public Message updateMessage(Message m);
 	public List<Message> getMessagesByAskerId(Integer id);
-	public void updateMessage(Message m);
 	public void addMessage(Message m);
 }

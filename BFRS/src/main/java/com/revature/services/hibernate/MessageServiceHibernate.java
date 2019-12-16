@@ -30,14 +30,9 @@ public class MessageServiceHibernate implements MessageService{
 		return md.updateMessage(m);
 	}
   
-  @Override
+	@Override
 	public List<Message> getMessagesByAskerId(Integer id) {
 		return md.getMsgByAskerId(id);
-	}
-  
-	@Override
-	public void updateMessage(Message m) {
-		md.updateMessage(m);
 	}
   
 	@Override

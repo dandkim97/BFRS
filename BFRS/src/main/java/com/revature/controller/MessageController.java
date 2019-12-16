@@ -34,6 +34,7 @@ public class MessageController {
 	@GetMapping(value="{id}")
 	public ResponseEntity<Message> getMessageById(@PathVariable("id") int id){
 		return ResponseEntity.ok(ms.getMessageById(id));
+	}
 
 	@PostMapping
 	public ResponseEntity<Message> addMessage(@RequestBody Message m){
@@ -42,8 +43,7 @@ public class MessageController {
 		return ResponseEntity.status(201).body(m);
 	}
     
-	//this needs to be changed or the other one
-	@GetMapping(value="{id}")
+	@GetMapping(value="/customer/{id}")
 	public ResponseEntity<List<Message>> getMessages(@PathVariable Integer id){
 		return ResponseEntity.ok(ms.getMessagesByAskerId(id));
 	}

@@ -51,7 +51,7 @@ export class MessageService {
   getMessagesCustomer(user: Login): Observable<Message[]> {
     console.log('Is Customer');
     console.log(user.id);
-    const url = this.appUrl + '/' + user.id;
+    const url = this.appUrl + '/customer/' + user.id;
     console.log(url);
     return this.http.get(url, {withCredentials: true}).pipe(
       map( resp => resp as Message[] )

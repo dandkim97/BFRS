@@ -33,6 +33,7 @@ export class MessageComponent implements OnInit {
       console.log(this.message);
       this.router.navigate(['viewAdminMsg/update', this.message.id]);
     }
+  }
 
   addMessage() {
     this.message.askerId = this.user.id;
@@ -44,5 +45,9 @@ export class MessageComponent implements OnInit {
         this.router.navigate(['home']);
       }
     );
+  }
+
+  isAdmin(): boolean {
+    return this.loginService.isAdmin();
   }
 }
