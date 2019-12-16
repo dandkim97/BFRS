@@ -9,7 +9,6 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.revature.beans.Form;
 import com.revature.beans.Trip;
 import com.revature.data.TripDao;
 import com.revature.utils.HibernateUtil;

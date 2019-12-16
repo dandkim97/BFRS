@@ -56,22 +56,23 @@ create table login_trip (
 );
 create table review (
     id number primary key,
+    customer_id number,
     plane_id number,
     rating number,
     constraint fk_review_plane foreign key (plane_id)
-        references plane(id)
+        references plane(id),
+    constraint fk_review_login foreign key (customer_id)
+        references login(id)
 );
 create table message (
     id number primary key,
-    asked_id number,
+    asker_id number,
     asked_id number references login(id),
     status varchar2(25),
     type varchar2(25),
     quest varchar2(256),
     answer varchar2(256),
     constraint fk_message_login1 foreign key (asker_id)
-        references login(id),
-    constraint fk_message_login2 foreign key (asked_id)
         references login(id)
 );
 
@@ -80,8 +81,10 @@ drop sequence msg_seq;
 drop sequence plane_seq;
 drop sequence trip_seq;
 drop sequence form_seq;
+drop sequence review_seq;
 create sequence login_seq;
 create sequence msg_seq;
 create sequence plane_seq;
 create sequence trip_seq;
 create sequence form_seq;
+create sequence review_seq;

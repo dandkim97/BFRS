@@ -7,6 +7,7 @@ import { ViewCustomerMessagesComponent } from './message/view-customer-messages/
 import { FormListComponent } from './form-list/form-list.component';
 import { AddFormComponent } from './add-form/add-form.component';
 import { TripListComponent } from './trip-list/trip-list.component';
+import { ReviewComponent } from './review/review.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'trips',
     component: TripListComponent
+  },
+  {
+    path: 'review',
+    component: ReviewComponent
   }
 ];
 
