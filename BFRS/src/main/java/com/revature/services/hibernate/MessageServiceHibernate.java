@@ -18,4 +18,16 @@ public class MessageServiceHibernate implements MessageService{
 	public Set<Message> getMsgByAskedId(Integer id) {
 		return md.getMsgByAskedId(id);
 	}
+	
+	@Override
+	public Message getMessageById(Integer id) {
+		return md.getMessageById(id);
+	}
+	
+	@Override
+	public Message updateMessage(Message m) {
+		return md.updateMessage(m);
+	}
+
+	
 }

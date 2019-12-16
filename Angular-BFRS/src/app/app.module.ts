@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { MessageComponent } from './message/message.component';
 import { AdminMsgComponent } from './admin-msg/admin-msg.component';
 import { MessageService } from './message.service';
+import { UpdateMsgComponent } from './update-msg/update-msg.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MessageService } from './message.service';
     NavBarComponent,
     HomeComponent,
     MessageComponent,
-    AdminMsgComponent
+    AdminMsgComponent,
+    UpdateMsgComponent
   ],
   imports: [
     BrowserModule,

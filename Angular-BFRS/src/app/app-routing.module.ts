@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AddLoginComponent } from './add-login/add-login.component';
 import { AdminMsgComponent } from './admin-msg/admin-msg.component';
+import { UpdateMsgComponent } from './update-msg/update-msg.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,14 @@ const routes: Routes = [
   {
     path: 'viewAdminMsg',
     component: AdminMsgComponent
+  },
+  {
+    path: 'viewAdminMsg/update',
+    component: UpdateMsgComponent
+  },
+  {
+    path: 'viewAdminMsg/update/:id',
+    component: UpdateMsgComponent
   }
 ];
 

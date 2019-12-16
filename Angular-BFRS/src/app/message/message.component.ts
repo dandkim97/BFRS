@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Message } from '../message';
 import { Login } from '../login';
 import { LoginService } from '../login.service';
 import { MessageService } from '../message.service';
-import { EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-message',
@@ -16,7 +16,8 @@ export class MessageComponent implements OnInit {
   user: Login;
   constructor(
     private loginService: LoginService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -25,12 +26,11 @@ export class MessageComponent implements OnInit {
     }
   }
 
-  updateMessage(){
-    this.messageService.updateMessage(this.message).subscribe(
-      resp => {
-        this.created.emit(true);
-      }
-    )
+  redirectToUpdate() {
+    if (this.message.type === 'Question') {
+      console.log(this.message);
+      this.router.navigate(['viewAdminMsg/update', this.message.id]);
+    }
   }
 
 }

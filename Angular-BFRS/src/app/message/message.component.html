@@ -1,12 +1,13 @@
 <div class="container border">
     <div>
         <span class="font-weight-bold">Form #</span>{{ message.id }} 
+        <br>
         <span class="font-weight-bold">Type: </span>{{ message.type }} 
         <br>
         <span class="font-weight-bold">Message: </span>{{ message.quest }}
         <br>
-        Answer: <input type="text" [(ngModel)]="message.answer"><br>
-        <button class="btn btn-primary" >Reply</button>
+        <!-- the btn will have different options if it is a loyalty request -->
+        <button class="btn btn-primary" (click)="redirectToUpdate()">Reply</button>
     </div>
 </div>
 

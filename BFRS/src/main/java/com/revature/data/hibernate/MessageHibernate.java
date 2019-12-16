@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -40,11 +41,34 @@ public class MessageHibernate implements MessageDao{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public Message getMessageById(Integer id) {
+		Session s = hu.getSession();
+		String query = "from Message m where m.id = :id";
+		Query<Message> q = s.createQuery(query, Message.class);
+		q.setParameter("id", id);
+		Message m = q.uniqueResult();
+		s.close();
+		return m;
+	}
 
 	@Override
-	public void updateMessage(Message m) {
-		// TODO Auto-generated method stub
-		
+	public Message updateMessage(Message m) {
+		Session s = hu.getSession();
+		Transaction tx = null;
+		try {
+			tx = s.beginTransaction();
+			s.update(m);
+			tx.commit();
+		} catch(Exception e) {
+			if(tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			s.close();
+		}
+		return m;
 	}
 	
 }
