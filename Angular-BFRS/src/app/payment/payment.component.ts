@@ -1,7 +1,9 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormService } from '../form.service';
 import { Form } from '../form';
+import { TripService } from '../trip.service';
+import { Trip } from '../trip';
 
 @Component({
   selector: 'app-payment',
@@ -10,12 +12,15 @@ import { Form } from '../form';
 })
 export class PaymentComponent implements OnInit {
 
-  tripId: number;
   sub;
-  form2: Form;
+  tripId: number;
+  form: Form;
+  trip: Trip;
   isRound: string;
+  totalPrice: number;
 
-  constructor(private Activatedroute: ActivatedRoute, private formService: FormService) { }
+  constructor(private Activatedroute: ActivatedRoute, private formService: FormService,
+    private tripService: TripService) { }
 
   ngOnInit() {
     this.sub = this.Activatedroute.paramMap.subscribe(params => {
@@ -24,21 +29,51 @@ export class PaymentComponent implements OnInit {
       this.formService.getForm(Number(params.get('id'))).subscribe(
         resp => {
           console.log(resp);
-          this.form2 = resp;
-          // this.assignForm(this.form);
-          if (this.form2.isRound === 0) {
+          this.form = resp;
+          if (this.form.isRound === 0) {
             this.isRound = 'Yes';
           } else {
             this.isRound = 'No';
           }
+          this.tripService.getTrip(this.form.tripId).subscribe(
+            resp2 => {
+              console.log(resp2);
+              this.trip = resp2;
+              this.getTotalPrice();
+            });
         });
     });
   }
 
-  // assignForm(form2) {
-  //   console.log(this.form);
-  //   this.form = form2;
-  //   console.log(this.form);
-  // }
+  getTotalPrice() {
+    this.totalPrice = this.trip.price * (this.form.numSeats);
+    console.log(this.totalPrice);
+
+    if (this.form.numBags === 1) {
+      this.totalPrice += this.trip.price + 3;
+    }
+    if (this.form.numBags === 2) {
+      this.totalPrice += this.trip.price + 4;
+    }
+    if (this.form.numBags === 3) {
+      this.totalPrice += this.trip.price + 15;
+    }
+    if (this.form.numBags > 3) {
+      this.totalPrice += this.trip.price + (20 * (this.form.numBags - 3));
+    }
+    console.log(this.totalPrice);
+
+    if (this.form.planeClass === 'Business') {
+      this.totalPrice += 250;
+    }
+    if (this.form.planeClass === 'First Class') {
+      this.totalPrice += 350;
+    }
+    console.log(this.totalPrice);
+  }
+
+  payFlight() {
+
+  }
 
 }

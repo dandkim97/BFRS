@@ -1,23 +1,22 @@
 <!-- <app-form-list></app-form-list> -->
 
-Number of Seats: {{form2?.numSeats}}
+<b>From:</b> {{trip?.tripFrom}}
 <br>
-Number of bags: {{form2?.numBags}}
+<b>To:</b> {{trip?.tripTo}}
 <br>
-Plane Class: {{form2?.planeClass}}
+<b>Departure Time:</b> {{trip?.departure}}
 <br>
-Round Trip: {{isRound}}
-
-
-<!-- Number of seats: <input type="number" min="1" required [(ngModel)]="form.numSeats" name="numSeats">
+<b>Arrival Time:</b> {{trip?.arrival}}
 <br>
-Number of bags: <input type="number" min="0" required [(ngModel)]="form.numBags" name="numBags">
+<b>Number of Seats:</b> {{form?.numSeats}}
 <br>
-<label>Plane Class:</label>
-<select required [(ngModel)]="selectedClass" name="selectedClass" (change)="selectedItem()">
-    <option *ngFor="let item of class" [ngValue]="item">{{item.name}}</option>
-</select>
+<b>Number of bags:</b> {{form?.numBags}}
 <br>
-<input type="checkbox" [(ngModel)]="isChecked" name="isChecked" (change)="assignValue($event)" />
-<label>Round Trip</label>
-<br> -->
+<b>Plane Class:</b> {{form?.planeClass}}
+<br>
+<b>Round Trip:</b> {{isRound}}
+<br><br>
+<b>Total Price:</b> {{totalPrice | currency}}
+<br><br>
+<button type="button" id="paybtn" (click)="payFlight()"
+      class="btn btn-success">Pay for Flight</button>
