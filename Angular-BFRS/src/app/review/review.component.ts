@@ -24,4 +24,17 @@ export class ReviewComponent implements OnInit {
     this.user = this.loginService.getUser();
   }
 
+  submit() {
+    this.plane = new Plane();
+    this.plane.id = 3;
+    this.review.plane = this.plane;
+    this.review.customer = this.user;
+    this.reviewService.addReview(this.review).subscribe(
+      resp => {
+        this.crearted.emit(true);
+        this.router.navigate(['home']);
+      }
+    );
+  }
+
 }
