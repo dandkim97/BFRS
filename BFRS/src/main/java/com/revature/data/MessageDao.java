@@ -11,4 +11,5 @@ public interface MessageDao {
 	public void addMessage(Message m);
 	public Message getMessageById(Integer id);
 	public Message updateMessage(Message m);
+	public Message approveMessage(Integer askerId, Message m);
 }

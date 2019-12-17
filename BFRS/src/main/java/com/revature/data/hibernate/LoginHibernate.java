@@ -47,16 +47,10 @@ public class LoginHibernate implements LoginDao{
 		Login l = q.uniqueResult();
 		s.close();
 		return l;
-  }
-
+	}
+	
 	@Override
 	public Login getLogin(Login l) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Login getLoginById(Login l) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -71,4 +65,6 @@ public class LoginHibernate implements LoginDao{
 	public void updateLogin(Login l) {
 		// TODO Auto-generated method stub
 	}
+
+	
 }
