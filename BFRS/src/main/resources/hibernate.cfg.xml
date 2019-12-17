@@ -26,6 +26,7 @@
 		<mapping class="com.revature.beans.Plane"/>
 		<mapping class="com.revature.beans.Login"/>
 		<mapping class="com.revature.beans.Message"/>
+		<mapping class="com.revature.beans.Logintrip"/>
 		
 	</session-factory>
 </hibernate-configuration>

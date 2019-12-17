@@ -9,33 +9,24 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
-import com.revature.beans.Trip;
-import com.revature.data.TripDao;
+import com.revature.beans.Logintrip;
+import com.revature.data.LogintripDao;
 import com.revature.utils.HibernateUtil;
 
 @Component
-public class TripHibernate implements TripDao {
+public class LogintripHibernate implements LogintripDao {
 
 	@Autowired
 	private HibernateUtil hu;
-
-	@Override
-	public Trip getTrip(int i) {
-		Session s = hu.getSession();
-		Trip t = s.get(Trip.class, i);
-		s.close();
-		return t;
-	}
 	
 	@Override
-	public Set<Trip> getTrips() {
+	public Set<Logintrip> getLogintrips() {
 		Session s = hu.getSession();
-		String query = "from Trip";
-		Query<Trip> q = s.createQuery(query, Trip.class);
-		List<Trip> trips = q.list();
+		String query = "from Logintrip";
+		Query<Logintrip> q = s.createQuery(query, Logintrip.class);
+		List<Logintrip> logintrips = q.list();
 		s.close();
-		return new HashSet<Trip>(trips);
+		return new HashSet<Logintrip>(logintrips);
 	}
 
 }
