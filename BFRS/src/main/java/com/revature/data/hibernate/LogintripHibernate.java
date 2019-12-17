@@ -23,6 +23,7 @@ public class LogintripHibernate implements LogintripDao {
 	public Set<Logintrip> getLogintrips() {
 		Session s = hu.getSession();
 		String query = "from Logintrip";
+		//String query = "from Logintrip order by id asc";
 		Query<Logintrip> q = s.createQuery(query, Logintrip.class);
 		List<Logintrip> logintrips = q.list();
 		s.close();
