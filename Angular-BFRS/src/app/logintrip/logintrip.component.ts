@@ -8,9 +8,12 @@ import { Logintrip } from '../logintrip';
 })
 export class LogintripComponent implements OnInit {
 @Input() logintrip: Logintrip;
+
   constructor() { }
 
   ngOnInit() {
   }
+
+
 
 }
