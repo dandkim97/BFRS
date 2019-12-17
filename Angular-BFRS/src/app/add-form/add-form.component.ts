@@ -24,7 +24,9 @@ export class AddFormComponent implements OnInit {
   numFlights: number;
 
   constructor(private formService: FormService, private router: Router,
-    private tripService: TripService) { }
+    private tripService: TripService) {
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+     }
 
   ngOnInit() {
     this.form.isRound = 0;
@@ -32,7 +34,6 @@ export class AddFormComponent implements OnInit {
     this.tripService.getTrips().subscribe(
       resp => {
         this.numFlights = resp.length;
-        console.log(this.numFlights);
       });
   }
 

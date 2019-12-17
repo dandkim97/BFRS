@@ -4,6 +4,7 @@ import { FormService } from '../form.service';
 import { Form } from '../form';
 import { TripService } from '../trip.service';
 import { Trip } from '../trip';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -11,7 +12,6 @@ import { Trip } from '../trip';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
-
   sub;
   tripId: number;
   form: Form;
@@ -20,7 +20,7 @@ export class PaymentComponent implements OnInit {
   totalPrice: number;
 
   constructor(private Activatedroute: ActivatedRoute, private formService: FormService,
-    private tripService: TripService) { }
+    private tripService: TripService, private router: Router) { }
 
   ngOnInit() {
     this.sub = this.Activatedroute.paramMap.subscribe(params => {
@@ -77,6 +77,6 @@ export class PaymentComponent implements OnInit {
   }
 
   cancelPayment() {
-
+    this.router.navigate(['form']);
   }
 }
