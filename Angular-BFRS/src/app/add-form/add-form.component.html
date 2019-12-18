@@ -1,20 +1,24 @@
 <div *ngIf="form">
   <form (ngSubmit)="onSubmit()" #tripForm="ngForm">
-    Plane Number: <input type="number" min="1" required [(ngModel)]="tripId" name="planeNum">
+    Plane Number: <input type="number" id="idPlaneNum" min="1" max="{{numFlights}}" required [(ngModel)]="form.tripId"
+      name="planeNum" (change)="checkPlaneNum($event)">
     <br>
-    Number of seats: <input type="number" min="1" required [(ngModel)]="form.numSeats" name="numSeats">
+    Number of seats: <input type="number" id="idNumSeats" min="1" required [(ngModel)]="form.numSeats" name="numSeats"
+      (change)="checkNumSeats($event)">
     <br>
-    Number of bags: <input type="number" min="0" required [(ngModel)]="form.numBags" name="numBags">
+    Number of bags: <input type="number" id="idNumBags" min="0" required [(ngModel)]="form.numBags" name="numBags"
+      (change)="checkNumBags($event)">
     <br>
     <label>Plane Class:</label>
-    <select required [(ngModel)]="selectedClass" name="selectedClass" (change)="selectedItem()">
+    <select id="idPlaneClass" required [(ngModel)]="selectedClass" name="selectedClass" (change)="selectedItem()">
       <option *ngFor="let item of class" [ngValue]="item">{{item.name}}</option>
     </select>
     <br>
     <input type="checkbox" [(ngModel)]="isChecked" name="isChecked" (change)="assignValue($event)" />
     <label>Round Trip</label>
     <br>
-    <button type="button" [disabled]="!tripForm.form.valid" id="submitbtn" (click)="addForm()"
+    <button type="button" id="submitbtn" [disabled]="!tripForm.form.valid" (click)="addForm()"
       class="btn btn-success">Submit</button>
+    <a [routerLink]="['/payment', form.id]"></a>
   </form>
 </div>

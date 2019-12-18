@@ -37,7 +37,7 @@ export class FormService {
       map(resp => resp as Form)
     );
   }
-  public deleteRanger(form: Form): Observable<void> {
+  public deleteForm(form: Form): Observable<void> {
     const url = 'http://localhost:8080/BFRS/form/' + form.id;
     const body = JSON.stringify(form);
     return this.http.delete(url, { headers: this.headers, withCredentials: true }).pipe(
