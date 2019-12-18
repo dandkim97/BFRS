@@ -56,10 +56,13 @@ create table login_trip (
 );
 create table review (
     id number primary key,
+    customer_id number,
     plane_id number,
     rating number,
     constraint fk_review_plane foreign key (plane_id)
-        references plane(id)
+        references plane(id),
+    constraint fk_review_login foreign key (customer_id)
+        references login(id)
 );
 create table message (
     id number primary key,
@@ -78,8 +81,10 @@ drop sequence msg_seq;
 drop sequence plane_seq;
 drop sequence trip_seq;
 drop sequence form_seq;
+drop sequence review_seq;
 create sequence login_seq;
 create sequence msg_seq;
 create sequence plane_seq;
 create sequence trip_seq;
 create sequence form_seq;
+create sequence review_seq;

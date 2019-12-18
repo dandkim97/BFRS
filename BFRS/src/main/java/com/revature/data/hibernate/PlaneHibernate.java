@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,25 @@ public class PlaneHibernate implements PlaneDao {
 		log.trace(tripList);
 		s.close();		
 		return tripList;
+	}
+
+	@Override
+	public void updatePlane(Plane p) {
+		Session s = hu.getSession();
+		Transaction tx = null;
+		try {
+			tx = s.beginTransaction();
+			s.update(p);
+			tx.commit();
+		} catch (Exception e) {
+			if(tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			s.close();
+		}
+		
 	}
 
 }

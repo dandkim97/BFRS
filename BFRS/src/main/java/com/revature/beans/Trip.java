@@ -11,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "trip")
@@ -40,7 +38,6 @@ public class Trip {
 
 	public Trip() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Trip(Integer id, Plane plane, Integer seatsTaken, String tripFrom, String tripTo, String departure,
