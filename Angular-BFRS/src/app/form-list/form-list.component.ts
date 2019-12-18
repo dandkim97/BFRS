@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Form } from '../form';
 import { FormService } from '../form.service';
-import { Trip } from '../trip';
 
 @Component({
   selector: 'app-form-list',
@@ -18,7 +17,6 @@ export class FormListComponent implements OnInit {
       this.forms = resp;
     });
     this.form = new Form();
-    // this.form.trip = new Trip();
   }
 
   submitted() {
