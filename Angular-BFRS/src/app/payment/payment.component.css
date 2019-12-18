@@ -1,0 +1,84 @@
+#labelFrom {
+    font-weight: bold;
+    display:inline-block;
+}
+#valueFrom {
+    display:inline-block;
+}
+#labelTo {
+    font-weight: bold;
+    display:inline-block;
+}
+#valueTo {
+    display:inline-block;
+}
+#labelDeparture {
+    font-weight: bold;
+    display:inline-block;
+}
+#valueDeparture {
+    display:inline-block;
+}
+#labelArrival {
+    font-weight: bold;
+    display:inline-block;
+}
+#valueArrival {
+    display:inline-block;
+}#labelRound {
+    font-weight: bold;
+    display:inline-block;
+}
+#valueRound {
+    display:inline-block;
+}
+#labelSeats {
+    font-weight: bold;
+    display:inline-block;
+}
+#valueSeats {
+    display:inline-block;
+}
+#priceSeats {
+    display:inline-block;
+    margin-left: 170px;
+    text-align: right;
+}
+#labelBags {
+    font-weight: bold;
+    display:inline-block;
+}
+#valueBags {
+    display:inline-block;
+}
+#priceBags {
+    display: inline-block;
+    margin-left: 191px;
+    text-align: right;
+}
+#labelClass {
+    font-weight: bold;
+    display: inline;
+}
+#valueClass {
+    display: inline-block;
+}
+#priceClass {
+    display: inline-block;
+    margin-left: 87px;
+    text-align: right;
+}
+#labelTotal {
+    font-weight: bold;
+    display: inline-block;
+}
+#valueTotal {
+    display: inline-block;
+    margin-left: 139.5px;
+    text-align: right;
+}
+/* .price {
+    margin-left: 140px;
+    margin-right: auto;
+    text-align: right; 
+}  */
