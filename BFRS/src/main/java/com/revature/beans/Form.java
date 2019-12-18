@@ -30,12 +30,16 @@ public class Form {
 	private Integer isRound;
 	@Column(name="trip_id")
 	private Integer tripId;
+	@Column(name="login_id")
+	private Integer loginId;
 
 	public Form() {
 		super();
 	}
 
-	public Form(Integer id, Integer numSeats, Integer numBags, String planeClass, Integer isRound, Integer tripId) {
+
+	public Form(Integer id, Integer numSeats, Integer numBags, String planeClass, Integer isRound, Integer tripId,
+			Integer loginId) {
 		super();
 		this.id = id;
 		this.numSeats = numSeats;
@@ -43,7 +47,10 @@ public class Form {
 		this.planeClass = planeClass;
 		this.isRound = isRound;
 		this.tripId = tripId;
+		this.loginId = loginId;
 	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -91,6 +98,14 @@ public class Form {
 
 	public void setTrip(Integer tripId) {
 		this.tripId = tripId;
+	}
+
+	public Integer getLoginId() {
+		return loginId;
+	}
+
+	public void setLoginId(Integer loginId) {
+		this.loginId = loginId;
 	}
 
 	@Override
