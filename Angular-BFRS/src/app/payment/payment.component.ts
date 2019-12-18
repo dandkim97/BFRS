@@ -5,6 +5,7 @@ import { Form } from '../form';
 import { TripService } from '../trip.service';
 import { Trip } from '../trip';
 import { Router } from '@angular/router';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-payment',
@@ -18,12 +19,17 @@ export class PaymentComponent implements OnInit {
   trip: Trip;
   isRound: string;
   totalPrice: number;
+  oldPrice: number;
   seatsPrice: number;
   bagsPrice: number;
   classPrice: number;
 
-  constructor(private Activatedroute: ActivatedRoute, private formService: FormService,
-    private tripService: TripService, private router: Router) { }
+  constructor(
+    private Activatedroute: ActivatedRoute,
+    private formService: FormService,
+    private tripService: TripService,
+    private loginService: LoginService,
+    private router: Router) { }
 
   ngOnInit() {
     this.sub = this.Activatedroute.paramMap.subscribe(params => {
@@ -81,6 +87,10 @@ export class PaymentComponent implements OnInit {
       this.classPrice = 350;
     }
     this.totalPrice += this.classPrice;
+    this.oldPrice = this.totalPrice;
+    if (this.isDiscounted()) {
+      this.totalPrice -= this.totalPrice * .05;
+    }
     console.log(this.totalPrice);
   }
 
@@ -90,5 +100,9 @@ export class PaymentComponent implements OnInit {
 
   cancelPayment() {
     this.router.navigate(['form']);
+  }
+
+  isDiscounted(): boolean {
+    return this.loginService.isLoyalty();
   }
 }
