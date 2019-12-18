@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Message } from './message';
 import { Login } from './login';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,12 @@ import { Login } from './login';
 export class MessageService {
   private appUrl = this.url.getUrl() + '/message';
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
+  public promotedUser: Login;
+  public isApproved = false;
   constructor(
     private http: HttpClient,
-    private url: UrlService
+    private url: UrlService,
+    private ls: LoginService
   ) { }
 
   getAdminMsgs(): Observable<Message[]> {
@@ -26,6 +30,12 @@ export class MessageService {
   updateMessage(message: Message): Observable<Message> {
     message.status = 'resolved';
     const body = JSON.stringify(message);
+    if (this.isApproved) {
+      return this.http.put(this.appUrl + '/approve/' + message.askerId, body,
+        { headers: this.headers, withCredentials: true }).pipe(
+          map(resp => resp as Message)
+        );
+    }
     console.log(body);
     return this.http.put(this.appUrl + '/' + message.id, body,
       { headers: this.headers, withCredentials: true }).pipe(

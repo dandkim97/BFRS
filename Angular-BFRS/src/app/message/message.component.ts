@@ -32,6 +32,10 @@ export class MessageComponent implements OnInit {
     if (this.message.type === 'Question') {
       console.log(this.message);
       this.router.navigate(['viewAdminMsg/update', this.message.id]);
+    } else
+    if (this.message.type === 'Loyalty Request') {
+      console.log(this.message);
+      this.router.navigate(['viewAdminMsg/loyaltyReq', this.message.id]);
     }
   }
 

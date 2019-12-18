@@ -25,6 +25,7 @@ import { AdminMsgComponent } from './admin-msg/admin-msg.component';
 import { MessageService } from './message.service';
 import { UpdateMsgComponent } from './update-msg/update-msg.component';
 import { ViewCustomerMessagesComponent } from './message/view-customer-messages/view-customer-messages.component';
+import { LoyaltyReqMsgComponent } from './loyalty-req-msg/loyalty-req-msg.component';
 import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
@@ -44,6 +45,7 @@ import { PaymentComponent } from './payment/payment.component';
     AdminMsgComponent,
     UpdateMsgComponent,
     ViewCustomerMessagesComponent,
+    LoyaltyReqMsgComponent,
     PaymentComponent
   ],
   imports: [

@@ -9,7 +9,9 @@ import { ViewCustomerMessagesComponent } from './message/view-customer-messages/
 import { FormListComponent } from './form-list/form-list.component';
 import { AddFormComponent } from './add-form/add-form.component';
 import { TripListComponent } from './trip-list/trip-list.component';
+import { LoyaltyReqMsgComponent } from './loyalty-req-msg/loyalty-req-msg.component';
 import { PaymentComponent } from './payment/payment.component';
+
 
 const routes: Routes = [
   {
@@ -30,12 +32,12 @@ const routes: Routes = [
     component: AdminMsgComponent
   },
   {
-    path: 'viewAdminMsg/update',
+    path: 'viewAdminMsg/update/:id',
     component: UpdateMsgComponent
   },
   {
-    path: 'viewAdminMsg/update/:id',
-    component: UpdateMsgComponent
+    path: 'viewAdminMsg/loyaltyReq/:id',
+    component: LoyaltyReqMsgComponent
   },
   {
     path: 'message',

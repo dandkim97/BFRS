@@ -40,4 +40,9 @@ public class MessageServiceHibernate implements MessageService{
 		md.addMessage(m);
 	}
 
+	@Override
+	public Message approveMessage(Integer askerId, Message m) {
+		return md.approveMessage(askerId, m);
+	}
+
 }

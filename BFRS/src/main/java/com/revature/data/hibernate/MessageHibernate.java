@@ -93,5 +93,12 @@ public class MessageHibernate implements MessageDao{
 		}
 		return m;
 	}
+
+	@Override
+	public Message approveMessage(Integer askerId, Message m) {
+		Session s = hu.getSession();
+		// TODO: write the stored procedure here!
+		return null;
+	}
 	
 }
