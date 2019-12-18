@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { UrlService } from './url.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Message } from './message';
-import { map } from 'rxjs/operators';
-import { Login } from './login';
+import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Message } from './message';
+import { Login } from './login';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,40 @@ import { Observable } from 'rxjs';
 export class MessageService {
   private appUrl = this.url.getUrl() + '/message';
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
-  constructor(private url: UrlService, private http: HttpClient) { }
+  public promotedUser: Login;
+  public isApproved = false;
+  constructor(
+    private http: HttpClient,
+    private url: UrlService,
+    private ls: LoginService
+  ) { }
+
+  getAdminMsgs(): Observable<Message[]> {
+    return this.http.get(this.appUrl + '/admin', { withCredentials: true }).pipe(
+      map(resp => resp as Message[] ));
+  }
+
+  updateMessage(message: Message): Observable<Message> {
+    message.status = 'resolved';
+    const body = JSON.stringify(message);
+    if (this.isApproved) {
+      return this.http.put(this.appUrl + '/approve/' + message.askerId, body,
+        { headers: this.headers, withCredentials: true }).pipe(
+          map(resp => resp as Message)
+        );
+    }
+    console.log(body);
+    return this.http.put(this.appUrl + '/' + message.id, body,
+      { headers: this.headers, withCredentials: true }).pipe(
+      map(resp => resp as Message ));
+  }
+
+  getMessage(id: number): Observable<Message> {
+    const url: string = this.appUrl + '/' + id;
+    return this.http.get(url, {withCredentials: true}).pipe(
+      map(resp => resp as Message)
+    );
+  }
 
   addMessage(message: Message) {
     const body = JSON.stringify(message);
@@ -26,10 +61,10 @@ export class MessageService {
   getMessagesCustomer(user: Login): Observable<Message[]> {
     console.log('Is Customer');
     console.log(user.id);
-    const url = this.appUrl + '/' + user.id;
+    const url = this.appUrl + '/customer/' + user.id;
     console.log(url);
     return this.http.get(url, {withCredentials: true}).pipe(
       map( resp => resp as Message[] )
       );
+    }
   }
-}

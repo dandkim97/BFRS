@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { Form } from '../form';
 import { FormService } from '../form.service';
-import { Trip } from '../trip';
+import { Router } from '@angular/router';
 import { TripService } from '../trip.service';
-import { Plane } from '../plane';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-add-form',
@@ -20,13 +20,21 @@ export class AddFormComponent implements OnInit {
     { name: 'Business' },
     { name: 'First Class' }
   ];
-  tripId: number;
+  // tripId: number;
   isChecked = false;
+  numFlights: number;
 
-  constructor(private formService: FormService, private tripService: TripService) { }
+  constructor(private formService: FormService, private router: Router,
+    private tripService: TripService, private loginService: LoginService) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnInit() {
     this.form.isRound = 0;
+    this.tripService.getTrips().subscribe(
+      resp => {
+        this.numFlights = resp.length;
+      });
   }
 
   selectedItem() {
@@ -45,17 +53,42 @@ export class AddFormComponent implements OnInit {
   }
 
   addForm() {
-    this.form.tripId = this.tripId;
-    console.log(this.tripId);
-
-    // this.tripService.getTrip(this.tripId).subscribe(
-    //   trip2 => this.form.trip = trip2);
-    // console.log(this.form.trip);
-
+    // this.form.tripId = this.tripId;
     this.formService.addForm(this.form).subscribe(
       resp => {
         this.created.emit(true);
       });
+    this.passFormId();
   }
 
+  passFormId() {
+    this.formService.getForms().subscribe(
+      resp => {
+        this.router.navigate(['payment', resp.length + 1]);
+      });
+  }
+
+  checkPlaneNum(e) {
+    const x = Number((document.getElementById('idPlaneNum') as HTMLInputElement).value);
+
+    if (x < 1 || x > this.numFlights) {
+      e.target.value = 1;
+    }
+  }
+
+  checkNumSeats(e) {
+    const x = Number((document.getElementById('idNumSeats') as HTMLInputElement).value);
+
+    if (x < 1) {
+      e.target.value = 1;
+    }
+  }
+
+  checkNumBags(e) {
+    const x = Number((document.getElementById('idNumBags') as HTMLInputElement).value);
+
+    if (x < 0) {
+      e.target.value = 0;
+    }
+  }
 }

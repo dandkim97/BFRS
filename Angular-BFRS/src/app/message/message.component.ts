@@ -1,9 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Message } from '../message';
-import { MessageService } from '../message.service';
-import { Router } from '@angular/router';
 import { Login } from '../login';
 import { LoginService } from '../login.service';
+import { MessageService } from '../message.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-message',
@@ -11,14 +11,32 @@ import { LoginService } from '../login.service';
   styleUrls: ['./message.component.css']
 })
 export class MessageComponent implements OnInit {
+  @Input() message: Message;
   @Output() created = new EventEmitter<boolean>();
-  message: Message;
+// message: Message;
   user: Login;
-  constructor(private messageService: MessageService, private router: Router, private loginService: LoginService) { }
+  constructor(
+    private loginService: LoginService,
+    private messageService: MessageService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    this.message = new Message();
+    if (!this.message) {
+      this.message = new Message();
+    }
     this.user = this.loginService.getUser();
+  }
+
+  redirectToUpdate() {
+    if (this.message.type === 'Question') {
+      console.log(this.message);
+      this.router.navigate(['viewAdminMsg/update', this.message.id]);
+    } else
+    if (this.message.type === 'Loyalty Request') {
+      console.log(this.message);
+      this.router.navigate(['viewAdminMsg/loyaltyReq', this.message.id]);
+    }
   }
 
   addMessage() {
@@ -33,4 +51,7 @@ export class MessageComponent implements OnInit {
     );
   }
 
+  isAdmin(): boolean {
+    return this.loginService.isAdmin();
+  }
 }

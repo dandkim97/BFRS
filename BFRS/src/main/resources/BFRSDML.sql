@@ -72,7 +72,7 @@ create table message (
     type varchar2(25),
     quest varchar2(256),
     answer varchar2(256),
-    constraint fk_message_login1 foreign key (asker_id)
+    constraint fk_message_login foreign key (asker_id)
         references login(id)
 );
 
