@@ -18,6 +18,9 @@ export class PaymentComponent implements OnInit {
   trip: Trip;
   isRound: string;
   totalPrice: number;
+  seatsPrice: number;
+  bagsPrice: number;
+  classPrice: number;
 
   constructor(private Activatedroute: ActivatedRoute, private formService: FormService,
     private tripService: TripService, private router: Router) { }
@@ -46,29 +49,38 @@ export class PaymentComponent implements OnInit {
   }
 
   getTotalPrice() {
-    this.totalPrice = this.trip.price * (this.form.numSeats);
+    this.seatsPrice = this.trip.price * (this.form.numSeats);
+    this.totalPrice = this.seatsPrice;
     console.log(this.totalPrice);
 
+    if (this.form.numBags === 0) {
+      this.bagsPrice = 0;
+    }
     if (this.form.numBags === 1) {
-      this.totalPrice += this.trip.price + 3;
+      this.bagsPrice = 3;
     }
     if (this.form.numBags === 2) {
-      this.totalPrice += this.trip.price + 4;
+      this.bagsPrice = 4;
     }
     if (this.form.numBags === 3) {
-      this.totalPrice += this.trip.price + 15;
+      this.bagsPrice = 15;
     }
     if (this.form.numBags > 3) {
-      this.totalPrice += this.trip.price + (20 * (this.form.numBags - 3));
+      this.bagsPrice = 20 * (this.form.numBags - 3);
     }
+    this.totalPrice += this.bagsPrice;
     console.log(this.totalPrice);
 
+    if (this.form.planeClass === 'Economy') {
+      this.classPrice = 0;
+    }
     if (this.form.planeClass === 'Business') {
-      this.totalPrice += 250;
+      this.classPrice = 250;
     }
     if (this.form.planeClass === 'First Class') {
-      this.totalPrice += 350;
+      this.classPrice = 350;
     }
+    this.totalPrice += this.classPrice;
     console.log(this.totalPrice);
   }
 

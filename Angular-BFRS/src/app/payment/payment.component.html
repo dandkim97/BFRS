@@ -1,20 +1,34 @@
-<b>From:</b> {{trip?.tripFrom}}
+<div id='labelFrom'>From:&nbsp;&nbsp;</div>
+<div id='valueFrom'>{{trip?.tripFrom}}</div>
 <br>
-<b>To:</b> {{trip?.tripTo}}
+<div id='labelTo'>To:&nbsp;&nbsp;</div>
+<div id='valueTo'>{{trip?.tripTo}}</div>
 <br>
-<b>Departure Time:</b> {{trip?.departure}}
+<div id='labelDeparture'>Departure Time:&nbsp;&nbsp;</div>
+<div id='valueDeparture'>{{trip?.departure}}</div>
 <br>
-<b>Arrival Time:</b> {{trip?.arrival}}
+<div id='labelArrival'>Arrival Time:&nbsp;&nbsp;</div>
+<div id='valueArrival'>{{trip?.arrival}}</div>
 <br>
-<b>Number of Seats:</b> {{form?.numSeats}}
-<br>
-<b>Number of bags:</b> {{form?.numBags}}
-<br>
-<b>Plane Class:</b> {{form?.planeClass}}
-<br>
-<b>Round Trip:</b> {{isRound}}
+<div id='labelRound'>Round Trip:&nbsp;&nbsp;</div>
+<div id='valueRound'>{{isRound}}</div>
 <br><br>
-<b>Total Price:</b> {{totalPrice | currency}}
+<div id='labelSeats'>Seats:&nbsp;&nbsp;</div>
+<div id='valueSeats'>{{form?.numSeats}}</div>
+<div id='priceSeats' class='price'>{{seatsPrice | currency}}</div>
+<br>
+<div id='labelBags'>Bags:&nbsp;&nbsp;</div>
+<div id='valueBags'>{{form?.numBags}}</div>
+<div id='priceBags' class='price'>{{bagsPrice | currency}}</div>
+<br>
+<div id='labelClass'>Plane Class:&nbsp;&nbsp;</div>
+<div id='valueClass'>{{form?.planeClass}}</div>
+<div id='priceClass' class='price'>{{classPrice | currency}}</div>
+<br>
+<br>
+<div id='labelTotal'>Total Price:&nbsp;&nbsp;</div>
+<div id='valueTotal' class='price'>{{totalPrice | currency}}</div>
+
 <br><br>
 <button type="button" id="paybtn" (click)="payFlight()" class="btn btn-success">Pay for Flight</button>
 &nbsp;

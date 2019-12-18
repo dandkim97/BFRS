@@ -3,6 +3,7 @@ import { Form } from '../form';
 import { FormService } from '../form.service';
 import { Router } from '@angular/router';
 import { TripService } from '../trip.service';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-add-form',
@@ -19,18 +20,17 @@ export class AddFormComponent implements OnInit {
     { name: 'Business' },
     { name: 'First Class' }
   ];
-  tripId: number;
+  // tripId: number;
   isChecked = false;
   numFlights: number;
 
   constructor(private formService: FormService, private router: Router,
-    private tripService: TripService) {
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-     }
+    private tripService: TripService, private loginService: LoginService) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnInit() {
     this.form.isRound = 0;
-
     this.tripService.getTrips().subscribe(
       resp => {
         this.numFlights = resp.length;
@@ -53,7 +53,7 @@ export class AddFormComponent implements OnInit {
   }
 
   addForm() {
-    this.form.tripId = this.tripId;
+    // this.form.tripId = this.tripId;
     this.formService.addForm(this.form).subscribe(
       resp => {
         this.created.emit(true);
