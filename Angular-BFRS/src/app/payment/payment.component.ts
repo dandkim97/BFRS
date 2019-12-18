@@ -33,7 +33,7 @@ export class PaymentComponent implements OnInit {
         resp => {
           console.log(resp);
           this.form = resp;
-          if (this.form.isRound === 0) {
+          if (this.form.isRound === 1) {
             this.isRound = 'Yes';
           } else {
             this.isRound = 'No';
