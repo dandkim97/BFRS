@@ -26,6 +26,9 @@ import { MessageService } from './message.service';
 import { UpdateMsgComponent } from './update-msg/update-msg.component';
 import { ViewCustomerMessagesComponent } from './message/view-customer-messages/view-customer-messages.component';
 import { PaymentComponent } from './payment/payment.component';
+import { LogintripComponent } from './logintrip/logintrip.component';
+import { LogintripListComponent } from './logintrip-list/logintrip-list.component';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +47,9 @@ import { PaymentComponent } from './payment/payment.component';
     AdminMsgComponent,
     UpdateMsgComponent,
     ViewCustomerMessagesComponent,
-    PaymentComponent
+    PaymentComponent,
+    LogintripComponent,
+    LogintripListComponent
   ],
   imports: [
     BrowserModule,

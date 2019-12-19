@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormService } from '../form.service';
 import { Form } from '../form';
 import { TripService } from '../trip.service';
 import { Trip } from '../trip';
 import { Router } from '@angular/router';
+import { LogintripService } from '../logintrip.service';
+import { Logintrip } from '../logintrip';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-payment',
@@ -12,6 +15,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
+  @Output() created = new EventEmitter<Boolean>();
+
   sub;
   tripId: number;
   form: Form;
@@ -21,9 +26,11 @@ export class PaymentComponent implements OnInit {
   seatsPrice: number;
   bagsPrice: number;
   classPrice: number;
+  loginTrip: Logintrip = new Logintrip();
 
   constructor(private Activatedroute: ActivatedRoute, private formService: FormService,
-    private tripService: TripService, private router: Router) { }
+    private tripService: TripService, private router: Router,
+    private loginTripService: LogintripService, private loginService: LoginService) { }
 
   ngOnInit() {
     this.sub = this.Activatedroute.paramMap.subscribe(params => {
@@ -33,7 +40,7 @@ export class PaymentComponent implements OnInit {
         resp => {
           console.log(resp);
           this.form = resp;
-          if (this.form.isRound === 0) {
+          if (this.form.isRound === 1) {
             this.isRound = 'Yes';
           } else {
             this.isRound = 'No';
@@ -85,10 +92,23 @@ export class PaymentComponent implements OnInit {
   }
 
   payFlight() {
+    this.loginTrip.login = this.loginService.getUser();
+    this.loginTrip.trip = this.trip;
+    this.loginTrip.cost = this.totalPrice;
+    console.log(this.loginTrip);
 
+    this.loginTripService.addLogintrip(this.loginTrip).subscribe(
+      resp => {
+        this.created.emit(true);
+      });
+    document.getElementById('myModal').style.display = 'block';
   }
 
   cancelPayment() {
     this.router.navigate(['form']);
+  }
+
+  okHome() {
+    this.router.navigate(['home']);
   }
 }

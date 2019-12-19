@@ -24,6 +24,12 @@
             <li class="nav-item">
                 <a class="nav-link" routerLink="/form">Book a Flight</a>
             </li>
+			<li *ngIf="isLogin() && !isAdmin()" class="nav-item">
+                <a class="nav-link" routerLink="/logintrips">My Trips History</a>
+            </li>
+            <li *ngIf="isLogin() && isAdmin()" class="nav-item">
+                <a class="nav-link" routerLink="/logintrips">View All Trips History</a>
+            </li>
         </ul>
     <app-login></app-login>
     </div>

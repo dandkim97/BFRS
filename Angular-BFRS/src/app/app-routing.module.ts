@@ -7,9 +7,9 @@ import { UpdateMsgComponent } from './update-msg/update-msg.component';
 import { MessageComponent } from './message/message.component';
 import { ViewCustomerMessagesComponent } from './message/view-customer-messages/view-customer-messages.component';
 import { FormListComponent } from './form-list/form-list.component';
-import { AddFormComponent } from './add-form/add-form.component';
 import { TripListComponent } from './trip-list/trip-list.component';
 import { PaymentComponent } from './payment/payment.component';
+import { LogintripListComponent } from './logintrip-list/logintrip-list.component';
 
 const routes: Routes = [
   {
@@ -56,7 +56,12 @@ const routes: Routes = [
   {
     path: 'payment/:id',
     component: PaymentComponent
+  },
+  {
+    path: 'logintrips',
+    component: LogintripListComponent
   }
+
 ];
 
 @NgModule({
