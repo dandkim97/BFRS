@@ -27,8 +27,8 @@ create table trip (
     plane_id number,
     trip_from varchar2(25),
     trip_to varchar2(25),
-    departure timestamp,
-    arrival timestamp,
+    departure varchar2(50),
+    arrival varchar2(50),
     price number(7,2),
     status varchar2(25),
     constraint fk_trip_plane foreign key (plane_id)
