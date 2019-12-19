@@ -22,7 +22,6 @@
         <!-- Type of Question: <input type="text" [(ngModel)]="login.pswrd"> <br> -->
         <label >Type of Event:</label>
         <select [(ngModel)]="message.type">
-          <option selected>Choose...</option>
           <option *ngIf="user.loyaltyStatus === 0" value="Loyalty Request">Loyalty Status Request</option>
           <option value="Question">Customer Support Question</option>
         </select>

@@ -9,4 +9,5 @@ export class Trip {
 	arrival: string;
 	price: number;
 	plane: Plane;
+	status: string;
 }
