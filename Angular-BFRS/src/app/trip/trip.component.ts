@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import {Trip} from '../trip';
-import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
 import { TripService } from '../trip.service';
 
@@ -14,7 +13,6 @@ export class TripComponent implements OnInit {
   @Output() created = new EventEmitter<boolean>();
 
   constructor(
-    private router: Router,
     private loginService: LoginService,
     private tripService: TripService
   ) { }
@@ -26,10 +24,13 @@ export class TripComponent implements OnInit {
     this.tripService.updateTrip(this.trip).subscribe(
       resp => {
         this.created.emit(true);
-        this.router.navigate(['home']);
     });
+    document.getElementById('myModal').style.display = 'block';
   }
 
+  okHome() {
+    document.getElementById('myModal').style.display = 'none';
+  }
   isAdmin(): boolean {
     return this.loginService.isAdmin();
   }

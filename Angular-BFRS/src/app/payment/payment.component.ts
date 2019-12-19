@@ -15,7 +15,7 @@ import { LoginService } from '../login.service';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
-  @Output() created = new EventEmitter<Boolean>();
+  @Output() created = new EventEmitter<boolean>();
 
   sub;
   tripId: number;
@@ -116,10 +116,10 @@ export class PaymentComponent implements OnInit {
   cancelPayment() {
     this.router.navigate(['form']);
   }
-  
+
   okHome() {
     this.router.navigate(['home']);
-
+  }
   isDiscounted(): boolean {
     return this.loginService.isLoyalty();
   }
