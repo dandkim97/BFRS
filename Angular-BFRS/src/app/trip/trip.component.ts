@@ -38,4 +38,8 @@ export class TripComponent implements OnInit {
   isLogin(): boolean {
     return this.loginService.isLogin();
   }
+
+  isAvailable(): boolean {
+    return this.trip.status === 'On Time' || this.trip.status === 'Delayed';
+  }
 }

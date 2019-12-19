@@ -34,7 +34,6 @@ public class Logintrip {
 
 	public Logintrip() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Logintrip(Integer id, Login login, Trip trip, Double cost) {
