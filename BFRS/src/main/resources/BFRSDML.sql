@@ -82,6 +82,8 @@ create table message (
  create table tripview (
     id number primary key,
     login_id number,
+    username varchar2(25),
+    model varchar2(25),
     trip_from varchar2(25),
     trip_to varchar2(25),
     departure timestamp,
@@ -106,4 +108,6 @@ create sequence plane_seq;
 create sequence trip_seq;
 create sequence form_seq;
 create sequence tripview_seq;
+
+
 

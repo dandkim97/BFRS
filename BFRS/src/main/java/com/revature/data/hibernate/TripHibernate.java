@@ -4,21 +4,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.EntityManager;
 
 import org.apache.log4j.Logger;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
-import org.hibernate.transform.Transformers;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
-import com.revature.beans.Form;
-import com.revature.beans.Plane;
 import com.revature.beans.Trip;
 import com.revature.beans.TripView;
 import com.revature.data.TripDao;
@@ -45,7 +39,7 @@ public class TripHibernate implements TripDao {
 		Session s = hu.getSession();
 		String query = "from Trip";
 		Query<Trip> q = s.createQuery(query, Trip.class);
-		List<Trip> trips = q.list();
+		List<Trip> trips = q.getResultList();
 		s.close();
 		return new HashSet<Trip>(trips);
 	}
@@ -56,7 +50,7 @@ public class TripHibernate implements TripDao {
 		String query = "from TripView t where t.userId = :id";
 		Query<TripView> tv = s.createQuery(query, TripView.class);
 		tv.setParameter("id",  id);
-		List<TripView> tripViews = tv.list();
+		List<TripView> tripViews = tv.getResultList();
 		s.close();
 		return new HashSet<TripView>(tripViews);
 	}
@@ -80,5 +74,16 @@ public class TripHibernate implements TripDao {
 		return tv.getId();
 	}
 
+	@Override
+	public List<TripView> getAllHistoryTrips() {
+		Session s = hu.getSession();
+		String query = "from TripView order by userName ASC";
+		Query<TripView> q = s.createQuery(query, TripView.class);
+		List<TripView> tripViews = q.getResultList();
+		s.close();
+		return tripViews;
+	}
 
+
+	
 }

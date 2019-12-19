@@ -1,6 +1,8 @@
 package com.revature.services.hibernate;
 
+import java.util.List;
 import java.util.Set;
+
 
 import com.revature.beans.Trip;
 import com.revature.beans.TripView;
@@ -31,6 +33,13 @@ public class TripServiceHibernate implements TripService{
 		// TODO Auto-generated method stub
 		return td.addCustomerTripHistory(tv);
 	}
+
+	@Override
+	public List<TripView> getAllTripsHistory() {
+		// TODO Auto-generated method stub
+		return td.getAllHistoryTrips();
+	}
+
 
 
 }

@@ -22,6 +22,8 @@ import { LoginService } from './login.service';
 import { HomeComponent } from './home/home.component';
 import { MessageComponent } from './message/message.component';
 import { ViewCustomerMessagesComponent } from './message/view-customer-messages/view-customer-messages.component';
+import { LogintripComponent } from './logintrip/logintrip.component';
+import { LogintripListComponent } from './logintrip-list/logintrip-list.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { ViewCustomerMessagesComponent } from './message/view-customer-messages/
     NavBarComponent,
     HomeComponent,
     MessageComponent,
-    ViewCustomerMessagesComponent
+    ViewCustomerMessagesComponent,
+    LogintripComponent,
+    LogintripListComponent
   ],
   imports: [
     BrowserModule,
