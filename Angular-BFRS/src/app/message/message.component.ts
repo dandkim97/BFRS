@@ -24,6 +24,7 @@ export class MessageComponent implements OnInit {
   ngOnInit() {
     if (!this.message) {
       this.message = new Message();
+      this.message.type = 'Question';
     }
     this.user = this.loginService.getUser();
   }

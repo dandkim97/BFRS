@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -35,6 +36,24 @@ public class TripHibernate implements TripDao {
 		List<Trip> trips = q.list();
 		s.close();
 		return new HashSet<Trip>(trips);
+	}
+
+	@Override
+	public Trip updateTrip(Trip t) {
+		Session s = hu.getSession();
+		Transaction tx = null;
+		try {
+			tx = s.beginTransaction();
+			s.update(t);
+			tx.commit();
+		} catch(Exception e) {
+			if(tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			s.close();
+		}
+		return t;	
 	}
 
 }

@@ -27,8 +27,8 @@ create table trip (
     plane_id number,
     trip_from varchar2(25),
     trip_to varchar2(25),
-    departure timestamp,
-    arrival timestamp,
+    departure varchar2(50),
+    arrival varchar2(50),
     price number(7,2),
     status varchar2(25),
     constraint fk_trip_plane foreign key (plane_id)
@@ -88,3 +88,19 @@ create sequence plane_seq;
 create sequence trip_seq;
 create sequence form_seq;
 create sequence review_seq;
+
+create or replace procedure approve_message
+(asker_id_in in number, 
+message_id_in in number, 
+message_status_in in varchar2, 
+message_answer_in in varchar2)
+as
+cursor messages
+    is
+        select * from message;
+begin
+    update login set loyalty_status = 1 where id = asker_id_in;
+    update message set status = message_status_in, answer = message_answer_in where id = message_id_in;
+    commit;
+end approve_message;
+/
