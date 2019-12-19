@@ -1,4 +1,22 @@
 table {
     border: 1px solid black;
-    width: 70%;
+    width: 45.8%;
+}
+#thNo {
+    width: 14%;
+}
+#thSeatsTaken {
+    width: 15.5%;
+}
+#thFrom {
+    width: 10.5%;
+}
+#thTo {
+    width: 10.5%;
+}
+#thDeparture {
+    width: 20.5%;
+}
+#thArrival {
+    width: 20%;
 }

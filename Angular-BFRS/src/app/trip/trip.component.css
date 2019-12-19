@@ -2,23 +2,23 @@ td{
     border: 1px solid black;
 }
 #rowId {
-  width: 180px;
+  width: 100px;
 }
 #rowSeatsTaken {
-    width: 190px;
+    width: 120px;
 }
 #rowTripFrom {
-    width: 110px;
+    width: 80px;
 }
 #rowTripTo {
-    width: 100px;
+    width: 80px;
 }
 #rowDeparture {
-    width: 230px;
+    width: 160px;
 }
 #rowArrival {
-    width: 210px;
+    width: 160px;
 }
 #rowPrice {
-    width: 120px;
+    width: 80px;
 }
