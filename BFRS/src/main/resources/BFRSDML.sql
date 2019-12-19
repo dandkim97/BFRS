@@ -88,3 +88,19 @@ create sequence plane_seq;
 create sequence trip_seq;
 create sequence form_seq;
 create sequence review_seq;
+
+create or replace procedure approve_message
+(asker_id_in in number, 
+message_id_in in number, 
+message_status_in in varchar2, 
+message_answer_in in varchar2)
+as
+cursor messages
+    is
+        select * from message;
+begin
+    update login set loyalty_status = 1 where id = asker_id_in;
+    update message set status = message_status_in, answer = message_answer_in where id = message_id_in;
+    commit;
+end approve_message;
+/

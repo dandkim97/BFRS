@@ -17,13 +17,13 @@ export class TripService {
   ) { }
 
   public getTrip(id: number): Observable<Trip> {
-    return this.http.get(this.appUrl + '/' + id, { withCredentials: true }).pipe(
+    return this.http.get('http://localhost:8080/BFRS/trips/' + id, { withCredentials: true }).pipe(
       map(resp => resp as Trip)
     );
   }
 
   public getTrips(): Observable<Trip[]> {
-    return this.http.get(this.appUrl, { withCredentials: true }).pipe(
+    return this.http.get('http://localhost:8080/BFRS/trips/', { withCredentials: true }).pipe(
       map(resp => resp as Trip[])
     );
   }
