@@ -1,5 +1,8 @@
 package com.revature.data.hibernate;
 
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -74,16 +77,68 @@ public class TripHibernate implements TripDao {
 		return tv.getId();
 	}
 
+//	@Override
+//	public List<TripView> getAllHistoryTrips() {
+//		Session s = hu.getSession();
+//		String query = "from TripView order by userName ASC";
+//		Query<TripView> q = s.createQuery(query, TripView.class);
+//		List<TripView> tripViews = q.getResultList();
+//		s.close();
+//		return tripViews;
+//	}
+
 	@Override
 	public List<TripView> getAllHistoryTrips() {
 		Session s = hu.getSession();
-		String query = "from TripView order by userName ASC";
-		Query<TripView> q = s.createQuery(query, TripView.class);
-		List<TripView> tripViews = q.getResultList();
-		s.close();
-		return tripViews;
-	}
-
-
+		String nativeSQL = "select l.id as lid, l.username as us, "
+				+ "p.model as md, t.trip_from as tf, t.trip_to as tt, t.departure as dp, "
+				+ "t.arrival as av, f.num_seats as ns, f.is_round as ir, lt.trip_cost as tc "
+				+ "from forms f, login_trip lt, trip t, login l, plane p "
+				+ "where lt.login_id = f.login_id and f.trip_id = lt.trip_id "
+				+ "and t.id = f.trip_id and l.id = lt.login_id and t.plane_id = p.id "
+				+ "and lt.login_id >= :uid order by us ASC";
+			Query query = s.createNativeQuery(nativeSQL);
+			query.setParameter("uid",  1);  //get all users since condition is > =
+			List<Object[]> tvObj = query.list();
+//			System.out.println(tripViews.toString());
+			List<TripView> tm = new ArrayList<TripView>();
+			 for (Object[] a : tvObj) {
+				 TripView t = new TripView();
+//				 System.out.println(" a0 "+a[0]+" a1 "+a[1]
+//						 + " a2 "+a[2] + " a3 "+a[3]
+//						 + " a4 "+a[4] + " a5 "+a[5]		 
+//						+ " a6 "+a[6] + " a7 "+a[7]
+//						+ " a8 "+a[8] + " a9 "+a[9] 
+//						 );
+				  t.setUserId(((BigDecimal) a[0]).intValue()); 
+//				  System.out.println("user id is "+t.getUserId());
+				  t.setUserName((String) a[1]); 
+//				  System.out.println("user name is "+t.getUserName());
+				  
+				  t.setModel((String) a[2]); //model
+				  t.setTripFrom((String) a[3]); //tripFrom
+				  t.setTripTo((String) a[4]); //tripTo
+				  SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+				  String nd  = dateFormat.format(a[5]);
+//				  System.out.println(nd);
+				  t.setDeparture(nd);
+//				  System.out.println("departure is  "+t.getDeparture());
+				  String na = dateFormat.format(a[6]);
+				  t.setArrival(na);
+				  t.setNumSeats(((BigDecimal) a[7]).intValue());
+				  t.setIsRound(((BigDecimal) a[8]).intValue());
+				  t.setTripCost(((BigDecimal) a[9]).intValue());
+				  
+				  tm.add(t); 
+				  System.out.println(tm);				  
+				 }
+			
+			
+			s.close();
+			return tm;
+		}
+	
+	
+	
 	
 }
