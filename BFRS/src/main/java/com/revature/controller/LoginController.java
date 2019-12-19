@@ -45,5 +45,5 @@ public class LoginController {
 		ls.addLogin(l);
 		return ResponseEntity.status(201).body(l);
 	}
-
+	
 }

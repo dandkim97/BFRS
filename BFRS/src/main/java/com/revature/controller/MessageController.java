@@ -52,4 +52,9 @@ public class MessageController {
 	public ResponseEntity<Message> updateMessage(@PathVariable("messageId") int id, @RequestBody Message m){
 		return ResponseEntity.ok(ms.updateMessage(m));
 	}
+	
+	@PutMapping(value="/approve/{messageId}")
+	public ResponseEntity<Message> approveMessage(@PathVariable("messageId") int id, @RequestBody Message m){
+		return ResponseEntity.ok(ms.approveMessage(id, m));
+	}
 }

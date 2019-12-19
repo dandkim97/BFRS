@@ -25,6 +25,8 @@ import { AdminMsgComponent } from './admin-msg/admin-msg.component';
 import { MessageService } from './message.service';
 import { UpdateMsgComponent } from './update-msg/update-msg.component';
 import { ViewCustomerMessagesComponent } from './message/view-customer-messages/view-customer-messages.component';
+import { ReviewComponent } from './review/review.component';
+import { LoyaltyReqMsgComponent } from './loyalty-req-msg/loyalty-req-msg.component';
 import { PaymentComponent } from './payment/payment.component';
 import { LogintripComponent } from './logintrip/logintrip.component';
 import { LogintripListComponent } from './logintrip-list/logintrip-list.component';
@@ -44,12 +46,14 @@ import { LogintripListComponent } from './logintrip-list/logintrip-list.componen
     NavBarComponent,
     HomeComponent,
     MessageComponent,
+    ReviewComponent,
     AdminMsgComponent,
     UpdateMsgComponent,
     ViewCustomerMessagesComponent,
     PaymentComponent,
     LogintripComponent,
-    LogintripListComponent
+    LogintripListComponent,
+    LoyaltyReqMsgComponent
   ],
   imports: [
     BrowserModule,

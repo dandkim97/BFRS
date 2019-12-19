@@ -7,6 +7,7 @@
 		
 		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
 		<!-- <property name="hibernate.connection.url">jdbc:oracle:thin:@rev1910.cattctdc50a7.us-east-2.rds.amazonaws.com:1521:orcl</property>  -->
+		<!-- <property name="hibernate.connection.username">bfrs_rds</property> -->
 		<property name="hibernate.connection.username">bfrs</property>
 		<property name="hibernate.connection.password">p4ssw0rd</property>
 		
@@ -29,6 +30,7 @@
 		<mapping class="com.revature.beans.Login"/>
 		<mapping class="com.revature.beans.Message"/>
 		<mapping class="com.revature.beans.Logintrip"/>
+		<mapping class="com.revature.beans.Review"/>
 		
 	</session-factory>
 </hibernate-configuration>

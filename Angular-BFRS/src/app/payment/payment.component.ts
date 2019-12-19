@@ -23,14 +23,19 @@ export class PaymentComponent implements OnInit {
   trip: Trip;
   isRound: string;
   totalPrice: number;
+  oldPrice: number;
   seatsPrice: number;
   bagsPrice: number;
   classPrice: number;
   loginTrip: Logintrip = new Logintrip();
 
-  constructor(private Activatedroute: ActivatedRoute, private formService: FormService,
-    private tripService: TripService, private router: Router,
-    private loginTripService: LogintripService, private loginService: LoginService) { }
+  constructor(
+    private Activatedroute: ActivatedRoute,
+    private formService: FormService,
+    private tripService: TripService,
+    private loginService: LoginService,
+    private loginTripService: LogintripService,
+    private router: Router) { }
 
   ngOnInit() {
     this.sub = this.Activatedroute.paramMap.subscribe(params => {
@@ -88,6 +93,10 @@ export class PaymentComponent implements OnInit {
       this.classPrice = 350;
     }
     this.totalPrice += this.classPrice;
+    this.oldPrice = this.totalPrice;
+    if (this.isDiscounted()) {
+      this.totalPrice -= this.totalPrice * .05;
+    }
     console.log(this.totalPrice);
   }
 
@@ -107,8 +116,11 @@ export class PaymentComponent implements OnInit {
   cancelPayment() {
     this.router.navigate(['form']);
   }
-
+  
   okHome() {
     this.router.navigate(['home']);
+
+  isDiscounted(): boolean {
+    return this.loginService.isLoyalty();
   }
 }

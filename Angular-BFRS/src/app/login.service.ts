@@ -79,4 +79,7 @@ export class LoginService {
   isAdmin(): boolean {
     return (this.loginUser.isAdmin === 1);
   }
+  isLoyalty(): boolean {
+    return (this.loginUser.loyaltyStatus === 1);
+  }
 }

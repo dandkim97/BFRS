@@ -39,4 +39,10 @@ public class PlaneServiceHibernate implements PlaneService {
 		return flightList;
 	}
 
+	@Override
+	public void updatePlane(Plane p) {
+		pd.updatePlane(p);
+		
+	}
+
 }

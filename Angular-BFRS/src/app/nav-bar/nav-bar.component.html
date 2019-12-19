@@ -18,10 +18,13 @@
             <li *ngIf="isLogin() && !isAdmin()" class="nav-item">
                 <a class="nav-link" routerLink="/view_customer_messages">View Messages</a>
             </li>
-            <li class="nav-item">
+            <li *ngIf="isLogin() && !isAdmin()" class="nav-item">
+                <a class="nav-link" routerLink="/review">Review Flights</a>
+            </li>
+            <li>
                 <a class="nav-link" routerLink="/trips">View Flights</a>
             </li>
-            <li class="nav-item">
+            <li *ngIf="isLogin() && !isAdmin()" class="nav-item">
                 <a class="nav-link" routerLink="/form">Book a Flight</a>
             </li>
 			<li *ngIf="isLogin() && !isAdmin()" class="nav-item">

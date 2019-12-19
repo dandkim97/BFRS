@@ -24,6 +24,7 @@ export class MessageComponent implements OnInit {
   ngOnInit() {
     if (!this.message) {
       this.message = new Message();
+      this.message.type = 'Question';
     }
     this.user = this.loginService.getUser();
   }
@@ -32,6 +33,10 @@ export class MessageComponent implements OnInit {
     if (this.message.type === 'Question') {
       console.log(this.message);
       this.router.navigate(['viewAdminMsg/update', this.message.id]);
+    } else
+    if (this.message.type === 'Loyalty Request') {
+      console.log(this.message);
+      this.router.navigate(['viewAdminMsg/loyaltyReq', this.message.id]);
     }
   }
 

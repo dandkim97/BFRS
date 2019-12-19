@@ -11,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "trip")
@@ -37,14 +35,15 @@ public class Trip {
 	private String arrival;
 	@Column
 	private Double price;
+	@Column
+	private String status;
 
 	public Trip() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Trip(Integer id, Plane plane, Integer seatsTaken, String tripFrom, String tripTo, String departure,
-			String arrival, Double price) {
+			String arrival, Double price, String status) {
 		super();
 		this.id = id;
 		this.plane = plane;
@@ -54,6 +53,7 @@ public class Trip {
 		this.departure = departure;
 		this.arrival = arrival;
 		this.price = price;
+		this.status = status;
 	}
 
 	public Integer getId() {
@@ -119,6 +119,14 @@ public class Trip {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	@Override
 	public int hashCode() {
@@ -130,6 +138,7 @@ public class Trip {
 		result = prime * result + ((plane == null) ? 0 : plane.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		result = prime * result + ((seatsTaken == null) ? 0 : seatsTaken.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((tripFrom == null) ? 0 : tripFrom.hashCode());
 		result = prime * result + ((tripTo == null) ? 0 : tripTo.hashCode());
 		return result;
@@ -174,6 +183,11 @@ public class Trip {
 				return false;
 		} else if (!seatsTaken.equals(other.seatsTaken))
 			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
 		if (tripFrom == null) {
 			if (other.tripFrom != null)
 				return false;
@@ -190,7 +204,8 @@ public class Trip {
 	@Override
 	public String toString() {
 		return "Trip [id=" + id + ", plane=" + plane + ", seatsTaken=" + seatsTaken + ", tripFrom=" + tripFrom
-				+ ", tripTo=" + tripTo + ", departure=" + departure + ", arrival=" + arrival + ", price=" + price + "]";
+				+ ", tripTo=" + tripTo + ", departure=" + departure + ", arrival=" + arrival + ", price=" + price
+				+ ", status=" + status + "]";
 	}
 
 }

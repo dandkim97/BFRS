@@ -4,8 +4,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.hibernate.HibernateException;
+import javax.persistence.StoredProcedureQuery;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -15,7 +16,6 @@ import org.springframework.stereotype.Component;
 import com.revature.beans.Message;
 import com.revature.data.MessageDao;
 import com.revature.utils.HibernateUtil;
-
 import com.revature.utils.LogUtil;
 
 @Component
@@ -91,6 +91,19 @@ public class MessageHibernate implements MessageDao{
 		} finally {
 			s.close();
 		}
+		return m;
+	}
+
+	@Override
+	public Message approveMessage(Integer askerId, Message m) {
+		Session s = hu.getSession();
+		StoredProcedureQuery q = s.createNamedStoredProcedureQuery("approveMessage");
+		q.setParameter(1, askerId);
+		q.setParameter(2, m.getId());
+		q.setParameter(3, m.getStatus());
+		q.setParameter(4, m.getAnswer());
+		q.execute();
+		s.close();
 		return m;
 	}
 	

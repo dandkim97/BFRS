@@ -11,7 +11,6 @@
             <br>
             <span class="font-weight-bold">Message: </span>{{ message.quest }}
             <br>
-            <!-- the btn will have different options if it is a loyalty request -->
             <button class="btn btn-primary" (click)="redirectToUpdate()">Reply</button>
         </div>
     </div>
@@ -23,13 +22,10 @@
         <!-- Type of Question: <input type="text" [(ngModel)]="login.pswrd"> <br> -->
         <label >Type of Event:</label>
         <select [(ngModel)]="message.type">
-          <option selected>Choose...</option>
-          <option value="Loyalty Request">Loyalty Status Request</option>
+          <option *ngIf="user.loyaltyStatus === 0" value="Loyalty Request">Loyalty Status Request</option>
           <option value="Question">Customer Support Question</option>
         </select>
         Question/Request Info: <input type="text" [(ngModel)]="message.quest"> <br>
         <button type="button" (click)="addMessage()">Create Message</button>
     </div>
 </ng-template>
-
-

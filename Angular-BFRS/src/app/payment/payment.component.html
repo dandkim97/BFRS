@@ -26,9 +26,17 @@
 <div id='priceClass' class='price'>{{classPrice | currency}}</div>
 <br>
 <br>
+<div *ngIf="isDiscounted()" style="color: blue;">Loyalty Member Savings!</div>
 <div id='labelTotal'>Total Price:&nbsp;&nbsp;</div>
-<div id='valueTotal' class='price'>{{totalPrice | currency}}</div>
-
+<div id='valueTotal' class='price'>
+    <div *ngIf="!isDiscounted()">
+        {{totalPrice | currency}}
+    </div>
+    <div *ngIf="isDiscounted()">
+        <s>{{oldPrice | currency}}</s> 
+        <span style="color: blue;"> {{totalPrice | currency}}</span>
+    </div>
+</div>
 <br><br>
 <button type="button" id="paybtn" (click)="payFlight()" class="btn btn-success">Pay for Flight</button>
 &nbsp;

@@ -8,6 +8,8 @@ import { MessageComponent } from './message/message.component';
 import { ViewCustomerMessagesComponent } from './message/view-customer-messages/view-customer-messages.component';
 import { FormListComponent } from './form-list/form-list.component';
 import { TripListComponent } from './trip-list/trip-list.component';
+import { ReviewComponent } from './review/review.component';
+import { LoyaltyReqMsgComponent } from './loyalty-req-msg/loyalty-req-msg.component';
 import { PaymentComponent } from './payment/payment.component';
 import { LogintripListComponent } from './logintrip-list/logintrip-list.component';
 
@@ -30,12 +32,12 @@ const routes: Routes = [
     component: AdminMsgComponent
   },
   {
-    path: 'viewAdminMsg/update',
+    path: 'viewAdminMsg/update/:id',
     component: UpdateMsgComponent
   },
   {
-    path: 'viewAdminMsg/update/:id',
-    component: UpdateMsgComponent
+    path: 'viewAdminMsg/loyaltyReq/:id',
+    component: LoyaltyReqMsgComponent
   },
   {
     path: 'message',
@@ -52,6 +54,10 @@ const routes: Routes = [
   {
     path: 'trips',
     component: TripListComponent
+  },
+  {
+    path: 'review',
+    component: ReviewComponent
   },
   {
     path: 'payment/:id',
