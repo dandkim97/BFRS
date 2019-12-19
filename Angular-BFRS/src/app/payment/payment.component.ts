@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormService } from '../form.service';
 import { Form } from '../form';
 import { TripService } from '../trip.service';
 import { Trip } from '../trip';
 import { Router } from '@angular/router';
+import { LogintripService } from '../logintrip.service';
+import { Logintrip } from '../logintrip';
 import { LoginService } from '../login.service';
 
 @Component({
@@ -13,6 +15,8 @@ import { LoginService } from '../login.service';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
+  @Output() created = new EventEmitter<Boolean>();
+
   sub;
   tripId: number;
   form: Form;
@@ -23,12 +27,14 @@ export class PaymentComponent implements OnInit {
   seatsPrice: number;
   bagsPrice: number;
   classPrice: number;
+  loginTrip: Logintrip = new Logintrip();
 
   constructor(
     private Activatedroute: ActivatedRoute,
     private formService: FormService,
     private tripService: TripService,
     private loginService: LoginService,
+    private loginTripService: LogintripService,
     private router: Router) { }
 
   ngOnInit() {
@@ -95,12 +101,24 @@ export class PaymentComponent implements OnInit {
   }
 
   payFlight() {
+    this.loginTrip.login = this.loginService.getUser();
+    this.loginTrip.trip = this.trip;
+    this.loginTrip.cost = this.totalPrice;
+    console.log(this.loginTrip);
 
+    this.loginTripService.addLogintrip(this.loginTrip).subscribe(
+      resp => {
+        this.created.emit(true);
+      });
+    document.getElementById('myModal').style.display = 'block';
   }
 
   cancelPayment() {
     this.router.navigate(['form']);
   }
+  
+  okHome() {
+    this.router.navigate(['home']);
 
   isDiscounted(): boolean {
     return this.loginService.isLoyalty();

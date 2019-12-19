@@ -28,6 +28,9 @@ import { ViewCustomerMessagesComponent } from './message/view-customer-messages/
 import { ReviewComponent } from './review/review.component';
 import { LoyaltyReqMsgComponent } from './loyalty-req-msg/loyalty-req-msg.component';
 import { PaymentComponent } from './payment/payment.component';
+import { LogintripComponent } from './logintrip/logintrip.component';
+import { LogintripListComponent } from './logintrip-list/logintrip-list.component';
+
 
 @NgModule({
   declarations: [
@@ -47,8 +50,10 @@ import { PaymentComponent } from './payment/payment.component';
     AdminMsgComponent,
     UpdateMsgComponent,
     ViewCustomerMessagesComponent,
-    LoyaltyReqMsgComponent,
-    PaymentComponent
+    PaymentComponent,
+    LogintripComponent,
+    LogintripListComponent,
+    LoyaltyReqMsgComponent
   ],
   imports: [
     BrowserModule,
