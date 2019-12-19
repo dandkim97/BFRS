@@ -1,8 +1,10 @@
 package com.revature.services.hibernate;
 
+import java.util.List;
 import java.util.Set;
 
 import com.revature.beans.Trip;
+import com.revature.beans.TripView;
 import com.revature.data.TripDao;
 import com.revature.data.hibernate.TripHibernate;
 import com.revature.services.TripService;
@@ -18,6 +20,11 @@ public class TripServiceHibernate implements TripService{
 	@Override
 	public Set<Trip> getTrips() {
 		return td.getTrips();
+	}
+
+	@Override
+	public List<TripView> getAllTripsHistory() {
+		return td.getAllHistoryTrips();	
 	}
 	
 }

@@ -1,5 +1,6 @@
 package com.revature.controller;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Logintrip;
+import com.revature.beans.TripView;
 import com.revature.data.LogintripDao;
+import com.revature.data.TripDao;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -22,13 +25,22 @@ public class LogintripController {
 	@Autowired
 	private LogintripDao ld;
 	
+	@Autowired
+	private TripDao td;
+	
 	@GetMapping 
-	public ResponseEntity<Set<Logintrip>> getLogintrips() {
-			return ResponseEntity.ok(ld.getLogintrips());
-		}
+	public ResponseEntity<List<TripView>> getAllHistoryTrips() {
+			return ResponseEntity.ok(td.getAllHistoryTrips());
+	}
+	
+//	@GetMapping 
+//	public ResponseEntity<Set<Logintrip>> getLogintrips() {
+//			return ResponseEntity.ok(ld.getLogintrips());
+//	}
 	 
 	@PostMapping
 	public ResponseEntity<Logintrip> addLogintrip(@RequestBody Logintrip lt) {
+		System.out.println(lt);
 		ld.addLogintrip(lt);
 		return ResponseEntity.status(201).body(lt);
 	}

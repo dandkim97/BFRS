@@ -53,7 +53,7 @@ export class AddFormComponent implements OnInit {
   }
 
   addForm() {
-    // this.form.tripId = this.tripId;
+    this.form.loginId = this.loginService.getUser().id;
     this.formService.addForm(this.form).subscribe(
       resp => {
         this.created.emit(true);

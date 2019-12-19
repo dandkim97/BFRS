@@ -31,6 +31,7 @@
 		<mapping class="com.revature.beans.Message"/>
 		<mapping class="com.revature.beans.Logintrip"/>
 		<mapping class="com.revature.beans.Review"/>
+		<mapping class="com.revature.beans.TripView"/>
 		
 	</session-factory>
 </hibernate-configuration>

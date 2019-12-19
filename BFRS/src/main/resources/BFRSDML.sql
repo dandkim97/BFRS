@@ -5,6 +5,7 @@ drop table TRIP cascade constraints;
 drop table LOGIN_TRIP cascade constraints;
 drop table REVIEW cascade constraints;
 drop table MESSAGE cascade constraints;
+drop table TRIPVIEW cascade constraints;
 
 create table login (
     id number primary key,
@@ -41,8 +42,11 @@ create table forms (
     plane_class varchar2(25),
     is_round number,
     trip_id number,
+    login_id number,
     constraint fk_forms_trip foreign key (trip_id)
-        references trip(id)
+        references trip(id),
+    constraint fk_forms_login foreign key(login_id)
+		references login(id)
 );
 create table login_trip (
     id number primary key,
@@ -76,18 +80,36 @@ create table message (
         references login(id)
 );
 
+create table tripview (
+    id number primary key,
+    login_id number,
+    username varchar2(25),
+    model varchar2(25),
+    trip_from varchar2(25),
+    trip_to varchar2(25),
+    departure varchar2(50),
+    arrival varchar2(50),
+    num_seats number,
+    is_round number,
+    trip_cost number,
+    constraint fk_login_tripview foreign key (login_id)
+        references login(id)
+);
+
 drop sequence login_seq;
 drop sequence msg_seq;
 drop sequence plane_seq;
 drop sequence trip_seq;
 drop sequence form_seq;
 drop sequence review_seq;
+drop sequence logintrip_seq;
 create sequence login_seq;
 create sequence msg_seq;
 create sequence plane_seq;
 create sequence trip_seq;
 create sequence form_seq;
 create sequence review_seq;
+create sequence logintrip_seq;
 
 create or replace procedure approve_message
 (asker_id_in in number, 
