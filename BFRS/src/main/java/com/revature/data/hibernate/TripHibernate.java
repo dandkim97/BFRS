@@ -9,14 +9,17 @@ import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.revature.beans.Form;
 import com.revature.beans.Trip;
 import com.revature.beans.TripView;
 import com.revature.data.TripDao;
 import com.revature.utils.HibernateUtil;
+import com.revature.utils.LogUtil;
 
 @Component
 public class TripHibernate implements TripDao {
@@ -65,7 +68,7 @@ public class TripHibernate implements TripDao {
 		Session s = hu.getSession();
 		String nativeSQL = "select distinct l.id as lid, l.username as us, "
 				+ "p.model as md, t.trip_from as tf, t.trip_to as tt, t.departure as dp, "
-				+ "t.arrival as av, f.is_round as ir, lt.trip_cost as tc "
+				+ "t.arrival as av, f.is_round as ir, lt.trip_cost as tc, t.id as ti "
 				+ "from forms f, login_trip lt, trip t, login l, plane p "
 				+ "where lt.login_id = f.login_id and f.trip_id = lt.trip_id "
 				+ "and t.id = f.trip_id and l.id = lt.login_id and t.plane_id = p.id "
@@ -86,6 +89,7 @@ public class TripHibernate implements TripDao {
 				  t.setNumSeats((int)(Math.random()*3) + 1);
 				  t.setIsRound(((BigDecimal) a[7]).intValue());
 				  t.setTripCost(((BigDecimal) a[8]).intValue());
+				  t.setTripId(((BigDecimal) a[9]).intValue());
 				  
 				  tm.add(t); 
 				  System.out.println(tm);				  
@@ -95,4 +99,27 @@ public class TripHibernate implements TripDao {
 			s.close();
 			return tm;
 		}
+
+	@Override
+	public void addTripSeats(Trip t, Integer num) {
+		Session s = hu.getSession();
+		Transaction tx = null;
+		try {
+			tx = s.beginTransaction();
+			String nativeSQL = "update Trip set seats_taken = seats_taken+:num "
+					+ "where id = :id";
+			NativeQuery<Trip> q = s.createNativeQuery(nativeSQL, Trip.class);
+			q.setParameter("num", num);
+			q.setParameter("id", t.getId());
+			q.executeUpdate();
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			LogUtil.logException(e, TripHibernate.class);
+		} finally {
+			s.close();
+		}
+	}
 }

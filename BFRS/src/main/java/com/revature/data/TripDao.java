@@ -11,4 +11,5 @@ public interface TripDao {
 	public Set<Trip> getTrips();
 	public Trip updateTrip(Trip t);
 	public List<TripView> getAllHistoryTrips();
+	public void addTripSeats(Trip t, Integer num);
 }

@@ -1,5 +1,6 @@
 <table id="t01">  
     <tr>
+      <td>{{logintrip.id}}</td>
       <td>{{logintrip.userId}}</td>
       <td>{{logintrip.userName}}</td>
       <td>{{logintrip.model}}</td>
@@ -10,7 +11,7 @@
       <td>{{logintrip.numSeats}}</td>
       <td>{{logintrip.isRound}}</td>
       <td>{{logintrip.tripCost | currency}}</td>   
-
+      <button class="btn btn-danger" (click)="cancelFlight()">Cancel Reservation</button>
     </tr>
     
   </table>
