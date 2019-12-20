@@ -45,4 +45,9 @@ public class PlaneServiceHibernate implements PlaneService {
 		
 	}
 
+	@Override
+	public Plane getPlane(String model) {
+		return pd.getPlane(model);
+	}
+
 }

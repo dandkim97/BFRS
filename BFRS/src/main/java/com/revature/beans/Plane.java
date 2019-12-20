@@ -15,6 +15,7 @@ public class Plane {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "plane")
 	@SequenceGenerator(name = "plane", sequenceName = "plane_seq", allocationSize = 1)
 	private Integer id;
+	@Column
 	private String model;
 	private Integer seats;
 	@Column(name = "avg_rating")

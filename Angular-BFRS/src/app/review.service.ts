@@ -22,4 +22,14 @@ export class ReviewService {
         map(resp => resp as Review)
       );
   }
+
+  getReview(uid: number, model: string): Observable<Review> {
+    console.log('trying to get review');
+    const newUrl = this.appUrl + '/' + uid + '/' + model;
+    console.log(newUrl);
+    return this.http.get(newUrl, {withCredentials: true}).pipe(
+      map(resp => resp as Review)
+    );
+  }
+
 }

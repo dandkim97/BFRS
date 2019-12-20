@@ -1,5 +1,5 @@
 <ng-container
-    *ngIf="messages === undefined; then empty; else listOut">
+    *ngIf="!messages || messages.length == 0; then empty; else listOut">
 </ng-container>
 
 <ng-template #empty>
