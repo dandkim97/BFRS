@@ -16,6 +16,7 @@ import com.revature.beans.Logintrip;
 import com.revature.beans.TripView;
 import com.revature.data.LogintripDao;
 import com.revature.data.TripDao;
+import com.revature.services.LogintripService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -23,7 +24,7 @@ import com.revature.data.TripDao;
 public class LogintripController {
 	
 	@Autowired
-	private LogintripDao ld;
+	private LogintripService ls;
 	
 	@Autowired
 	private TripDao td;
@@ -41,7 +42,7 @@ public class LogintripController {
 	@PostMapping
 	public ResponseEntity<Logintrip> addLogintrip(@RequestBody Logintrip lt) {
 		System.out.println(lt);
-		ld.addLogintrip(lt);
+		ls.addLogintrip(lt);
 		return ResponseEntity.status(201).body(lt);
 	}
 }

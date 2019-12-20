@@ -16,4 +16,5 @@
 <!-- <app-trip [trip]="trip" (created)="submitted()"></app-trip> -->
 
 <br>
-<button type="button" id="addflightbtn" (click)="addFlight()" class="btn btn-info">Add a Flight</button>
+<button type="button" *ngIf="isLogin() && isAdmin()" id="addflightbtn" 
+    (click)="addFlight()" class="btn btn-warning">Add a Flight</button>

@@ -31,7 +31,9 @@ import { PaymentComponent } from './payment/payment.component';
 import { LogintripComponent } from './logintrip/logintrip.component';
 import { LogintripListComponent } from './logintrip-list/logintrip-list.component';
 import { AddFlightComponent } from './add-flight/add-flight.component';
-
+import { LogintripService } from './logintrip.service';
+import { ReviewService } from './review.service';
+import { PlaneService } from './plane.service';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,10 @@ import { AddFlightComponent } from './add-flight/add-flight.component';
     TripService,
     UrlService,
     LoginService,
-    MessageService
+    MessageService,
+    LogintripService,
+    ReviewService,
+    PlaneService
   ],
   bootstrap: [AppComponent]
 })

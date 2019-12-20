@@ -17,8 +17,9 @@ import com.revature.utils.LogUtil;
 
 @Component
 public class FormHibernate implements FormDao {
+	
 	@Autowired
-	private HibernateUtil hu;
+	private HibernateUtil hu = HibernateUtil.getInstance();
 
 	@Override
 	public int addForm(Form f) {

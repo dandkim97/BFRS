@@ -20,12 +20,14 @@ export class AddFormComponent implements OnInit {
     { name: 'Business' },
     { name: 'First Class' }
   ];
-  // tripId: number;
   isChecked = false;
   numFlights: number;
 
-  constructor(private formService: FormService, private router: Router,
-    private tripService: TripService, private loginService: LoginService) {
+  constructor(
+    private formService: FormService,
+    private router: Router,
+    private tripService: TripService,
+    private loginService: LoginService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 

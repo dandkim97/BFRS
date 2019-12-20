@@ -19,7 +19,7 @@ import com.revature.utils.LogUtil;
 public class LogintripHibernate implements LogintripDao {
 
 	@Autowired
-	private HibernateUtil hu;
+	private HibernateUtil hu = HibernateUtil.getInstance();
 	
 	@Override
 	public int addLogintrip(Logintrip lt) {

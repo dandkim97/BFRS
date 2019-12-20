@@ -3,6 +3,7 @@ import { TripService } from '../trip.service';
 import { Trip } from '../trip';
 import { Plane } from '../plane';
 import { Router } from '@angular/router';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-trip-list',
@@ -16,6 +17,7 @@ export class TripListComponent implements OnInit {
 
   constructor(
     private tripService: TripService,
+    private loginService: LoginService,
     private router: Router) { }
 
   ngOnInit() {
@@ -34,6 +36,14 @@ export class TripListComponent implements OnInit {
 
   addFlight() {
     this.router.navigate(['addflight']);
+  }
+
+  isLogin(): boolean {
+    return this.loginService.isLogin();
+  }
+
+  isAdmin(): boolean {
+    return this.loginService.isAdmin();
   }
 
 }

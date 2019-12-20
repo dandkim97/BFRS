@@ -1,13 +1,27 @@
 <div>
-    From: <input type="text" id=idFrom required [(ngModel)]="trip.tripFrom">
+    Plane Model:
+    <select id="idPlaneModel" required [(ngModel)]="selectedModel" name="selectedModel" (change)="selectedItem()">
+        <option *ngFor="let item of planes" [ngValue]="item">{{item.model}}</option>
+    </select>
     <br>
-    To: <input type="text" id=idTo required [(ngModel)]="trip.tripTo">
+    Seats Taken:
+    <input type="number" min="0" id=idSeats required [(ngModel)]="trip.seatsTaken">
     <br>
-    Departure Time: <input type="text" id=idDeparture required [(ngModel)]="trip.departure">
+    From:
+    <input type="text" id=idFrom required [(ngModel)]="trip.tripFrom">
     <br>
-    Arrival Time: <input type="text" id=idArrival required [(ngModel)]="trip.arrival">
+    To:
+    <input type="text" id=idTo required [(ngModel)]="trip.tripTo">
     <br>
-    Arrival Time: <input type="text" id=idPrice required [(ngModel)]="trip.price">
+    Departure Time:
+    <input type="text" id=idDeparture required [(ngModel)]="trip.departure">
     <br>
-    <button type="button" id="submitflightbtn" (click)="submitFlight()" class="btn btn-success">Submit</button>
+    Arrival Time:
+    <input type="text" id=idArrival required [(ngModel)]="trip.arrival">
+    <br>
+    Price:
+    <input type="text" id=idPrice required [(ngModel)]="trip.price">
+    <br><br>
+    <button type="button" id="submitflightbtn" (click)="submitFlight()"
+        class="btn btn-success">Submit</button>
 </div>
