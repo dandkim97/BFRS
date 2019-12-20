@@ -2,6 +2,8 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import {Trip} from '../trip';
 import { LoginService } from '../login.service';
 import { TripService } from '../trip.service';
+import { PlaneService } from '../plane.service';
+import { Plane } from '../plane';
 
 @Component({
   selector: 'app-trip',
