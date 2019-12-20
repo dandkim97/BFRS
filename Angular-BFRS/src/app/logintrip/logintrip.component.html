@@ -1,5 +1,6 @@
 <table id="t01">  
     <tr>
+      <td>{{logintrip.id}}</td>
       <td>{{logintrip.userId}}</td>
       <td>{{logintrip.userName}}</td>
       <td>{{logintrip.model}}</td>
@@ -23,6 +24,8 @@
           <button type="button" class="btn btn-success" (click)="goToReview()">Review</button>
           <a [routerLink]="['/review_button', logintrip.model]"></a>
       </ng-template>
+      
+      <button class="btn btn-danger" (click)="cancelFlight()">Cancel Reservation</button>
 
     </tr>
     
