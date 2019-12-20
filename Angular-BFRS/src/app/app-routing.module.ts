@@ -66,6 +66,10 @@ const routes: Routes = [
   {
     path: 'logintrips',
     component: LogintripListComponent
+  },
+  {
+    path: 'review_button/:model',
+    component: ReviewComponent
   }
 
 ];

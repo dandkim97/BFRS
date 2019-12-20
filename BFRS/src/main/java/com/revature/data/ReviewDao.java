@@ -10,4 +10,5 @@ public interface ReviewDao {
 	public List<Review> getReviewsByCustomer(Integer c);
 	public List<Review> getReviewsByPlane(Integer p);
 	public void updateReview(Review r);
+	public Review getReviewByUidModel(Integer uid, String model);
 }

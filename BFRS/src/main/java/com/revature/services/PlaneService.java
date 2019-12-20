@@ -10,4 +10,5 @@ public interface PlaneService {
 	public Integer getSeatsAvailable(Integer id);
 	public List<Trip> findAllAvailTrips();
 	public void updatePlane(Plane p);
+	public Plane getPlane(String model);
 }
