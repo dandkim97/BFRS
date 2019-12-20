@@ -1,0 +1,36 @@
+<ng-container
+    *ngIf="messages === undefined; then empty; else listOut">
+</ng-container>
+
+<ng-template #empty>
+    <h3>
+        No Messages Sent!
+    </h3>
+</ng-template>
+
+<ng-template #listOut>
+    <div *ngFor="let message of messages">
+        <ng-container
+            *ngIf="message.status === 'pending'; then pending; else done">
+        </ng-container>
+
+        <ng-template #pending>
+            <h2>================================</h2>
+            <h4>STATUS: Pending</h4>
+            <h4>MESSAGE ID#: {{message.id}}</h4>
+            <h4>TYPE: {{message.type}}</h4>
+            <h4>QUESTION: "{{message.quest}}"</h4>
+            <h2>================================</h2>
+        </ng-template>
+
+        <ng-template #done>
+            <h2>================================</h2>
+            <h4>STATUS: Complete!</h4>
+            <h4>MESSAGE ID#: {{message.id}}</h4>
+            <h4>TYPE: {{message.type}}</h4>
+            <h4>QUESTION: "{{message.quest}}"</h4>
+            <h4>ANSWER: "{{message.answer}}"</h4>
+            <h2>================================</h2>
+        </ng-template>
+    </div>
+</ng-template>

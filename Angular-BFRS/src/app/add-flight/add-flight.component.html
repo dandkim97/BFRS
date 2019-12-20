@@ -1,0 +1,13 @@
+<div>
+    From: <input type="text" id=idFrom required [(ngModel)]="trip.tripFrom">
+    <br>
+    To: <input type="text" id=idTo required [(ngModel)]="trip.tripTo">
+    <br>
+    Departure Time: <input type="text" id=idDeparture required [(ngModel)]="trip.departure">
+    <br>
+    Arrival Time: <input type="text" id=idArrival required [(ngModel)]="trip.arrival">
+    <br>
+    Arrival Time: <input type="text" id=idPrice required [(ngModel)]="trip.price">
+    <br>
+    <button type="button" id="submitflightbtn" (click)="submitFlight()" class="btn btn-success">Submit</button>
+</div>
