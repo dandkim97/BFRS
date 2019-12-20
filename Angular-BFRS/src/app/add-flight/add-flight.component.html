@@ -8,10 +8,10 @@
     <input type="number" min="0" id=idSeats required [(ngModel)]="trip.seatsTaken">
     <br>
     From:
-    <input type="text" id=idFrom required [(ngModel)]="trip.tripFrom">
+    <input type="datetime-local" id=idFrom required [(ngModel)]="trip.tripFrom">
     <br>
     To:
-    <input type="text" id=idTo required [(ngModel)]="trip.tripTo">
+    <input type="datetime-local" id=idTo required [(ngModel)]="trip.tripTo">
     <br>
     Departure Time:
     <input type="text" id=idDeparture required [(ngModel)]="trip.departure">
