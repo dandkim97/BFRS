@@ -7,9 +7,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+
 import com.revature.beans.Trip;
+
 import com.revature.data.TripDao;
 import com.revature.services.PlaneService;
 import com.revature.services.hibernate.PlaneServiceHibernate;
@@ -25,6 +30,7 @@ public class TripController {
 	@Autowired
 	private TripDao td;
 	
+	
 	@GetMapping
 	public ResponseEntity<List<Trip>> findAllAvailTrips() {
 		PlaneService ps = new PlaneServiceHibernate();
@@ -39,5 +45,12 @@ public class TripController {
 			return ResponseEntity.notFound().build();
 		return ResponseEntity.ok(t);
 	}
+	///////
+	@PostMapping(value="/add")
+	public ResponseEntity<Trip> addTrip(@RequestBody Trip t) {
+		td.addTrip(t);
+		return ResponseEntity.status(201).body(t);
+	}
+	////////
 
 }

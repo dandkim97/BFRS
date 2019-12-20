@@ -7,4 +7,5 @@ import com.revature.beans.Trip;
 public interface TripDao {
 	public Trip getTrip(int i);
 	public Set<Trip> getTrips();
+	public Integer addTrip(Trip t);
 }

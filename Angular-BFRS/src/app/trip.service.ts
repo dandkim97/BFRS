@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TripService {
+
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor(private http: HttpClient) { }
 
@@ -22,5 +23,13 @@ export class TripService {
       map(resp => resp as Trip[])
     );
   }
+
+  public addTrip(trip: Trip) {
+    const body = JSON.stringify(trip);
+    return this.http.post('http://localhost:8080/BFRS/trips/add/', body, { headers: this.headers, withCredentials: true }).pipe(
+      map(resp => resp as Trip)
+    );
+  }
+
 
 }

@@ -8,6 +8,7 @@ import { FormListComponent } from './form-list/form-list.component';
 import { AddFormComponent } from './add-form/add-form.component';
 import { TripListComponent } from './trip-list/trip-list.component';
 import { LogintripListComponent } from './logintrip-list/logintrip-list.component';
+import { AddTripComponent } from './add-trip/add-trip.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'logintrips',
     component: LogintripListComponent
+  },
+  {
+    path: 'addtrip',
+    component: AddTripComponent
   }
 
 ];

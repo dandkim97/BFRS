@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
 import com.revature.beans.Trip;
 import com.revature.data.TripDao;
 import com.revature.utils.HibernateUtil;
+import com.revature.utils.LogUtil;
 
 @Component
 public class TripHibernate implements TripDao {
@@ -36,6 +38,27 @@ public class TripHibernate implements TripDao {
 		List<Trip> trips = q.list();
 		s.close();
 		return new HashSet<Trip>(trips);
+	}
+	
+	@Override
+	public Integer addTrip(Trip t) {
+		
+		Session s = hu.getSession();
+		Transaction tx = null;
+		Integer i = 0;
+		try {
+			tx = s.beginTransaction();
+			i = (Integer) s.save(t);
+			tx.commit();
+		} catch(Exception e) {
+			if(tx != null)
+				tx.rollback();
+			LogUtil.logException(e, TripHibernate.class);
+			//e.printStackTrace();
+		} finally {
+			s.close();
+		}
+		return i;
 	}
 
 }

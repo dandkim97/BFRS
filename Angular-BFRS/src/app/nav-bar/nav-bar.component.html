@@ -22,6 +22,9 @@
             <li *ngIf="isLogin() && isAdmin()" class="nav-item">
                 <a class="nav-link" routerLink="/logintrips">View All Trips History</a>
             </li>
+            <li *ngIf="isLogin() && isAdmin()" class="nav-item">
+                <a class="nav-link" routerLink="/addtrip">Add Trip</a>
+            </li>
             <!-- <li class="nav-item">
                 <a *ngIf="route.url!=='/books'" class="nav-link" routerLink="/books">
                   Books
