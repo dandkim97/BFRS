@@ -7,10 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import com.revature.beans.Trip;
 import com.revature.data.TripDao;
@@ -46,5 +48,13 @@ public class TripController {
 		System.out.println(t);
 		return ResponseEntity.ok(td.updateTrip(t));
 	}
+	
+	@PostMapping
+	public ResponseEntity<Trip> addTrip(@RequestBody Trip t) {
+		td.addTrip(t);
+		return ResponseEntity.status(201).body(t);
+	}
 
 }
+
+

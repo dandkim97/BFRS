@@ -1,3 +1,7 @@
+-- User Creation Script for the bfrs Database
+
+-- Fresh Start. Drop the user.
+drop user bfrs cascade;
 create user bfrs
 identified by p4ssw0rd
 default tablespace users

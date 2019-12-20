@@ -1,7 +1,7 @@
 package com.revature.data.hibernate;
 
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
+//import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -13,6 +13,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+
 import com.revature.beans.Trip;
 import com.revature.beans.TripView;
 import com.revature.data.TripDao;
@@ -23,6 +24,28 @@ public class TripHibernate implements TripDao {
 
 	@Autowired
 	private HibernateUtil hu;
+	
+	
+	 @Override
+	 public int addTrip(Trip t) {
+		//Integer i = null;
+		Session s = hu.getSession();
+		Transaction tx = null;
+		try {
+			tx = s.beginTransaction();
+			s.save(t);
+			tx.commit();
+		} catch(Exception e) {
+			if(tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			s.close();
+		}
+		return t.getId();
+	}
+
+	 
 
 	@Override
 	public Trip getTrip(int i) {
