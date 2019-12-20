@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormService } from '../form.service';
 import { Form } from '../form';
 import { TripService } from '../trip.service';
 import { Trip } from '../trip';
 import { Router } from '@angular/router';
+import { LogintripService } from '../logintrip.service';
+import { Logintrip } from '../logintrip';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-payment',
@@ -12,18 +15,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
+  @Output() created = new EventEmitter<boolean>();
+
   sub;
   tripId: number;
   form: Form;
   trip: Trip;
   isRound: string;
   totalPrice: number;
+  oldPrice: number;
   seatsPrice: number;
   bagsPrice: number;
   classPrice: number;
+  loginTrip: Logintrip = new Logintrip();
 
-  constructor(private Activatedroute: ActivatedRoute, private formService: FormService,
-    private tripService: TripService, private router: Router) { }
+  constructor(
+    private Activatedroute: ActivatedRoute,
+    private formService: FormService,
+    private tripService: TripService,
+    private loginService: LoginService,
+    private loginTripService: LogintripService,
+    private router: Router) { }
 
   ngOnInit() {
     this.sub = this.Activatedroute.paramMap.subscribe(params => {
@@ -81,14 +93,34 @@ export class PaymentComponent implements OnInit {
       this.classPrice = 350;
     }
     this.totalPrice += this.classPrice;
+    this.oldPrice = this.totalPrice;
+    if (this.isDiscounted()) {
+      this.totalPrice -= this.totalPrice * .05;
+    }
     console.log(this.totalPrice);
   }
 
   payFlight() {
+    this.loginTrip.login = this.loginService.getUser();
+    this.loginTrip.trip = this.trip;
+    this.loginTrip.cost = this.totalPrice;
+    console.log(this.loginTrip);
 
+    this.loginTripService.addLogintrip(this.loginTrip).subscribe(
+      resp => {
+        this.created.emit(true);
+      });
+    document.getElementById('myModal').style.display = 'block';
   }
 
   cancelPayment() {
     this.router.navigate(['form']);
+  }
+
+  okHome() {
+    this.router.navigate(['home']);
+  }
+  isDiscounted(): boolean {
+    return this.loginService.isLoyalty();
   }
 }

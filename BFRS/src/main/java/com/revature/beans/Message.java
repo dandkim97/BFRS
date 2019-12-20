@@ -5,8 +5,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedStoredProcedureQueries;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
+
+@NamedStoredProcedureQueries({
+	@NamedStoredProcedureQuery(name="approveMessage", procedureName="approve_message", parameters = {
+			@StoredProcedureParameter(type=Integer.class, mode=ParameterMode.IN),
+			@StoredProcedureParameter(type=Integer.class, mode=ParameterMode.IN),
+			@StoredProcedureParameter(type=String.class, mode=ParameterMode.IN),
+			@StoredProcedureParameter(type=String.class, mode=ParameterMode.IN)
+	}),
+})
 
 @Entity
 @Table(name="MESSAGE")

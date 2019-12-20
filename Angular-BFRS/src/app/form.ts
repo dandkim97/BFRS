@@ -7,4 +7,5 @@ export class Form {
     planeClass: string;
     isRound: number;
     tripId: number;
+    loginId: number;
 }

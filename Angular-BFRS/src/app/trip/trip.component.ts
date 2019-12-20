@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import {Trip} from '../trip';
+import { LoginService } from '../login.service';
+import { TripService } from '../trip.service';
 
 @Component({
   selector: 'app-trip',
@@ -8,10 +10,36 @@ import {Trip} from '../trip';
 })
 export class TripComponent implements OnInit {
   @Input() trip: Trip;
+  @Output() created = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(
+    private loginService: LoginService,
+    private tripService: TripService
+  ) { }
 
   ngOnInit() {
   }
 
+  updateStatus() {
+    this.tripService.updateTrip(this.trip).subscribe(
+      resp => {
+        this.created.emit(true);
+    });
+    document.getElementById('myModal').style.display = 'block';
+  }
+
+  okHome() {
+    document.getElementById('myModal').style.display = 'none';
+  }
+  isAdmin(): boolean {
+    return this.loginService.isAdmin();
+  }
+
+  isLogin(): boolean {
+    return this.loginService.isLogin();
+  }
+
+  isAvailable(): boolean {
+    return this.trip.status === 'On Time' || this.trip.status === 'Delayed';
+  }
 }
