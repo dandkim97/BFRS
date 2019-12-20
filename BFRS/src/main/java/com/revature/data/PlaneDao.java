@@ -13,4 +13,5 @@ public interface PlaneDao {
 	Trip getSeatsTaken(Integer id);  	//from Trip table or object
 	
 	public void updatePlane(Plane p);
+	public Plane getPlane(String model);
 }
