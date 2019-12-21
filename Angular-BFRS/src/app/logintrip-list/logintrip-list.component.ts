@@ -4,6 +4,9 @@ import { Logintrip } from '../logintrip';
 import { Trip } from '../trip';
 import { Login } from '../login';
 import { LoginService } from '../login.service';
+import { Review } from '../review';
+import { Router } from '@angular/router';
+import { ReviewService } from '../review.service';
 
 @Component({
   selector: 'app-logintrip-list',
@@ -16,8 +19,13 @@ export class LogintripListComponent implements OnInit {
   logintrip: Logintrip;
   customerTrips: Logintrip[];
   currentUser: Login;
+  review: Review;
 
-  constructor(private logintripService: LogintripService, private loginService: LoginService) { }
+  constructor(
+    private logintripService: LogintripService,
+    private loginService: LoginService,
+    private route: Router,
+    private reviewService: ReviewService) { }
 
   ngOnInit() {
     this.currentUser = this.loginService.getUser();
@@ -31,10 +39,23 @@ export class LogintripListComponent implements OnInit {
         if (this.currentUser.isAdmin === 1) {
           this.logintrips = resp;
         }
-
+        this.review = new Review();
+        this.reviewService.getReview(this.logintrip.userId, this.logintrip.model).subscribe(
+          resp2 => {
+            this.review = resp2;
+      }
+    );
       }
     });
     this.logintrip = new Logintrip();
+  }
+
+  goToReview() {
+    this.route.navigate(['review_button', this.logintrip.model]);
+  }
+
+  reviewExists(): boolean {
+    return (this.review !== undefined && this.review !== null);
   }
 
 }

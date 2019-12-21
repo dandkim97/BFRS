@@ -30,6 +30,7 @@ import { LoyaltyReqMsgComponent } from './loyalty-req-msg/loyalty-req-msg.compon
 import { PaymentComponent } from './payment/payment.component';
 import { LogintripComponent } from './logintrip/logintrip.component';
 import { LogintripListComponent } from './logintrip-list/logintrip-list.component';
+import { BeforeReviewComponent } from './before-review/before-review.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { LogintripListComponent } from './logintrip-list/logintrip-list.componen
     PaymentComponent,
     LogintripComponent,
     LogintripListComponent,
-    LoyaltyReqMsgComponent
+    LoyaltyReqMsgComponent,
+    BeforeReviewComponent
   ],
   imports: [
     BrowserModule,

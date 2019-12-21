@@ -20,10 +20,9 @@
       </ng-template>
 
       <ng-template #reviewButton>
-          <button type="button" class="btn btn-success" (click)="goToReview()">Review</button>
-          <a [routerLink]="['/review_button', logintrip.model]"></a>
+          <td><button type="button" class="btn btn-success" (click)="goToReview()">Review</button>
+          <a [routerLink]="['/review_button', logintrip.model]"></a></td>
       </ng-template>
 
     </tr>
-    
   </table>
