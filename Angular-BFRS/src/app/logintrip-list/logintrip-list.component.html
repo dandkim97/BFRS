@@ -28,7 +28,7 @@
             <td>{{logintrip.isRound}}</td>
             <td>{{logintrip.tripCost | currency}}</td> 
 
-            <td><app-before-review *ngIf="!isAdmin()" [logintrip]="logintrip"></app-before-review></td>
+            <td *ngIf="!isAdmin()"><app-before-review [logintrip]="logintrip"></app-before-review></td>
             <!-- <ng-container
                 *ngIf="reviewExists(); then showReview; else reviewButton">
             </ng-container>
