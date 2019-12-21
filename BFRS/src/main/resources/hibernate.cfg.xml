@@ -5,10 +5,10 @@
 		<!-- JDBC set up -->
 		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
 		
-		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
-		<!-- <property name="hibernate.connection.url">jdbc:oracle:thin:@rev1910.cattctdc50a7.us-east-2.rds.amazonaws.com:1521:orcl</property>  -->
-		<!-- <property name="hibernate.connection.username">bfrs_rds</property> -->
-		<property name="hibernate.connection.username">bfrs</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@rev1910.cattctdc50a7.us-east-2.rds.amazonaws.com:1521:orcl</property>
+		<!-- <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>  -->
+		<!-- <property name="hibernate.connection.username">bfrs</property> -->
+		<property name="hibernate.connection.username">bfrs_rds</property>
 		<property name="hibernate.connection.password">p4ssw0rd</property>
 		
 		<!-- Hibernate set up -->

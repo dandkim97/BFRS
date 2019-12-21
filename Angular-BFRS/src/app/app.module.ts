@@ -35,6 +35,8 @@ import { AddFlightComponent } from './add-flight/add-flight.component';
 import { LogintripService } from './logintrip.service';
 import { ReviewService } from './review.service';
 import { PlaneService } from './plane.service';
+import { CancelReservationComponent } from './cancel-reservation/cancel-reservation.component';
+import { UpdateStatusComponent } from './update-status/update-status.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { PlaneService } from './plane.service';
     LogintripListComponent,
     LoyaltyReqMsgComponent,
     BeforeReviewComponent,
-    AddFlightComponent
+    AddFlightComponent,
+    CancelReservationComponent,
+    UpdateStatusComponent
   ],
   imports: [
     BrowserModule,

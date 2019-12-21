@@ -1,54 +1,62 @@
 package com.revature.beans;
 
 import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-
+import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
+
+@SqlResultSetMapping(
+		name="GetTripHistoryResults", 
+classes={ 
+		@ConstructorResult(targetClass=TripView.class, 
+		  columns={
+  	@ColumnResult(name="lid",type = Integer.class),
+  	@ColumnResult(name="us",type = String.class),
+  	@ColumnResult(name="md",type = String.class),
+  	@ColumnResult(name="tf",type = String.class),
+  	@ColumnResult(name="tt",type = String.class),
+  	@ColumnResult(name="dp",type = String.class),
+  	@ColumnResult(name="av",type = String.class),
+  	@ColumnResult(name="ns",type = Integer.class),
+  	@ColumnResult(name="ir",type = Integer.class),
+	@ColumnResult(name="tc",type = Double.class),
+	@ColumnResult(name="ti",type = Integer.class)
+  
+  })})
+
 
 @Entity
 @Table(name = "tripview")
 public class TripView {
 
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tripview")
-	@SequenceGenerator(name = "tripview", sequenceName = "tripview_seq", allocationSize = 1)
+
+	
 	@Column
 	@Id
-	private Integer id;
-	@Column(name = "login_id")
 	private Integer userId;
-	@Column
 	private String userName;
-	@Column
 	private String model;
-	@Column(name = "trip_from")
 	private String tripFrom;
-	@Column(name = "trip_to")
 	private String tripTo;
-	@Column
 	private String departure;
-	@Column
 	private String arrival;
-	@Column (name = "num_seats")
 	private Integer numSeats;
-	@Column(name = "is_round")
 	private Integer isRound;
-	@Column(name = "trip_cost")
-	private Integer tripCost;
+	private Double tripCost;
 	private Integer tripId;
+	
 	
 	public TripView() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public TripView(Integer id, Integer userId, String userName, String model, String tripFrom, String tripTo,
-			String departure, String arrival, Integer numSeats, Integer isRound, Integer tripCost) {
+	public TripView(Integer userId, String userName, String model, String tripFrom, String tripTo, String departure,
+			String arrival, Integer numSeats, Integer isRound, Double tripCost, Integer tripId) {
 		super();
-		this.id = id;
 		this.userId = userId;
 		this.userName = userName;
 		this.model = model;
@@ -59,92 +67,109 @@ public class TripView {
 		this.numSeats = numSeats;
 		this.isRound = isRound;
 		this.tripCost = tripCost;
+		this.tripId = tripId;
 	}
-    
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+
 	public Integer getUserId() {
 		return userId;
 	}
+
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
+
 	public String getUserName() {
 		return userName;
 	}
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
 	public String getModel() {
 		return model;
 	}
+
 	public void setModel(String model) {
 		this.model = model;
 	}
+
 	public String getTripFrom() {
 		return tripFrom;
 	}
+
 	public void setTripFrom(String tripFrom) {
 		this.tripFrom = tripFrom;
 	}
+
 	public String getTripTo() {
 		return tripTo;
 	}
+
 	public void setTripTo(String tripTo) {
 		this.tripTo = tripTo;
 	}
+
 	public String getDeparture() {
 		return departure;
 	}
+
 	public void setDeparture(String departure) {
 		this.departure = departure;
 	}
+
 	public String getArrival() {
 		return arrival;
 	}
+
 	public void setArrival(String arrival) {
 		this.arrival = arrival;
 	}
+
 	public Integer getNumSeats() {
 		return numSeats;
 	}
+
 	public void setNumSeats(Integer numSeats) {
 		this.numSeats = numSeats;
 	}
+
 	public Integer getIsRound() {
 		return isRound;
 	}
+
 	public void setIsRound(Integer isRound) {
 		this.isRound = isRound;
 	}
-	public Integer getTripCost() {
+
+	public Double getTripCost() {
 		return tripCost;
 	}
-	public void setTripCost(Integer tripCost) {
+
+	public void setTripCost(Double tripCost) {
 		this.tripCost = tripCost;
 	}
-  public Integer getTripId() {
+	
+	public Integer getTripId() {
 		return tripId;
 	}
+
 	public void setTripId(Integer tripId) {
 		this.tripId = tripId;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((arrival == null) ? 0 : arrival.hashCode());
 		result = prime * result + ((departure == null) ? 0 : departure.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((isRound == null) ? 0 : isRound.hashCode());
 		result = prime * result + ((model == null) ? 0 : model.hashCode());
 		result = prime * result + ((numSeats == null) ? 0 : numSeats.hashCode());
 		result = prime * result + ((tripCost == null) ? 0 : tripCost.hashCode());
 		result = prime * result + ((tripFrom == null) ? 0 : tripFrom.hashCode());
+		result = prime * result + ((tripId == null) ? 0 : tripId.hashCode());
 		result = prime * result + ((tripTo == null) ? 0 : tripTo.hashCode());
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
@@ -169,11 +194,6 @@ public class TripView {
 			if (other.departure != null)
 				return false;
 		} else if (!departure.equals(other.departure))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
 			return false;
 		if (isRound == null) {
 			if (other.isRound != null)
@@ -200,6 +220,11 @@ public class TripView {
 				return false;
 		} else if (!tripFrom.equals(other.tripFrom))
 			return false;
+		if (tripId == null) {
+			if (other.tripId != null)
+				return false;
+		} else if (!tripId.equals(other.tripId))
+			return false;
 		if (tripTo == null) {
 			if (other.tripTo != null)
 				return false;
@@ -220,9 +245,9 @@ public class TripView {
 
 	@Override
 	public String toString() {
-		return "TripView [id=" + id + ", userId=" + userId + ", userName=" + userName + ", model=" + model
-				+ ", tripFrom=" + tripFrom + ", tripTo=" + tripTo + ", departure=" + departure + ", arrival=" + arrival
-				+ ", numSeats=" + numSeats + ", isRound=" + isRound + ", tripCost=" + tripCost + "]";
+		return "TripView [userId=" + userId + ", userName=" + userName + ", model=" + model + ", tripFrom=" + tripFrom
+				+ ", tripTo=" + tripTo + ", departure=" + departure + ", arrival=" + arrival + ", numSeats=" + numSeats
+				+ ", isRound=" + isRound + ", tripCost=" + tripCost + ", tripId=" + tripId + "]";
 	}
 
 }

@@ -28,15 +28,6 @@ review: Review;
       }
     );
   }
-
-  cancelFlight() {
-    console.log(this.logintrip);
-    this.loginTripService.cancelLoginTrip(this.logintrip).subscribe(
-      resp => {
-        this.created.emit(true);
-      }
-    );
-  }
   goToReview() {
     this.route.navigate(['review_button', this.logintrip.model]);
   }

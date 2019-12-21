@@ -13,6 +13,7 @@
             <th>Round Trip</th>
             <th>Trip Cost</th>
             <th *ngIf="!isAdmin()">Review</th>
+            <th *ngIf="!isAdmin()">Cancel</th>
         </tr>
     </thead>
     <tbody>
@@ -29,6 +30,7 @@
             <td>{{logintrip.tripCost | currency}}</td> 
 
             <td *ngIf="!isAdmin()"><app-before-review [logintrip]="logintrip"></app-before-review></td>
+            <td *ngIf="!isAdmin()"><app-cancel-reservation [logintrip]="logintrip"></app-cancel-reservation></td>
         </tr>
     </tbody>
 </table>

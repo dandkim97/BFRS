@@ -24,6 +24,7 @@ public class LoginController {
 	
 	@PostMapping
 	public ResponseEntity<Login> login(@RequestBody Login l, HttpSession session) {
+		System.out.println("login is: " + l);
 		Login login = ls.getLogin(l.getUsername(), l.getPswrd());
 		System.out.println(login);
 		if (login == null) {

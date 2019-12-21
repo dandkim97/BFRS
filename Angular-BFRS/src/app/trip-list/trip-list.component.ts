@@ -60,7 +60,7 @@ export class TripListComponent implements OnInit {
   isAvailable(): boolean {
     return this.trip.status === 'On Time' || this.trip.status === 'Delayed';
   }
-  
+
   isAdmin(): boolean {
     return this.loginService.isAdmin();
   }

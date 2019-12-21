@@ -26,13 +26,13 @@ public class PlaneController {
 		return ResponseEntity.ok(ps.getPlanes());
 	}
 
-	@GetMapping(value = "{id}")
-	public ResponseEntity<Plane> getPlane(@PathVariable Integer id) {
-		Plane p = ps.getPlaneById(id);
-		if (p == null)
-			return ResponseEntity.notFound().build();
-		return ResponseEntity.ok(p);
-	}
+//	@GetMapping(value = "{id}")
+//	public ResponseEntity<Plane> getPlane(@PathVariable Integer id) {
+//		Plane p = ps.getPlaneById(id);
+//		if (p == null)
+//			return ResponseEntity.notFound().build();
+//		return ResponseEntity.ok(p);
+//	}
 
 	@GetMapping(value="{model}")
 	public ResponseEntity<Plane> getPlane(@PathVariable String model){

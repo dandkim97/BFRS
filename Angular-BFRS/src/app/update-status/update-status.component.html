@@ -1,0 +1,18 @@
+<div *ngIf="!isLogin() || !isAdmin() ">{{trip.status}}</div> 
+<div *ngIf="isLogin() && isAdmin()"> 
+    <label>Current Status: </label>
+    <select [(ngModel)]="trip.status">
+    <option value="On Time">On Time</option>
+    <option value="Delayed">Delayed</option>
+    <option value="Arrived">Arrived</option>
+    <option value="Cancelled">Cancelled</option>
+    </select> 
+    <button type="button" (click)="updateStatus()" class="btn btn-info">Update</button> 
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <p>Status changed!</p>
+        <button type="button" id="okbtn" (click)="okHome()" class="btn btn-success center-block">Ok</button>
+    </div>
+</div>

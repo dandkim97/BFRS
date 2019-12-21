@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { LogintripService } from '../logintrip.service';
 import { Logintrip } from '../logintrip';
 import { Login } from '../login';
@@ -13,6 +13,7 @@ import { ReviewService } from '../review.service';
   styleUrls: ['./logintrip-list.component.css']
 })
 export class LogintripListComponent implements OnInit {
+  @Output() created = new EventEmitter<boolean>();
 
   logintrips: Logintrip[] = [];
   logintrip: Logintrip;
