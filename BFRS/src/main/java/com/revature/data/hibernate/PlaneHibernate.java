@@ -102,4 +102,16 @@ public class PlaneHibernate implements PlaneDao {
 		
 	}
 
+	@Override
+	public Plane getPlane(String model) {
+		Session s = hu.getSession();
+		String query = "from Plane p where p.model=:model";
+		Query<Plane> qp = s.createQuery(query, Plane.class);
+		qp.setParameter("model", model);
+		Plane p = qp.uniqueResult();
+		s.close();
+		return p;
+		
+	}
+
 }

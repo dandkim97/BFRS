@@ -47,6 +47,18 @@ public class FormHibernate implements FormDao {
 		s.close();
 		return f;
 	}
+	
+	@Override
+	public Form getForm(Integer tId, Integer uId) {
+		Session s = hu.getSession();
+		String query = "from Form f where tripId = :tId and loginId = :uId";
+		Query<Form> q = s.createQuery(query, Form.class);
+		q.setParameter("tId", tId);
+		q.setParameter("uId", uId);
+		Form f = q.uniqueResult();
+		s.close();
+		return f;
+	}
 
 	@Override
 	public Set<Form> getForms() {

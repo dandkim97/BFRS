@@ -39,4 +39,5 @@ public class TripServiceHibernate implements TripService{
 	public Trip updateTrip(Trip t) {
 		return td.updateTrip(t);
 	}	
+
 }

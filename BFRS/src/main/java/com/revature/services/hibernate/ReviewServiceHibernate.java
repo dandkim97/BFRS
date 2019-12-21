@@ -25,4 +25,9 @@ public class ReviewServiceHibernate implements ReviewService{
 		
 	}
 
+	@Override
+	public Review getReview(Integer uid, String model) {
+		return rd.getReviewByUidModel(uid, model);
+	}
+
 }

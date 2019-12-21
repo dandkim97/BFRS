@@ -26,15 +26,14 @@ public class Form {
 	private Integer isRound;
 	@Column(name = "trip_id")
 	private Integer tripId;
-	@Column(name = "login_id")
+	@Column(name="login_id")
 	private Integer loginId;
 
 	public Form() {
 		super();
 	}
 
-	public Form(Integer id, Integer numSeats, Integer numBags, String planeClass, Integer isRound, Integer tripId,
-			Integer loginId) {
+	public Form(Integer id, Integer numSeats, Integer numBags, String planeClass, Integer isRound, Integer tripId, Integer loginId) {
 		super();
 		this.id = id;
 		this.numSeats = numSeats;
@@ -90,6 +89,18 @@ public class Form {
 	}
 
 	public void setTrip(Integer tripId) {
+		this.tripId = tripId;
+	}
+	
+	public Integer getLoginId() {
+		return loginId;
+	}
+
+	public void setLoginId(Integer loginId) {
+		this.loginId = loginId;
+	}
+
+	public void setTripId(Integer tripId) {
 		this.tripId = tripId;
 	}
 
@@ -171,5 +182,6 @@ public class Form {
 		return "Form [id=" + id + ", numSeats=" + numSeats + ", numBags=" + numBags + ", planeClass=" + planeClass
 				+ ", isRound=" + isRound + ", tripId=" + tripId + ", loginId=" + loginId + "]";
 	}
+
 
 }

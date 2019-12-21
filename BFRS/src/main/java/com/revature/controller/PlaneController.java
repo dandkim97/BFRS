@@ -33,4 +33,14 @@ public class PlaneController {
 			return ResponseEntity.notFound().build();
 		return ResponseEntity.ok(p);
 	}
+
+	@GetMapping(value="{model}")
+	public ResponseEntity<Plane> getPlane(@PathVariable String model){
+		Plane p = ps.getPlane(model);
+		if(p == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(p);
+	}
+
 }

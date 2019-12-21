@@ -8,6 +8,7 @@ import { Plane } from './plane';
   providedIn: 'root'
 })
 export class PlaneService {
+
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
@@ -23,4 +24,11 @@ export class PlaneService {
       map(resp => resp as Plane)
     );
   }
+
+  public getPlane(model: string): Observable<Plane> {
+    return this.http.get('http://localhost:8080/BFRS/plane/' + model, {withCredentials: true}).pipe(
+      map(resp => resp as Plane)
+    );
+  }
+
 }

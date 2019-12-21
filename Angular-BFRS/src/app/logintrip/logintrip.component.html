@@ -9,6 +9,21 @@
       <td>{{logintrip.arrival}}</td>
       <td>{{logintrip.numSeats}}</td>
       <td>{{logintrip.isRound}}</td>
-      <td>{{logintrip.tripCost | currency}}</td>   
+      <td>{{logintrip.tripCost | currency}}</td> 
+
+      <ng-container
+          *ngIf="reviewExists(); then showReview; else reviewButton">
+      </ng-container>
+
+      <ng-template #showReview>
+          <td>{{review.rating}}</td>
+      </ng-template>
+
+      <ng-template #reviewButton>
+          <button type="button" class="btn btn-success" (click)="goToReview()">Review</button>
+          <a [routerLink]="['/review_button', logintrip.model]"></a>
+      </ng-template>
+      
+      <button class="btn btn-danger" (click)="cancelFlight()">Cancel Reservation</button>
     </tr>
   </table>

@@ -22,5 +22,12 @@ export class LogintripService {
       map(resp => resp as Logintrip)
     );
   }
+
+  public cancelLoginTrip(loginTrip: Logintrip): Observable<Logintrip> {
+    return this.http.delete('http://localhost:8080/BFRS/logintrips/' + loginTrip.tripId + '/' + loginTrip.userId,
+    { headers: this.headers, withCredentials: true }).pipe(
+      map(resp => resp as Logintrip)
+    );
+  }
 }
 

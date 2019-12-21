@@ -71,6 +71,10 @@ const routes: Routes = [
   {
     path: 'addflight',
     component: AddFlightComponent
+  },
+  {
+    path: 'review_button/:model',
+    component: ReviewComponent
   }
 ];
 

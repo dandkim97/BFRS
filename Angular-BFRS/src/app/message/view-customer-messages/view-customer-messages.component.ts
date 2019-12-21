@@ -18,6 +18,7 @@ export class ViewCustomerMessagesComponent implements OnInit {
   ngOnInit() {
     this.user = this.loginService.getUser();
     this.messageService.getMessagesCustomer(this.user).subscribe( resp => {
+      console.log(resp)
       this.messages = resp;
     });
     console.log(this.messages);

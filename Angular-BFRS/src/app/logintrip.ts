@@ -3,7 +3,6 @@ import { Trip } from './trip';
 import { CommentStmt } from '@angular/compiler';
 
 export class Logintrip {
-    id: number;
     userId: number;
     userName: string;
     model: string;
@@ -14,6 +13,8 @@ export class Logintrip {
     numSeats: number;
     isRound: number;
     tripCost: number;
+    tripId: number;
+    id: number;
     login: Login;
     trip: Trip;
     cost: number;
