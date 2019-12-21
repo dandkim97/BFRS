@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Logintrip } from '../logintrip';
+import { LogintripService } from '../logintrip.service';
 import { Router } from '@angular/router';
 import { Review } from '../review';
 import { ReviewService } from '../review.service';
@@ -11,9 +12,13 @@ import { ReviewService } from '../review.service';
 })
 export class LogintripComponent implements OnInit {
 @Input() logintrip: Logintrip;
+@Output() created = new EventEmitter<boolean>();
 review: Review;
 
-  constructor(private route: Router, private reviewService: ReviewService) { }
+  constructor(
+    private loginTripService: LogintripService,
+    private route: Router,
+    private reviewService: ReviewService) { }
 
   ngOnInit() {
     this.review = new Review();
@@ -24,6 +29,14 @@ review: Review;
     );
   }
 
+  cancelFlight() {
+    console.log(this.logintrip);
+    this.loginTripService.cancelLoginTrip(this.logintrip).subscribe(
+      resp => {
+        this.created.emit(true);
+      }
+    );
+  }
   goToReview() {
     this.route.navigate(['review_button', this.logintrip.model]);
   }

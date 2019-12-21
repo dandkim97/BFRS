@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationStart } from '@angular/router';
 import { FormService } from '../form.service';
 import { Form } from '../form';
 import { TripService } from '../trip.service';
@@ -28,6 +28,7 @@ export class PaymentComponent implements OnInit {
   bagsPrice: number;
   classPrice: number;
   loginTrip: Logintrip = new Logintrip();
+  payBtnClicked = 0;
 
   constructor(
     private Activatedroute: ActivatedRoute,
@@ -58,6 +59,16 @@ export class PaymentComponent implements OnInit {
             });
         });
     });
+
+    this.router.events.subscribe(
+      (val) => {
+        if (val instanceof NavigationStart && this.payBtnClicked === 0) {
+          this.formService.deleteForm(this.form).subscribe(
+            resp => {
+              console.log('Form deleted.');
+            });
+        }
+      });
   }
 
   getTotalPrice() {
@@ -110,16 +121,25 @@ export class PaymentComponent implements OnInit {
       resp => {
         this.created.emit(true);
       });
+
+    this.payBtnClicked = 1;
     document.getElementById('myModal').style.display = 'block';
   }
 
   cancelPayment() {
+    console.log(this.form);
+    this.formService.deleteForm(this.form).subscribe(
+      resp => {
+        console.log('Form deleted.');
+      });
+
     this.router.navigate(['form']);
   }
 
   okHome() {
     this.router.navigate(['home']);
   }
+
   isDiscounted(): boolean {
     return this.loginService.isLoyalty();
   }

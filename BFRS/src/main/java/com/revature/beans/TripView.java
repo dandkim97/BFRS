@@ -10,7 +10,6 @@ import javax.persistence.SequenceGenerator;
 
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "tripview")
 public class TripView {
@@ -40,17 +39,11 @@ public class TripView {
 	private Integer isRound;
 	@Column(name = "trip_cost")
 	private Integer tripCost;
-	
+	private Integer tripId;
 	
 	public TripView() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
-	
-	
-	
-	
 
 	public TripView(Integer id, Integer userId, String userName, String model, String tripFrom, String tripTo,
 			String departure, String arrival, Integer numSeats, Integer isRound, Integer tripCost) {
@@ -67,122 +60,79 @@ public class TripView {
 		this.isRound = isRound;
 		this.tripCost = tripCost;
 	}
-
-
-
-
-
-
+    
 	public Integer getId() {
 		return id;
 	}
-
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-
 	public Integer getUserId() {
 		return userId;
 	}
-
-
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-
-
 	public String getUserName() {
 		return userName;
 	}
-
-
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
-
 	public String getModel() {
 		return model;
 	}
-
-
 	public void setModel(String model) {
 		this.model = model;
 	}
-
-
 	public String getTripFrom() {
 		return tripFrom;
 	}
-
-
 	public void setTripFrom(String tripFrom) {
 		this.tripFrom = tripFrom;
 	}
-
-
 	public String getTripTo() {
 		return tripTo;
 	}
-
-
 	public void setTripTo(String tripTo) {
 		this.tripTo = tripTo;
 	}
-
-
 	public String getDeparture() {
 		return departure;
 	}
-
-
 	public void setDeparture(String departure) {
 		this.departure = departure;
 	}
-
-
 	public String getArrival() {
 		return arrival;
 	}
-
-
 	public void setArrival(String arrival) {
 		this.arrival = arrival;
 	}
-
-
 	public Integer getNumSeats() {
 		return numSeats;
 	}
-
-
 	public void setNumSeats(Integer numSeats) {
 		this.numSeats = numSeats;
 	}
-
-
 	public Integer getIsRound() {
 		return isRound;
 	}
-
-
 	public void setIsRound(Integer isRound) {
 		this.isRound = isRound;
 	}
-
-
 	public Integer getTripCost() {
 		return tripCost;
 	}
-
-
 	public void setTripCost(Integer tripCost) {
 		this.tripCost = tripCost;
 	}
-
-
+  public Integer getTripId() {
+		return tripId;
+	}
+	public void setTripId(Integer tripId) {
+		this.tripId = tripId;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -200,7 +150,6 @@ public class TripView {
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -269,17 +218,11 @@ public class TripView {
 		return true;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "TripView [id=" + id + ", userId=" + userId + ", userName=" + userName + ", model=" + model
 				+ ", tripFrom=" + tripFrom + ", tripTo=" + tripTo + ", departure=" + departure + ", arrival=" + arrival
 				+ ", numSeats=" + numSeats + ", isRound=" + isRound + ", tripCost=" + tripCost + "]";
 	}
-
-
-	
-	
 
 }

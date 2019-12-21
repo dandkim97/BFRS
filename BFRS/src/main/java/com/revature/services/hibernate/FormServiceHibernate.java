@@ -2,6 +2,7 @@ package com.revature.services.hibernate;
 
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.beans.Form;
@@ -11,6 +12,8 @@ import com.revature.services.FormService;
 
 @Service
 public class FormServiceHibernate implements FormService {
+	
+	@Autowired
 	private static FormDao fd = new FormHibernate();
 
 	@Override
@@ -29,8 +32,8 @@ public class FormServiceHibernate implements FormService {
 	}
 
 	@Override
-	public void updateForm(Form f) {
-		fd.updateForm(f);
+	public Form updateForm(Form f) {
+		return fd.updateForm(f);
 	}
 
 	@Override

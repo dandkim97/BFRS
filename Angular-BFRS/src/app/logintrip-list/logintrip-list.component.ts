@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LogintripService } from '../logintrip.service';
 import { Logintrip } from '../logintrip';
-import { Trip } from '../trip';
 import { Login } from '../login';
 import { LoginService } from '../login.service';
 import { Review } from '../review';
@@ -31,7 +30,7 @@ export class LogintripListComponent implements OnInit {
     this.currentUser = this.loginService.getUser();
 
     this.logintripService.getAllHistoryTrips().subscribe(resp => {
-
+      console.log(resp);
       for (let i = 0; i < resp.length; i++) {
         if (this.currentUser.isAdmin === 0 && (this.currentUser.id === resp[i].userId)) {
           this.logintrips.push(resp[i]);

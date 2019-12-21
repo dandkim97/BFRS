@@ -15,23 +15,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Form;
-import com.revature.data.FormDao;
+import com.revature.services.FormService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/form")
 public class FormController {
+	
 	@Autowired
-	private FormDao fd;
+	private FormService fs;
 
 	@GetMapping
 	public ResponseEntity<Set<Form>> getForms() {
-		return ResponseEntity.ok(fd.getForms());
+		return ResponseEntity.ok(fs.getForms());
 	}
 
 	@GetMapping(value = "{id}")
 	public ResponseEntity<Form> getForm(@PathVariable Integer id) {
-		Form f = fd.getForm(id);
+		Form f = fs.getFormById(id);
 		if (f == null)
 			return ResponseEntity.notFound().build();
 		return ResponseEntity.ok(f);
@@ -39,22 +40,23 @@ public class FormController {
 
 	@PostMapping
 	public ResponseEntity<Form> addForm(@RequestBody Form f) {
-		fd.addForm(f);
+		System.out.println(f);
+		fs.addForm(f);
 		return ResponseEntity.status(201).body(f);
 	}
 
 	@PutMapping(value = "{id}")
 	public ResponseEntity<Form> updateForm(@PathVariable Integer id, @RequestBody Form f) {
-		if (fd.getForm(id) == null)
+		if (fs.getFormById(id) == null)
 			return ResponseEntity.status(405).body(null);
-		return ResponseEntity.ok(fd.updateForm(f));
+		return ResponseEntity.ok(fs.updateForm(f));
 	}
 
 	@DeleteMapping(value = "{id}")
 	public ResponseEntity<Void> deleteForm(@PathVariable Integer id) {
-		if (fd.getForm(id) == null)
+		if (fs.getFormById(id) == null)
 			return ResponseEntity.status(405).build();
-		fd.deleteForm(fd.getForm(id));
+		fs.deleteForm(fs.getFormById(id));
 		return ResponseEntity.noContent().build();
 	}
 }

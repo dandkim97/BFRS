@@ -46,3 +46,8 @@
         <button type="button" id="okbtn" (click)="okHome()" class="btn btn-success center-block">Ok</button>
     </div>
   </div>
+
+<br>
+<button type="button" *ngIf="isLogin() && isAdmin()" id="addflightbtn" 
+    (click)="addFlight()" class="btn btn-warning">Add a Flight</button>
+

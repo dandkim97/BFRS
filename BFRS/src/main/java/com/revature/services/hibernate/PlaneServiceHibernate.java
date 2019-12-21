@@ -2,6 +2,7 @@ package com.revature.services.hibernate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,16 @@ public class PlaneServiceHibernate implements PlaneService {
 	@Autowired
 	private PlaneDao pd = new PlaneHibernate();
 
+	@Override
+	public Plane getPlaneById(int id) {
+		return pd.getPlane(id);
+	}
+	
+	@Override
+	public Set<Plane> getPlanes() {
+		return pd.getPlanes();
+	}
+	
 	@Override
 	public Plane getMaxiumSeats(Integer id) {
 		return pd.getMaxSeats(id);
@@ -42,7 +53,6 @@ public class PlaneServiceHibernate implements PlaneService {
 	@Override
 	public void updatePlane(Plane p) {
 		pd.updatePlane(p);
-		
 	}
 
 	@Override

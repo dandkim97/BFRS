@@ -31,7 +31,10 @@ import { PaymentComponent } from './payment/payment.component';
 import { LogintripComponent } from './logintrip/logintrip.component';
 import { LogintripListComponent } from './logintrip-list/logintrip-list.component';
 import { BeforeReviewComponent } from './before-review/before-review.component';
-
+import { AddFlightComponent } from './add-flight/add-flight.component';
+import { LogintripService } from './logintrip.service';
+import { ReviewService } from './review.service';
+import { PlaneService } from './plane.service';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,8 @@ import { BeforeReviewComponent } from './before-review/before-review.component';
     LogintripComponent,
     LogintripListComponent,
     LoyaltyReqMsgComponent,
-    BeforeReviewComponent
+    BeforeReviewComponent,
+    AddFlightComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +72,10 @@ import { BeforeReviewComponent } from './before-review/before-review.component';
     TripService,
     UrlService,
     LoginService,
-    MessageService
+    MessageService,
+    LogintripService,
+    ReviewService,
+    PlaneService
   ],
   bootstrap: [AppComponent]
 })

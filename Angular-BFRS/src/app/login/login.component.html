@@ -29,7 +29,13 @@
   </ng-template>
 
   <ng-template #customer>
-    <div>
+    <div *ngIf="loggedUser.loyaltyStatus === 0; else loyaltyCustomer">
       <span>Welcome Customer! {{loggedUser.first + " " + loggedUser.last}}</span>
+    </div>
+  </ng-template>
+
+  <ng-template #loyaltyCustomer>
+    <div>
+      <span>Welcome <span style="color:blue;">Loyal</span> Customer! {{loggedUser.first + " " + loggedUser.last}}</span>
     </div>
   </ng-template>
