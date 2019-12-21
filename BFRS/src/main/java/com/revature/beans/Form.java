@@ -44,6 +44,18 @@ public class Form {
 		this.loginId = loginId;
 	}
 
+	public Integer getLoginId() {
+		return loginId;
+	}
+
+	public void setLoginId(Integer loginId) {
+		this.loginId = loginId;
+	}
+
+	public void setTripId(Integer tripId) {
+		this.tripId = tripId;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -89,30 +101,6 @@ public class Form {
 	}
 
 	public void setTrip(Integer tripId) {
-		this.tripId = tripId;
-	}
-	
-	public Integer getLoginId() {
-		return loginId;
-	}
-
-	public void setLoginId(Integer loginId) {
-		this.loginId = loginId;
-	}
-
-	public void setTripId(Integer tripId) {
-		this.tripId = tripId;
-	}
-
-	public Integer getLoginId() {
-		return loginId;
-	}
-
-	public void setLoginId(Integer loginId) {
-		this.loginId = loginId;
-	}
-
-	public void setTripId(Integer tripId) {
 		this.tripId = tripId;
 	}
 
@@ -182,6 +170,5 @@ public class Form {
 		return "Form [id=" + id + ", numSeats=" + numSeats + ", numBags=" + numBags + ", planeClass=" + planeClass
 				+ ", isRound=" + isRound + ", tripId=" + tripId + ", loginId=" + loginId + "]";
 	}
-
 
 }

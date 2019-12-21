@@ -29,8 +29,8 @@ public class LogintripController {
 	@Autowired
 	private LogintripService ls;
 	
-  @Autowired
-  private LogintripDao ld;
+	@Autowired
+	private LogintripDao ld;
   
 	@Autowired
 	private TripDao td;
@@ -47,6 +47,8 @@ public class LogintripController {
 	public ResponseEntity<Logintrip> addLogintrip(@RequestBody Logintrip lt) {
 		System.out.println(lt);
 		ls.addLogintrip(lt);
+		Integer seatsToSubtract = fd.getForm(lt.getTrip().getId(), lt.getLogin().getId()).getNumSeats(); 
+		td.addTripSeats(lt.getTrip(), -1*seatsToSubtract);
 		return ResponseEntity.status(201).body(lt);
 	}
 	

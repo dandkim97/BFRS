@@ -39,9 +39,11 @@ public class TripView {
 	private Integer isRound;
 	@Column(name = "trip_cost")
 	private Integer tripCost;
-  private Integer tripId;
+	private Integer tripId;
+	
 	public TripView() {
 		super();
+	}
 
 	public TripView(Integer id, Integer userId, String userName, String model, String tripFrom, String tripTo,
 			String departure, String arrival, Integer numSeats, Integer isRound, Integer tripCost) {

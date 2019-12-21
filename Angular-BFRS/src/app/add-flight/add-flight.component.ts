@@ -36,6 +36,7 @@ export class AddFlightComponent implements OnInit {
   }
 
   submitFlight() {
+    this.trip.status = 'On Time';
     this.tripService.addTrip(this.trip).subscribe(
       resp => {
         this.created.emit(true);

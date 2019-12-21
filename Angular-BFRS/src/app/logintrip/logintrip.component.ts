@@ -16,8 +16,8 @@ export class LogintripComponent implements OnInit {
 review: Review;
 
   constructor(
-    private loginTripService: LogintripService,        
-    private route: Router, 
+    private loginTripService: LogintripService,
+    private route: Router,
     private reviewService: ReviewService) { }
 
   ngOnInit() {
@@ -36,6 +36,7 @@ review: Review;
         this.created.emit(true);
       }
     );
+  }
   goToReview() {
     this.route.navigate(['review_button', this.logintrip.model]);
   }

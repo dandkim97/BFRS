@@ -40,6 +40,7 @@ public class FormController {
 
 	@PostMapping
 	public ResponseEntity<Form> addForm(@RequestBody Form f) {
+		System.out.println(f);
 		fs.addForm(f);
 		return ResponseEntity.status(201).body(f);
 	}

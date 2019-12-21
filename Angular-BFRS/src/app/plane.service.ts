@@ -19,11 +19,11 @@ export class PlaneService {
     );
   }
 
-  public getPlane(id: number): Observable<Plane> {
-    return this.http.get('http://localhost:8080/BFRS/plane/' + id, { withCredentials: true }).pipe(
-      map(resp => resp as Plane)
-    );
-  }
+  // public getPlane(id: number): Observable<Plane> {
+  //   return this.http.get('http://localhost:8080/BFRS/plane/' + id, { withCredentials: true }).pipe(
+  //     map(resp => resp as Plane)
+  //   );
+  // }
 
   public getPlane(model: string): Observable<Plane> {
     return this.http.get('http://localhost:8080/BFRS/plane/' + model, {withCredentials: true}).pipe(

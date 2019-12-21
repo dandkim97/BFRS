@@ -58,6 +58,7 @@ export class AddFormComponent implements OnInit {
 
   addForm() {
     this.form.loginId = this.loginService.getUser().id;
+    console.log(this.form);
     this.formService.addForm(this.form).subscribe(
       resp => {
         this.created.emit(true);

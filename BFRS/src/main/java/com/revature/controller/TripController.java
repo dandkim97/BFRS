@@ -50,7 +50,7 @@ public class TripController {
 	
 	@PutMapping
 	public ResponseEntity<Trip> updateTrip(@RequestBody Trip t){
-		System.out.println(t);
+		System.out.println("\n\n\n" + t +  "\n\n\n");
 		return ResponseEntity.ok(ts.updateTrip(t));
 	}
 
