@@ -18,7 +18,9 @@ export class TripListComponent implements OnInit {
   constructor(
     private tripService: TripService,
     private loginService: LoginService,
-    private router: Router) { }
+    private router: Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnInit() {
     this.tripService.getTrips().subscribe(resp => {

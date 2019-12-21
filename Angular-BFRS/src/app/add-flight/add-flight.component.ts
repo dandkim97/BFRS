@@ -42,6 +42,10 @@ export class AddFlightComponent implements OnInit {
       });
     console.log(this.trip);
 
+    document.getElementById('myModal').style.display = 'block';
+  }
+
+  okAllFlights() {
     this.router.navigate(['trips']);
   }
 }

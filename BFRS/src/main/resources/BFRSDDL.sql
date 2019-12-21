@@ -55,6 +55,11 @@ insert into login(id, username, pswrd, first_name,last_name,is_admin,loyalty_sta
 values(2,'may','june','judy','sim',0,0);
 commit;
 
+--
+-- If you want the add form and payment to work when there are no forms, 
+-- you also have to leave the login_trip and tripview tables empty
+--
+
 insert into forms(id, num_seats, num_bags, plane_class, is_round, trip_id, login_id)
 values(1,2,3,'economy',0,1,1);
 insert into forms(id, num_seats, num_bags, plane_class, is_round, trip_id, login_id)

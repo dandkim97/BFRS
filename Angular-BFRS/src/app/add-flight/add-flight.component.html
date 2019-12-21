@@ -20,8 +20,14 @@
     <input type="datetime-local" id=idArrival required [(ngModel)]="trip.arrival">
     <br>
     Price:
-    <input type="text" id=idPrice required [(ngModel)]="trip.price">
+    <input type="number" min="1" step="any" id=idPrice required [(ngModel)]="trip.price">
     <br><br>
-    <button type="button" id="submitflightbtn" (click)="submitFlight()"
-        class="btn btn-success">Submit</button>
+    <button type="button" id="submitflightbtn" (click)="submitFlight()" class="btn btn-success">Submit</button>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <p>You have successfully added a flight!</p>
+            <button type="button" id="okbtn" (click)="okAllFlights()" class="btn btn-success center-block">Ok</button>
+        </div>
+    </div>
 </div>

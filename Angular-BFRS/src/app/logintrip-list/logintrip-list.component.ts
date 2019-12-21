@@ -22,7 +22,7 @@ export class LogintripListComponent implements OnInit {
     this.currentUser = this.loginService.getUser();
 
     this.logintripService.getAllHistoryTrips().subscribe(resp => {
-
+      console.log(resp);
       for (let i = 0; i < resp.length; i++) {
         if (this.currentUser.isAdmin === 0 && (this.currentUser.id === resp[i].userId)) {
           this.logintrips.push(resp[i]);

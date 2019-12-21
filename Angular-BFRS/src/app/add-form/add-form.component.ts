@@ -22,6 +22,8 @@ export class AddFormComponent implements OnInit {
   ];
   isChecked = false;
   numFlights: number;
+  forms: Form[] = [];
+  form2: Form = new Form();
 
   constructor(
     private formService: FormService,
@@ -59,14 +61,17 @@ export class AddFormComponent implements OnInit {
     this.formService.addForm(this.form).subscribe(
       resp => {
         this.created.emit(true);
-      });
-    this.passFormId();
-  }
-
-  passFormId() {
-    this.formService.getForms().subscribe(
-      resp => {
-        this.router.navigate(['payment', resp.length + 1]);
+        this.formService.getForms().subscribe(
+          resp2 => {
+            this.forms = resp2;
+            this.forms.sort((a, b) => (a.id > b.id) ? 1 : -1);
+            console.log(this.forms);
+            const formsLength: number = this.forms.length;
+            console.log(formsLength);
+            this.form2 = this.forms[formsLength - 1];
+            console.log(this.form2);
+            this.router.navigate(['payment', this.form2.id]);
+          });
       });
   }
 
