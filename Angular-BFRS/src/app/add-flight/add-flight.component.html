@@ -1,0 +1,33 @@
+<div>
+    Plane Model:
+    <select id="idPlaneModel" required [(ngModel)]="selectedModel" name="selectedModel" (change)="selectedItem()">
+        <option *ngFor="let item of planes" [ngValue]="item">{{item.model}}</option>
+    </select>
+    <br>
+    Seats Taken:
+    <input type="number" min="0" id=idSeats required [(ngModel)]="trip.seatsTaken">
+    <br>
+    From:
+    <input type="text" id=idFrom required [(ngModel)]="trip.tripFrom">
+    <br>
+    To:
+    <input type="text" id=idTo required [(ngModel)]="trip.tripTo">
+    <br>
+    Departure Time:
+    <input type="datetime-local" id=idDeparture required [(ngModel)]="trip.departure">
+    <br>
+    Arrival Time:
+    <input type="datetime-local" id=idArrival required [(ngModel)]="trip.arrival">
+    <br>
+    Price:
+    <input type="number" min="1" step="any" id=idPrice required [(ngModel)]="trip.price">
+    <br><br>
+    <button type="button" id="submitflightbtn" (click)="submitFlight()" class="btn btn-success">Submit</button>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <p>You have successfully added a flight!</p>
+            <button type="button" id="okbtn" (click)="okAllFlights()" class="btn btn-success center-block">Ok</button>
+        </div>
+    </div>
+</div>

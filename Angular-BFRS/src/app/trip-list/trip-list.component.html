@@ -15,3 +15,7 @@
 
 <app-trip *ngFor="let trip of trips" [trip]="trip"></app-trip>
 <!-- <app-trip [trip]="trip" (created)="submitted()"></app-trip> -->
+
+<br>
+<button type="button" *ngIf="isLogin() && isAdmin()" id="addflightbtn" 
+    (click)="addFlight()" class="btn btn-warning">Add a Flight</button>

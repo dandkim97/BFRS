@@ -24,7 +24,7 @@ public class Form {
 	private String planeClass;
 	@Column(name = "is_round")
 	private Integer isRound;
-	@Column(name="trip_id")
+	@Column(name = "trip_id")
 	private Integer tripId;
 	@Column(name="login_id")
 	private Integer loginId;
@@ -92,6 +92,18 @@ public class Form {
 		this.tripId = tripId;
 	}
 	
+	public Integer getLoginId() {
+		return loginId;
+	}
+
+	public void setLoginId(Integer loginId) {
+		this.loginId = loginId;
+	}
+
+	public void setTripId(Integer tripId) {
+		this.tripId = tripId;
+	}
+
 	public Integer getLoginId() {
 		return loginId;
 	}

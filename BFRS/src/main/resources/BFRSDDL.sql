@@ -9,7 +9,7 @@ insert into plane(id, model, seats, avg_rating)
 values(4,'Delta', 250, 2);
 insert into plane(id, model, seats, avg_rating)
 values(5,'Spirit', 130, 1);
-commit;
+
 --trip
 insert into trip(id, seats_taken, plane_id, trip_from, trip_to, departure, arrival, price)
 values(1,50,5,'Ohio','Virginia',  '2020-01-02 13:00:00',  '2020-01-02 14:00:00', 100.0 );
@@ -22,14 +22,13 @@ values(4,100,2,'Wyoming','Ohio',  '2020-01-05 16:00:00',  '2020-01-05 20:00:00',
 insert into trip(id, seats_taken, plane_id, trip_from, trip_to, departure, arrival, price)
 values(5,75,1,'Michigan','Alaska',  '2020-01-06 17:00:00',  '2020-01-06 23:00:00', 400.0 );
 
-commit;
-
+--login
 insert into login(id, username, pswrd, first_name,last_name,is_admin,loyalty_status)
 values(1,'kit','cat','a','gaw',0,0);
 insert into login(id, username, pswrd, first_name,last_name,is_admin,loyalty_status)
 values(2,'may','june','judy','sim',0,0);
-commit;
 
+--forms
 insert into forms(id, num_seats, num_bags, plane_class, is_round, trip_id, login_id)
 values(1,2,3,'economy',0,1,1);
 insert into forms(id, num_seats, num_bags, plane_class, is_round, trip_id, login_id)
@@ -38,9 +37,8 @@ insert into forms(id, num_seats, num_bags, plane_class, is_round, trip_id, login
 values(3,1,1,'economy',0,5,2);
 insert into forms(id, num_seats, num_bags, plane_class, is_round, trip_id, login_id)
 values(4,1,1,'economy',0,4,1);
-commit;
 
-
+--user trips
 insert into login_trip(id, trip_id, login_id, trip_cost)
 values(1,1,1,330);
 insert into login_trip(id, trip_id, login_id, trip_cost)
@@ -49,8 +47,8 @@ insert into login_trip(id, trip_id, login_id, trip_cost)
 values(3,5,2,190);
 insert into login_trip(id, trip_id, login_id, trip_cost)
 values(4,4,1,177);
-commit;
 
+--trip views
 insert into tripview(id, login_id, username, model, trip_from, trip_to, departure, arrival, num_seats, is_round, trip_cost)
 values(1,1,'kit','Spirit','Ohio','Virginia',  '2020-01-02 13:00:00',  '2020-01-02 14:00:00',2,0,330.0 );
 insert into tripview(id, login_id, username, model, trip_from, trip_to, departure, arrival, num_seats, is_round, trip_cost)

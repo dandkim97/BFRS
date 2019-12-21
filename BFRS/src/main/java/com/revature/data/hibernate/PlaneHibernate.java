@@ -1,6 +1,8 @@
 package com.revature.data.hibernate;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -22,6 +24,26 @@ public class PlaneHibernate implements PlaneDao {
 	@Autowired
 	private HibernateUtil hu = HibernateUtil.getInstance();
 
+	@Override
+	public Plane getPlane(int i) {
+		Session s = hu.getSession();
+		Plane p = s.get(Plane.class, i);
+		s.close();
+		return p;
+	}
+	
+	@Override
+	public Set<Plane> getPlanes() {
+		Session s = hu.getSession();
+		String query = "FROM Plane";
+		Query<Plane> q = s.createQuery(query, Plane.class);
+		List<Plane> planeList = q.getResultList();
+		Set<Plane> planeSet = new HashSet<Plane>();
+		planeSet.addAll(planeList);
+		s.close();
+		return planeSet;
+	}
+	
 	@Override
 	public Plane getMaxSeats(Integer id) {
 		Session s = hu.getSession();

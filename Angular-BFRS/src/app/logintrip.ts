@@ -1,5 +1,6 @@
 import { Login } from './login';
 import { Trip } from './trip';
+import { CommentStmt } from '@angular/compiler';
 
 export class Logintrip {
     userId: number;

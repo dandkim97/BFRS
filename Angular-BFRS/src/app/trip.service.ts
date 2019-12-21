@@ -28,6 +28,13 @@ export class TripService {
     );
   }
 
+  public addTrip(trip: Trip) {
+    const body = JSON.stringify(trip);
+    return this.http.post('http://localhost:8080/BFRS/trips/', body, { headers: this.headers, withCredentials: true }).pipe(
+      map(resp => resp as Trip)
+    );
+  }
+
   public updateTrip(trip: Trip): Observable<Trip> {
     const body = JSON.stringify(trip);
     console.log(body);

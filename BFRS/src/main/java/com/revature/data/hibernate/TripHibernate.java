@@ -1,7 +1,9 @@
 package com.revature.data.hibernate;
 
 import java.math.BigDecimal;
+
 import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -25,8 +27,27 @@ import com.revature.utils.LogUtil;
 public class TripHibernate implements TripDao {
 
 	@Autowired
-	private HibernateUtil hu;
+	private HibernateUtil hu = HibernateUtil.getInstance();
 
+	@Override
+	public int addTrip(Trip t) {
+		Session s = hu.getSession();
+		Transaction tx = null;
+		try {
+			tx = s.beginTransaction();
+			s.save(t);
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			LogUtil.logException(e, TripHibernate.class);
+		} finally {
+			s.close();
+		}
+		return t.getId();
+	}
+	
 	@Override
 	public Trip getTrip(int i) {
 		Session s = hu.getSession();
@@ -34,7 +55,7 @@ public class TripHibernate implements TripDao {
 		s.close();
 		return t;
 	}
-	
+
 	@Override
 	public Set<Trip> getTrips() {
 		Session s = hu.getSession();
@@ -53,14 +74,14 @@ public class TripHibernate implements TripDao {
 			tx = s.beginTransaction();
 			s.update(t);
 			tx.commit();
-		} catch(Exception e) {
-			if(tx != null)
+		} catch (Exception e) {
+			if (tx != null)
 				tx.rollback();
 			e.printStackTrace();
 		} finally {
 			s.close();
 		}
-		return t;	
+		return t;
 	}
 	
 	@Override
@@ -93,8 +114,7 @@ public class TripHibernate implements TripDao {
 				  
 				  tm.add(t); 
 				  System.out.println(tm);				  
-				 }
-			
+        }
 			
 			s.close();
 			return tm;

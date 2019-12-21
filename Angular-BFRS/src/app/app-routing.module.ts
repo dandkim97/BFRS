@@ -12,6 +12,7 @@ import { ReviewComponent } from './review/review.component';
 import { LoyaltyReqMsgComponent } from './loyalty-req-msg/loyalty-req-msg.component';
 import { PaymentComponent } from './payment/payment.component';
 import { LogintripListComponent } from './logintrip-list/logintrip-list.component';
+import { AddFlightComponent } from './add-flight/add-flight.component';
 
 const routes: Routes = [
   {
@@ -68,10 +69,13 @@ const routes: Routes = [
     component: LogintripListComponent
   },
   {
+    path: 'addflight',
+    component: AddFlightComponent
+  },
+  {
     path: 'review_button/:model',
     component: ReviewComponent
   }
-
 ];
 
 @NgModule({
