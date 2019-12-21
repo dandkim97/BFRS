@@ -50,6 +50,10 @@ export class LogintripListComponent implements OnInit {
     this.logintrip = new Logintrip();
   }
 
+  isAdmin(): boolean {
+    return this.loginService.isAdmin();
+  }
+
   goToReview() {
     this.route.navigate(['review_button', this.logintrip.model]);
   }
