@@ -1,21 +1,53 @@
 <h1>List Trip</h1>
-<table>
-    <tr>
-        <th id="thNo">Plane No.</th>
-        <th id="thSeatsTaken">Seats Taken</th>
-        <th id="thFrom">From</th>
-        <th id="thTo">To</th>
-        <th id="thDeparture">Departure Time</th>
-        <th id="thArrival">Arrival Time</th>
-        <th id="thPrice">Price</th>
-        <th>Customer Rating</th>
-        <th id="thStatus">Status</th>
-    </tr>
+<table id="t01">
+    <thead>
+        <tr>
+            <th id="thNo">Plane No.</th>
+            <th id="thSeatsTaken">Seats Taken</th>
+            <th id="thFrom">From</th>
+            <th id="thTo">To</th>
+            <th id="thDeparture">Departure Time</th>
+            <th id="thArrival">Arrival Time</th>
+            <th id="thPrice">Price</th>
+            <th>Customer Rating</th>
+            <th id="thStatus">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let trip of trips">
+            <td id="rowId">{{trip.id}}</td>
+            <td id="rowSeatsTaken">{{trip.seatsTaken}}</td>
+            <td id="rowTripFrom">{{trip.tripFrom}}</td>
+            <td id="rowTripTo">{{trip.tripTo}}</td>
+            <td id="rowDeparture">{{trip.departure}}</td>
+            <td id="rowArrival">{{trip.arrival}}</td>
+            <td id="rowPrice">{{trip.price | currency}}</td>
+            <td id="rowRate">{{trip.plane.avgRating}}</td>
+            <td> 
+                <div *ngIf="!isLogin() || !isAdmin() ">{{trip.status}}</div> 
+                <div *ngIf="isLogin() && isAdmin()"> 
+                  <label>Current Status: </label>
+                  <select [(ngModel)]="trip.status">
+                    <option value="On Time">On Time</option>
+                    <option value="Delayed">Delayed</option>
+                    <option value="Arrived">Arrived</option>
+                    <option value="Cancelled">Cancelled</option>
+                  </select> 
+                  <button type="button" (click)="updateStatus()" class="btn btn-info">Update</button> 
+                </div>
+            </td>
+        </tr>
+    </tbody>
 </table>
 
-<app-trip *ngFor="let trip of trips" [trip]="trip"></app-trip>
-<!-- <app-trip [trip]="trip" (created)="submitted()"></app-trip> -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <p>Status changed!</p>
+        <button type="button" id="okbtn" (click)="okHome()" class="btn btn-success center-block">Ok</button>
+    </div>
+  </div>
 
 <br>
 <button type="button" *ngIf="isLogin() && isAdmin()" id="addflightbtn" 
     (click)="addFlight()" class="btn btn-warning">Add a Flight</button>
+

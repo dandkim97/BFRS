@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { TripService } from '../trip.service';
 import { Trip } from '../trip';
 import { Plane } from '../plane';
+
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
 
@@ -11,7 +12,7 @@ import { LoginService } from '../login.service';
   styleUrls: ['./trip-list.component.css']
 })
 export class TripListComponent implements OnInit {
-
+  @Output() created = new EventEmitter<boolean>();
   trips: Trip[];
   trip: Trip;
 
@@ -36,6 +37,18 @@ export class TripListComponent implements OnInit {
     this.trip.plane = new Plane();
   }
 
+  updateStatus() {
+    this.tripService.updateTrip(this.trip).subscribe(
+      resp => {
+        this.created.emit(true);
+    });
+    document.getElementById('myModal').style.display = 'block';
+  }
+
+  okHome() {
+    document.getElementById('myModal').style.display = 'none';
+  }
+
   addFlight() {
     this.router.navigate(['addflight']);
   }
@@ -44,6 +57,10 @@ export class TripListComponent implements OnInit {
     return this.loginService.isLogin();
   }
 
+  isAvailable(): boolean {
+    return this.trip.status === 'On Time' || this.trip.status === 'Delayed';
+  }
+  
   isAdmin(): boolean {
     return this.loginService.isAdmin();
   }

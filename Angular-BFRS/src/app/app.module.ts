@@ -30,6 +30,7 @@ import { LoyaltyReqMsgComponent } from './loyalty-req-msg/loyalty-req-msg.compon
 import { PaymentComponent } from './payment/payment.component';
 import { LogintripComponent } from './logintrip/logintrip.component';
 import { LogintripListComponent } from './logintrip-list/logintrip-list.component';
+import { BeforeReviewComponent } from './before-review/before-review.component';
 import { AddFlightComponent } from './add-flight/add-flight.component';
 import { LogintripService } from './logintrip.service';
 import { ReviewService } from './review.service';
@@ -57,6 +58,7 @@ import { PlaneService } from './plane.service';
     LogintripComponent,
     LogintripListComponent,
     LoyaltyReqMsgComponent,
+    BeforeReviewComponent,
     AddFlightComponent
   ],
   imports: [
