@@ -68,37 +68,22 @@ public class TripHibernate implements TripDao {
 		Session s = hu.getSession();
 		String nativeSQL = "select distinct l.id as lid, l.username as us, "
 				+ "p.model as md, t.trip_from as tf, t.trip_to as tt, t.departure as dp, "
-				+ "t.arrival as av, f.is_round as ir, lt.trip_cost as tc, t.id as ti "
+				+ "t.arrival as av, f.num_seats as ns, f.is_round as ir, lt.trip_cost as tc "
 				+ "from forms f, login_trip lt, trip t, login l, plane p "
-				+ "where lt.login_id = f.login_id and f.trip_id = lt.trip_id "
-				+ "and t.id = f.trip_id and l.id = lt.login_id and t.plane_id = p.id "
-				+ "and lt.login_id >= :uid order by av ASC";
-			Query query = s.createNativeQuery(nativeSQL);
-			query.setParameter("uid",  1);  //get all users since condition is > =
-			List<Object[]> tvObj = query.list();
-			List<TripView> tm = new ArrayList<TripView>();
-			 for (Object[] a : tvObj) {
-				 TripView t = new TripView();
-				  t.setUserId(((BigDecimal) a[0]).intValue()); 
-				  t.setUserName((String) a[1]); 
-				  t.setModel((String) a[2]); //model
-				  t.setTripFrom((String) a[3]); //tripFrom
-				  t.setTripTo((String) a[4]); //tripTo
-				  t.setDeparture((String) a[5]);
-				  t.setArrival((String) a[6]);
-				  t.setNumSeats((int)(Math.random()*3) + 1);
-				  t.setIsRound(((BigDecimal) a[7]).intValue());
-				  t.setTripCost(((BigDecimal) a[8]).intValue());
-				  t.setTripId(((BigDecimal) a[9]).intValue());
-				  
-				  tm.add(t); 
-				  System.out.println(tm);				  
-				 }
-			
-			
-			s.close();
-			return tm;
-		}
+				+ "where lt.login_id = f.login_id "
+				+ "and lt.trip_id = f.trip_id "
+				+ "and l.id = lt.login_id "
+				+ "and t.id = lt.trip_id "			
+				+ "and t.plane_id = p.id "
+				+ "and lt.login_id >= :uid";
+		NativeQuery<TripView> q = s.createNativeQuery(nativeSQL, "GetTripHistoryResults");
+		q.setParameter("uid",  1);
+//		System.out.println(q.list().toString());	
+		List<TripView> tripViews = q.list();
+
+		s.close();
+		return tripViews;
+	}
 
 	@Override
 	public void addTripSeats(Trip t, Integer num) {
