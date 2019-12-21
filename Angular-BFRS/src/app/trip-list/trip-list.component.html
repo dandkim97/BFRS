@@ -15,7 +15,6 @@
     </thead>
     <tbody>
         <tr *ngFor="let trip of trips">
-            <!-- <app-trip [trip]="trip"></app-trip> -->
             <td id="rowId">{{trip.id}}</td>
             <td id="rowSeatsTaken">{{trip.seatsTaken}}</td>
             <td id="rowTripFrom">{{trip.tripFrom}}</td>
@@ -40,7 +39,7 @@
         </tr>
     </tbody>
 </table>
-<!-- <app-trip [trip]="trip" (created)="submitted()"></app-trip> -->
+
 <div id="myModal" class="modal">
     <div class="modal-content">
         <p>Status changed!</p>

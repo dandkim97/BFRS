@@ -29,20 +29,6 @@
             <td>{{logintrip.tripCost | currency}}</td> 
 
             <td *ngIf="!isAdmin()"><app-before-review [logintrip]="logintrip"></app-before-review></td>
-            <!-- <ng-container
-                *ngIf="reviewExists(); then showReview; else reviewButton">
-            </ng-container>
-
-            <ng-template #showReview>
-                <td>{{review.rating}}</td>
-            </ng-template>
-
-            <ng-template #reviewButton>
-                <td><button type="button" class="btn btn-success" (click)="goToReview()">Review</button>
-                <a [routerLink]="['/review_button', logintrip.model]"></a></td>
-            </ng-template> -->
         </tr>
     </tbody>
 </table>
-<!-- <app-logintrip *ngFor="let logintrip of logintrips" [logintrip]="logintrip"></app-logintrip> -->
-
