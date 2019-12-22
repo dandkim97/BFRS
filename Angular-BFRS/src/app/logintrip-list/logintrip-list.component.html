@@ -1,0 +1,36 @@
+<h1>Reservation History</h1>
+<table id="t01">
+    <thead>
+        <tr>
+            <th>User Id</th>
+            <th>User Name</th>
+            <th>Plane</th>
+            <th>Trip From</th>
+            <th>Trip To</th> 
+            <th>Departure</th> 
+            <th>Arrival</th>
+            <th>Number of Seats</th>
+            <th>Round Trip</th>
+            <th>Trip Cost</th>
+            <th *ngIf="!isAdmin()">Review</th>
+            <th *ngIf="!isAdmin()">Cancel</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let logintrip of logintrips">
+            <td>{{logintrip.userId}}</td>
+            <td>{{logintrip.userName}}</td>
+            <td>{{logintrip.model}}</td>
+            <td>{{logintrip.tripFrom}}</td>
+            <td>{{logintrip.tripTo}}</td>
+            <td>{{logintrip.departure}}</td>
+            <td>{{logintrip.arrival}}</td>
+            <td>{{logintrip.numSeats}}</td>
+            <td>{{logintrip.isRound}}</td>
+            <td>{{logintrip.tripCost | currency}}</td> 
+
+            <td *ngIf="!isAdmin()"><app-before-review [logintrip]="logintrip"></app-before-review></td>
+            <td *ngIf="!isAdmin()"><app-cancel-reservation [logintrip]="logintrip"></app-cancel-reservation></td>
+        </tr>
+    </tbody>
+</table>
