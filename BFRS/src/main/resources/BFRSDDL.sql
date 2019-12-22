@@ -24,7 +24,7 @@ insert into plane(id, model, seats, avg_rating)
 insert into trip(id, seats_taken, plane_id, trip_from, trip_to, departure, arrival, price, status)
     select trip_seq.nextVal, 50, 5, 'Ohio', 'Virginia', '2020-01-02 13:00:00', '2020-01-02 14:00:00', 114.16, 'On Time' from dual;
 insert into trip(id, seats_taken, plane_id, trip_from, trip_to, departure, arrival, price, status)
-    select trip_seq.nextVal, 30, 4, 'North Carloina', 'California', '2020-01-03 14:00:00', '2020-01-03 20:30:00', 257.62, 'On Time' from dual;
+    select trip_seq.nextVal, 30, 4, 'North Carolina', 'California', '2020-01-03 14:00:00', '2020-01-03 20:30:00', 257.62, 'On Time' from dual;
 insert into trip(id, seats_taken, plane_id, trip_from, trip_to, departure, arrival, price, status)
     select trip_seq.nextVal, 90, 3, 'West Virginia', 'Florida', '2020-01-04 15:00:00', '2020-01-04 16:30:00', 94.39, 'On Time' from dual;
 insert into trip(id, seats_taken, plane_id, trip_from, trip_to, departure, arrival, price, status)
