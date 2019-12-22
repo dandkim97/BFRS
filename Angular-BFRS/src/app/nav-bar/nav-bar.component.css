@@ -1,0 +1,35 @@
+table {
+    width:80%;
+  }
+#t01 {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #t01 td, #t01 th {
+    border: 1px solid #ddd;
+    padding: 30px;
+    width: 10%;
+  }
+  
+  #t01 tr:nth-child(even){background-color: #F2F2F2;}
+  
+  #t01 tr:hover {background-color: #ddd;}
+  
+  #t01 th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(134, 185, 166);
+    color: white;
+  }
+  h1 {
+    background-color: rgb(189, 209, 203);
+  }
+  
+  p {
+    background-color: yellow;
+  }
+
+
